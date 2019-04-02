@@ -1,14 +1,14 @@
 ---
 name: Issue template
-about: Suggest an idea for this project
+about: Issue template
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Hebben je de issue met het team besproken?**
+[]  **Hebben je de issue met het team besproken?**
 
-**Is de issue getest?**
+[]  **Is de issue getest?**
 
-**Is de issue compleet**
+[]  **Is de issue compleet**
