@@ -24,9 +24,10 @@ let data = [
 const brain = require('brain.js')
 const network = new brain.NeuralNetwork()
 console.log("created a neural net")
-network.train(data, {
-  iterations:2000
-})
+let stats = network.train(data)
+console.log("finished training...")
+console.log(stats)
+
 //console.log(network)
 // console.log(network.run(testRoutes[0]))
 // console.log(network.run(testRoutes[1]))
