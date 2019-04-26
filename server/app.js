@@ -60,8 +60,6 @@ function indexOfMax(arr) {
 console.log(results)
 let suggestedRoute = indexOfMax(results)
 
-//-----
-
 app.use(express.static('public'))
 
 io.on('connection', function(socket) {
