@@ -1,3 +1,4 @@
+//Import component for the router to work
 import Homepage from './components/Homepage'
 import InfoPage from './components/InfoPage'
 import Ai from './components/Ai'
@@ -18,6 +19,4 @@ export const routes = [
         path: '/info',
         component: InfoPage
     },
-
-    
 ];

@@ -16,11 +16,11 @@
     &.in{
         animation: slideIn 0.5s;
     }
-    
-    &.out{
-        animation: slideOut 0.5s;
-        animation-delay: 0.3s;
-    }
+}
+
+.out{
+    animation: slideOut 0.5s;
+    animation-delay: 0.3s;
 }
 
 
