@@ -27,11 +27,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  padding: 10px;
-  background-color: $light-orange;
-}
+.main{}
 </style>

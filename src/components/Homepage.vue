@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main animation">
     <div class="page">
       <h1>Homepage</h1>
 

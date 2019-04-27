@@ -1,8 +1,24 @@
 <template>
   <div class="main animation">
-      <h1>Lorem ipusm dolor sit amet</h1>
+    <div class="background">
+      <div class="overlay"></div>
+      <div class="main-background"></div>
+    </div>
+    <div class="content-wrapper">
+      <div class="content">
+        <h1>Welkom bij de LeasePlanner</h1>
+        <hr>
+        <p>
+          Kortgeleden heeft u een mail ontvangen met instructies om deze app te gaan gebruiken. Met de app kunt u makkelijk uw reis van en naar het werk plannen.
+        </p>
+        <p>
+          De LeasePlanner zal leren van uw gedrag en hierdoor persoonlijke routes aan kunnen bieden.
+        </p>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A iste et accusantium quia eligendi vel blanditiis enim, eum, rerum doloribus ea labore. Modi recusandae quas voluptates corrupti assumenda beatae repudiandae.</p>
+        <router-link class="btn" to="/">Volgende</router-link>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -14,11 +30,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  padding: 10px;
-  background-color: $light-orange;
-}
+.main{}
 </style>
