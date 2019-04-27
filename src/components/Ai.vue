@@ -12,9 +12,6 @@ export default {
   name: 'Ai',
   data() {
       return {
-          user: '',
-          message: '',
-          messages: [],
           socket : io('localhost:3000'),
       }
   },

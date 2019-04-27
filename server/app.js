@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const http = require('http').Server(app);
 const io = require('socket.io')(http)
+const fs = require('fs')
 
 // brain.js
 let testRoutes = [
@@ -74,6 +75,32 @@ io.on('connection', function(socket) {
   })
   
   io.emit('brain', suggestedRoute)
+
+
+  //Get json file
+  socket.on('GETUSER', function(input) {
+    let file = "";
+    if(input.user == "frank") file = 'data/frank.json';
+  
+    //Get profile from json file and pass it to the front-end
+    fs.readFile(file, (err, data) => {  
+      if (err) throw err;
+      let user = JSON.parse(data);
+      io.emit('USER', user)
+    });
+  });
+
+ //Update file
+  socket.on('SAVE', function(input) {
+    let file = "";
+    if(input.user == "frank") file = 'data/frank.json';
+
+    //Write updated profile back to json file
+    json = JSON.stringify(input.data);
+    fs.writeFile(file, json, 'utf8', function(err) {
+      if (err) throw err;
+      });
+  });
 })
 
 http.listen(port, (err) => {

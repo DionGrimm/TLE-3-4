@@ -10,6 +10,7 @@
           <li><router-link class="btn" to="/">/ : Homepage</router-link></li>
           <li><router-link class="btn" to="ai">/ai : AI</router-link></li>
           <li><router-link class="btn" to="info">/info : Info</router-link></li>
+          <li><router-link class="btn" to="routes">/routes : Routes toevoegen</router-link></li>
       </ul>
     </div>
       

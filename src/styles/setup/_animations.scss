@@ -1,0 +1,26 @@
+.animation{
+    &.in{
+        animation: slideIn 0.5s;
+    }
+}
+
+.out{
+    animation: slideOut 0.5s;
+    animation-delay: 0.3s;
+}
+
+
+@keyframes slideIn {
+    from{
+        transform: translateX(100vw);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    to{
+        opacity: 0;
+    }
+}
