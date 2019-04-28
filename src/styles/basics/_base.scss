@@ -42,12 +42,14 @@ hr{
     justify-content: center;
     align-items: center;
     z-index: 10;
+    margin: initial;
     width: 100vw;
     height: 100vh;;
+    position: relative;
+    overflow: auto;
     .content{
         max-width: 310px;
         width: 65%;
-        margin: auto;
         min-height: 200px;
         background-color: $white;
         position: absolute;
@@ -72,4 +74,16 @@ hr{
     height: 100%;
     width: 80%;
     margin: auto;
+}
+
+@media only screen and (max-width: 400px) {
+    .content-wrapper {
+        align-items: start;
+
+        .content{
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+    }
 }
