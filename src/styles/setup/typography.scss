@@ -1,13 +1,27 @@
+*{
+    font-family: 'Didact Gothic', sans-serif;
+}
+
 h1,h2,h3,h4,h5{
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     color: $grey;
 }
 
+h3.card-title{
+    font-weight: 600;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
 p, li{
     font-family: 'Didact Gothic', sans-serif;
     color: $light-grey;
     font-size: 1rem;
+}
+
+input.orange, p.orange, li.orange, h1.orange, h2.orange, h3.orange, h4.orange, h5.orange{
+    color: $main-orange !important;
 }
 
 

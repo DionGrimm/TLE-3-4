@@ -1,21 +1,21 @@
 <template>
   <div class="main animation">
-    <div class="page">
-      <h1>Homepage</h1>
-
-      <p>
-          Pagina's die beschikbaar zijn:
-      </p>
-      <ul>
-          <li><router-link class="btn" to="/">/ : Homepage</router-link></li>
-          <li><router-link class="btn" to="ai">/ai : AI</router-link></li>
-          <li><router-link class="btn" to="info">/info : Info</router-link></li>
-          <li><router-link class="btn" to="routes">/routes : Routes toevoegen</router-link></li>
-      </ul>
+    <div class="background">
+      <div class="overlay"></div>
+      <div class="main-background"></div>
     </div>
-      
-
-  </div>
+    <div class="content-wrapper">
+      <div class="content">
+          <h1>Pagina's die beschikbaar zijn:</h1>
+          <hr>
+          <router-link class="btn" to="/">Homepage</router-link>
+          <router-link class="btn" to="ai">AI</router-link>
+          <router-link class="btn" to="info">Info</router-link>
+          <router-link class="btn" to="routes">Route logica</router-link>
+          <router-link class="btn" to="routes/add">Route frontend</router-link>
+    </div>
+      </div>
+    </div>
 </template>
 
 <script>

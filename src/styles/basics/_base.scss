@@ -14,7 +14,7 @@ hr{
     height: 100vh;
     position: fixed;
     .main-background{
-        background-image: url('../assets/background-image.jpg');
+        background-image: url('/img/background-image.jpg');
         background-size: cover;
         background-repeat:no-repeat;
         background-position: center center;
@@ -45,12 +45,13 @@ hr{
     width: 100vw;
     height: 100vh;;
     .content{
+        max-width: 310px;
         width: 65%;
         margin: auto;
         min-height: 200px;
         background-color: $white;
         position: absolute;
-        padding: 0 20px;
+        padding: 10px 20px 20px 20px;
         text-align: center;
 
         h1{

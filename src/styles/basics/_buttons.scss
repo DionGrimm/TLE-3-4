@@ -3,13 +3,12 @@
     border: none;
     color: $white;
     padding: 15px 32px;
-    margin: 15px auto;
+    margin: 15px 0;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 1.3rem;
     letter-spacing: 0.8px;
-    width: 200px;
     border-radius: 33px;
     font-family: 'Didact Gothic', sans-serif;
     text-transform: uppercase;
@@ -17,4 +16,8 @@
     &:hover{
         background-color: $light-orange;
     }
+}
+
+input.btn{
+    width: 100%;
 }
