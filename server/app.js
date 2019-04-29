@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 const http = require('http').Server(app);
-const io = require('socket.io')(http)
-const fs = require('fs')
+const io = require('socket.io')(http);
+var ioreq = require("socket.io-request");
+const fs = require('fs');
 
 // brain.js
 let testRoutes = [
@@ -76,17 +77,15 @@ io.on('connection', function(socket) {
   
   io.emit('brain', suggestedRoute)
 
-
-  //Get json file
-  socket.on('GETUSER', function(input) {
+  ioreq(socket).response("GETUSER", function(req, res){ // method, handler
     let file = "";
-    if(input.user == "frank") file = 'data/frank.json';
+    if(req.user == "frank") file = 'data/frank.json';
   
     //Get profile from json file and pass it to the front-end
     fs.readFile(file, (err, data) => {  
       if (err) throw err;
       let user = JSON.parse(data);
-      io.emit('USER', user)
+      res(user);
     });
   });
 

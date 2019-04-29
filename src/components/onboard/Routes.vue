@@ -17,6 +17,7 @@
 
 <script>
 import io from 'socket.io-client';
+import ioreq from 'socket.io-request';
 export default {
   name: 'Routes',
   data() {
@@ -38,15 +39,15 @@ export default {
       });
     },
     getData: function(){
-      //Request profile data to back-end
-      this.socket.emit('GETUSER', {
-       user: "frank"
+      let app = this;
+      ioreq(this.socket).request("GETUSER", {user: "frank"})
+      .then(function(res){
+        console.log(res);
+        app.profile = res;
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
       });
-
-      //Save data to local profile
-      this.socket.on('USER', (data) => {
-      this.profile = data;
-    });
     }
 
   },
