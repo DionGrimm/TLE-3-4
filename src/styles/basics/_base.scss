@@ -13,6 +13,11 @@ hr{
     width:200px;
 }
 
+.icon_vehicle{
+    width:50px;
+    margin:10px;        
+}
+
 .background{
     width: 100vw;
     height: 100vh;
@@ -69,6 +74,10 @@ hr{
             font-size: 1.4rem;
             line-height: 2.1rem;
             text-align: left;
+        }
+        
+        button{
+            width:100%;
         }
     }
 }

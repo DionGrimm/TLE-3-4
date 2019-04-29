@@ -5,7 +5,8 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
-      <div class="content">
+
+      <div class="content" v-if="infoScreen === 1">
         <h1>Welkom bij de LeasePlanner</h1>
         <hr>
         <p>
@@ -15,7 +16,23 @@
           De LeasePlanner zal leren van uw gedrag en hierdoor persoonlijke routes aan kunnen bieden.
         </p>
 
-        <router-link class="btn" to="vehicles">Volgende</router-link>
+        <button class="btn" @click="infoScreen = 2">Volgende</button>
+      </div>
+
+    <div class="content" v-else-if="infoScreen === 2">
+        <img src="../../assets/cycle.png" class="icon_vehicle">
+        <img src="../../assets/motorbiking.png" class="icon_vehicle">
+        <img src="../../assets/recreational.png" class="icon_vehicle">
+
+        <p>
+         Deze routes kunnen op verschillende manieren afgelegd worden. We streven er naar om zo groen en efficiënt mogelijk te vervoeren. We bieden daarom ook een fiets, step of elektrische scooter aan.
+        </p>
+        <hr>
+        <p>
+          Alle voertuigen zijn verspreid over de stad, zodat u vanaf elke bestemming snel kunt reizen.
+        </p>
+
+        <router-link class="btn" to="/login">Aan de slag</router-link>
       </div>
     </div>
 
@@ -26,6 +43,11 @@
 
 export default {
   name: 'Infopage',
+  data: function () {
+    return {
+      infoScreen: 1
+    }
+  }
 }
 </script>
 

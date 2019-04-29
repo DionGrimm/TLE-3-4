@@ -1,7 +1,6 @@
 //Import component for the router to work
 import Homepage from './components/Homepage'
 import InfoPage from './components/onboard/InfoPage'
-import InfoVehicles from './components/onboard/InfoVehicles'
 import Login from './components/onboard/Login'
 import Ai from './components/Ai'
 import Routes from './components/onboard/Routes'
@@ -22,11 +21,6 @@ export const routes = [
         name: 'info',
         path: '/info',
         component: InfoPage
-    },
-    {
-        name: 'vehicles',
-        path: '/vehicles',
-        component: InfoVehicles
     },
     {
         name: 'login',
