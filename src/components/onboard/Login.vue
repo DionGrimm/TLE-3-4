@@ -10,10 +10,10 @@
         <img src="../../assets/logo_leaseplan.png" class="logo_leaseplan">
 
         <div class="input-item">
-          <input type="text" id="username" placeholder="Gebruikersnaam">
+          <input type="text" class="black" id="username" placeholder="Gebruikersnaam">
         </div>
         <div class="input-item">
-          <input type="text" id="password" placeholder="Wachtwoord">
+          <input type="text" class="black" id="password" placeholder="Wachtwoord">
         </div>
 
         <router-link class="btn" to="/">Log in</router-link>
