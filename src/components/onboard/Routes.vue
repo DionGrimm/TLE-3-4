@@ -4,45 +4,24 @@
 
       <p v-for="route in profile.routes" v-bind:key="route.title">Route: {{ route.title }}: Van {{ route.from }} naar: {{ route.to }}</p>
 
-      <input type="text" placeholder="Naam route" v-model="route.title">
-      <br>
-      <input type="text" placeholder="Van adres" v-model="route.from">
-      <br>
-      <input type="text" placeholder="Naar adres" v-model="route.to">
-      <br>
-      <button class="btn" type="button" @click="saveRoute">Sla route op</button>
-
   </div>
 </template>
 
 <script>
-import io from 'socket.io-client';
-import ioreq from 'socket.io-request';
+
 export default {
   name: 'Routes',
   data() {
       return {
-        route: {},
         socket : io('localhost:3000'),
         profile: {}
       }
   },
   methods: {
-    saveRoute: function(){
-      //Save new route to profile
-      this.profile.routes.push(this.route)
-      
-      //Send updated profile to backend
-      this.socket.emit('SAVE', {
-       user: "frank",
-       data: this.profile
-      });
-    },
     getData: function(){
       let app = this;
       ioreq(this.socket).request("GETUSER", {user: "frank"})
       .then(function(res){
-        console.log(res);
         app.profile = res;
       })
       .catch(function(err){
