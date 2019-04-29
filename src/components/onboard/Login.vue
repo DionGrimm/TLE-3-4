@@ -13,7 +13,7 @@
           <input type="text" id="username" placeholder="Gebruikersnaam">
         </div>
         <div class="input-item">
-          <input type="text" id="password" placeholder="Wachtwoord">
+          <input type="password" id="password" placeholder="Wachtwoord">
         </div>
 
         <router-link class="btn" to="/">Log in</router-link>
@@ -32,4 +32,21 @@ export default {
 
 <style scoped lang="scss">
 .main{}
-</style>0
+
+.logincontainer{
+    max-width: 310px;
+    width: 65%;
+    min-height: 200px;
+    background-color: transparent;
+    position: absolute;
+    padding: 10px 20px 20px 20px;
+    text-align: center;
+    .input-item{
+        padding:0px;
+        input{
+            width: 100%;
+            height:40px;
+        }
+    }    
+}
+</style>

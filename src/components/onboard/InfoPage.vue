@@ -65,6 +65,11 @@ export default {
 <style scoped lang="scss">
 .main{}
 
+.icon_vehicle{
+    width:50px;
+    margin:10px;        
+}
+
 #screen1{
   background-color: $white;
   position: absolute;
