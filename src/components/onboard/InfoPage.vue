@@ -15,7 +15,7 @@
           De LeasePlanner zal leren van uw gedrag en hierdoor persoonlijke routes aan kunnen bieden.
         </p>
 
-        <router-link class="btn" to="/">Volgende</router-link>
+        <router-link class="btn" to="vehicles">Volgende</router-link>
       </div>
     </div>
 
