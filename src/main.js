@@ -9,6 +9,7 @@ import ioreq from 'socket.io-request';
 
 window.io = io;
 window.ioreq = ioreq;
+window.$ = window.jQuery = require('jquery');
 
 Vue.use(VueRouter)
 
