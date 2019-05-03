@@ -10,11 +10,15 @@
         <img src="../../assets/logo_leaseplan.png" class="logo_leaseplan">
 
         <div class="input-item">
-          <input type="text" class="black" id="username" placeholder="Gebruikersnaam" v-model="username">
+          <input type="text" class="black" v-bind:class="{ errorfield: usernameError }" id="username" placeholder="Gebruikersnaam" v-model="username">
         </div>
         <div class="input-item">
-          <input type="password" class="black" id="password" placeholder="Wachtwoord" v-model="password">
+          <input type="password" class="black" v-bind:class="{ errorfield: passwordError }" id="password" placeholder="Wachtwoord" v-model="password">
         </div>
+        
+        <span class="error" v-if="error">
+          {{error}}
+        </span>
 
         <button v-on:click="checkLogin" class="btn">Log in</button>
         <!-- <router-link class="btn" to="/datacheck">Aan de slag</router-link> -->
@@ -25,7 +29,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Login',
 
@@ -34,27 +37,41 @@ export default {
       return {
         socket : io('localhost:3000'),
         username: '',
-        password: ''
+        password: '',
+        error: '',
+        usernameError: false,
+        passwordError: false,
       }
   },
   methods: {
     checkLogin: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: app.username})
-      .then(function(res){
-        if(res != false){
-          if(app.username == res.username && app.password == res.password){
-            console.log("Correct login")
+      app.usernameError = false;
+      app.passwordError = false;
+      
+      if(app.username && app.password){
+        ioreq(this.socket).request("GETUSER", {user: app.username})
+        .then(function(res){
+          if(res != false){
+            if(app.username == res.username && app.password == res.password){
+              app.$router.push({ name: 'datacheck', params: { user: res.username } })
+            }else{
+              app.error = 'Fout wachtwoord';
+              app.passwordError = true;
+            }
           }else{
-            console.log("Fout wachtwoord")
+            app.error = 'Foute gebruikersnaam';
+            app.usernameError = true;
           }
-        }else{
-          console.log("Foute username");
-        }
-      })
-      .catch(function(err){
-        console.error(err.stack || err);
-      })
+        })
+        .catch(function(err){
+          console.error(err.stack || err);
+        })
+      }else{
+        app.error = 'Vul alle velden in';
+        app.passwordError = true;
+        app.usernameError = true;
+      }
     }
   }
 }
@@ -77,6 +94,13 @@ export default {
         input{
             width: 100%;
         }
+    }
+    .error{
+      color: red;
+      font-weight: bold;
+    }
+    .errorfield{
+      border: 2px solid red;
     }
     button{
       width:100%;

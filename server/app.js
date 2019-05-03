@@ -97,13 +97,18 @@ io.on('connection', function(socket) {
  //Update file
   socket.on('SAVE', function(input) {
     let file = "";
-    if(input.user == "frank123") file = 'data/frank.json';
+    if(input.user == "frankdewit" || input.user == "keesdewit"){
+      if(input.user == "frankdewit") file = 'data/frank.json';
+      if(input.user == "keesdewit") file = 'data/kees.json';
 
-    //Write updated profile back to json file
-    json = JSON.stringify(input.data);
-    fs.writeFile(file, json, 'utf8', function(err) {
-      if (err) throw err;
+      //Write updated profile back to json file
+      json = JSON.stringify(input.data);
+      fs.writeFile(file, json, 'utf8', function(err) {
+        if (err) throw err;
       });
+    }else{
+      console.log("User doesn't exist")
+    }
   });
 })
 
