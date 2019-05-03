@@ -79,20 +79,25 @@ io.on('connection', function(socket) {
 
   ioreq(socket).response("GETUSER", function(req, res){ // method, handler
     let file = "";
-    if(req.user == "frank") file = 'data/frank.json';
-  
-    //Get profile from json file and pass it to the front-end
-    fs.readFile(file, (err, data) => {  
-      if (err) throw err;
-      let user = JSON.parse(data);
-      res(user);
-    });
+    if(req.user == "frankdewit" || req.user == "keesdewit"){
+      if(req.user == "frankdewit") file = 'data/frank.json';
+      if(req.user == "keesdewit") file = 'data/kees.json';
+      //Get profile from json file and pass it to the front-end
+      fs.readFile(file, (err, data) => {  
+        if (err) throw err;
+        let user = JSON.parse(data);
+        res(user);
+      });
+    }else{
+      //If username is not found
+      res(false);
+    }
   });
 
  //Update file
   socket.on('SAVE', function(input) {
     let file = "";
-    if(input.user == "frank") file = 'data/frank.json';
+    if(input.user == "frank123") file = 'data/frank.json';
 
     //Write updated profile back to json file
     json = JSON.stringify(input.data);
