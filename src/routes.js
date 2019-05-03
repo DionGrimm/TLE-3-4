@@ -1,16 +1,22 @@
 //Import component for the router to work
-import Homepage from './components/Homepage'
+// import Homepage from './components/Homepage'
 import InfoPage from './components/onboard/InfoPage'
 import Login from './components/onboard/Login'
+import DataCheck from './components/onboard/DataCheck'
 import Ai from './components/Ai'
 import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
 
 export const routes = [
+    // {
+    //     name: 'home',
+    //     path: '/',
+    //     component: Homepage
+    // },
     {
-        name: 'home',
+        name: 'info',
         path: '/',
-        component: Homepage
+        component: InfoPage
     },
     { 
         name: 'ai',
@@ -18,14 +24,14 @@ export const routes = [
         component: Ai
     },
     {
-        name: 'info',
-        path: '/info',
-        component: InfoPage
-    },
-    {
         name: 'login',
         path: '/login',
         component: Login
+    },
+    {
+        name: 'datacheck',
+        path: '/datacheck',
+        component: DataCheck
     },
     {
         name: 'routes',

@@ -16,7 +16,8 @@
           <input type="password" class="black" id="password" placeholder="Wachtwoord">
         </div>
 
-        <button v-on:click="checkLogin" class="btn">Log in</button>
+        <!-- <button v-on:click="checkLogin" class="btn">Log in</button> -->
+        <router-link class="btn" to="/datacheck">Aan de slag</router-link>
       </div>
     </div>
 
@@ -27,33 +28,35 @@
 
 export default {
   name: 'Login',
-  data() {
-      return {
-        socket : io('localhost:3000'),
-        profile: {}
-      }
-  },
-  methods: {
-    checkLogin: function(){
-      let app = this;
-      ioreq(this.socket).request("GETUSER", {user: "frank"})
-      .then(function(res){
-        app.profile = res;
 
-        let username = document.getElementById('username').value
-        let password = document.getElementById('password').value
 
-        if(app.profile.username == username && app.profile.password == password){
-          console.log("login")
-        }else{
-          console.log("wrong")
-        }
-      })
-      .catch(function(err){
-        console.error(err.stack || err);
-      })
-    }
-  }
+//   data() {
+//       return {
+//         socket : io('localhost:3000'),
+//         profile: {}
+//       }
+//   },
+//   methods: {
+//     checkLogin: function(){
+//       let app = this;
+//       ioreq(this.socket).request("GETUSER", {user: "frank"})
+//       .then(function(res){
+//         app.profile = res;
+
+//         let username = document.getElementById('username').value
+//         let password = document.getElementById('password').value
+
+//         if(app.profile.username == username && app.profile.password == password){
+//           console.log("login")
+//         }else{
+//           console.log("wrong")
+//         }
+//       })
+//       .catch(function(err){
+//         console.error(err.stack || err);
+//       })
+//     }
+//   }
 }
 
 </script>
