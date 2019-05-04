@@ -43,6 +43,7 @@ export default {
       return {
         socket : io('localhost:3000'),
         profile: {},
+        user: this.$route.params.user
       }
   },
   methods: {
@@ -50,13 +51,13 @@ export default {
 
       //Send updated profile to backend
       this.socket.emit('SAVE', {
-       user: "frank",
+       user: this.profile.username,
        data: this.profile
       });
     },
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: "frank"})
+      ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         console.log(res);
         app.profile = res;
