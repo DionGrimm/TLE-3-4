@@ -49,3 +49,10 @@ input,input[type=text] {
     padding: 5px 16px;
     box-shadow: none;
   }
+  .errormessage{
+    color: red !important;
+    font-weight: bold !important;
+  }
+  .errorfield{
+    border: 2px solid red !important;
+  }

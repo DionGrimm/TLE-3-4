@@ -16,12 +16,11 @@
           <input type="password" class="black" v-bind:class="{ errorfield: passwordError }" id="password" placeholder="Wachtwoord" v-model="password">
         </div>
         
-        <span class="error" v-if="error">
+        <span class="errormessage" v-if="error">
           {{error}}
         </span>
 
         <button v-on:click="checkLogin" class="btn">Log in</button>
-        <!-- <router-link class="btn" to="/datacheck">Aan de slag</router-link> -->
       </div>
     </div>
 
@@ -31,8 +30,6 @@
 <script>
 export default {
   name: 'Login',
-
-
   data() {
       return {
         socket : io('localhost:3000'),
@@ -48,6 +45,7 @@ export default {
       let app = this;
       app.usernameError = false;
       app.passwordError = false;
+      app.error = '';
       
       if(app.username && app.password){
         ioreq(this.socket).request("GETUSER", {user: app.username})
@@ -95,15 +93,9 @@ export default {
             width: 100%;
         }
     }
-    .error{
-      color: red;
-      font-weight: bold;
-    }
-    .errorfield{
-      border: 2px solid red;
-    }
     button{
       width:100%;
     }    
 }
+
 </style>
