@@ -11,21 +11,6 @@
     }
 }
 
-@media only screen and (min-width: 416px) {
-    .animation.in{
-        .content-wrapper{
-            animation: slideIn 0.5s;
-        }
-    }
-    
-    .out{
-        .content-wrapper{
-            animation: slideOut 0.5s;
-            animation-delay: 0.3s;
-        }
-    }
-}
-
 @keyframes slideIn {
     from{
         transform: translateX(100vw);
