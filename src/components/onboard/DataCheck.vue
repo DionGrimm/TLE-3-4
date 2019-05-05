@@ -24,8 +24,11 @@
         </div>
         <hr>
         <div class="input-item large-label" v-bind:class="{ errorfield: emptyLicense }">
-          <label for="time1">Rijbewijs</label>
-          <input type="checkbox" id="license"  v-model="profile.license">
+          <label for="license">Rijbewijs</label>
+          <label class="switch">
+            <input id="license" type="checkbox">
+            <span class="slider round"></span>
+          </label>
         </div>
         <hr>
 

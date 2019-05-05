@@ -5,7 +5,7 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
-      <div class="logincontainer">
+      <div class="logincontainer" v-on:keyup.enter="checkLogin">
 
         <img src="../../assets/logo_leaseplan.png" class="logo_leaseplan">
 
