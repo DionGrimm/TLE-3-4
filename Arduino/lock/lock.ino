@@ -1,7 +1,8 @@
 #include <ESP8266WiFi.h>
- 
-const char* ssid = "Fox Flight";     // login wifi netwerk
-const char* password = "196270512405";
+
+ // login wifi netwerk
+const char* ssid = "wifi name";     
+const char* password = "password";
 
 int redLedPin = 5;   
 int greenLedPin =4;
