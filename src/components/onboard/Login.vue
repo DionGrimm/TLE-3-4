@@ -100,6 +100,7 @@ export default {
     
     img{
       margin-bottom: 60px;
+      margin-top: 40px;
     }
 
 
