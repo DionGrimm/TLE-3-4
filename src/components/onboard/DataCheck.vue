@@ -13,12 +13,12 @@
           <input type="text" id="name" v-model="profile.name">
         </div>
         <hr>
-        <div class="input-item" v-bind:class="{ errorfield: emptyBirth }">
+        <div class="input-item large-label" v-bind:class="{ errorfield: emptyBirth }">
           <label for="from">Geboortedatum</label>
           <input type="text" id="birth" v-model="profile.birth">
         </div>
         <hr>
-        <div class="input-item" v-bind:class="{ errorfield: emptyEmployer }">
+        <div class="input-item large-label" v-bind:class="{ errorfield: emptyEmployer }">
           <label for="to">Werkgever</label>
           <input type="text" id="employer"  v-model="profile.employer">
         </div>
@@ -26,7 +26,7 @@
         <div class="input-item large-label" v-bind:class="{ errorfield: emptyLicense }">
           <label for="license">Rijbewijs</label>
           <label class="switch">
-            <input id="license" type="checkbox">
+            <input id="license" type="checkbox" v-model="profile.license">
             <span class="slider round"></span>
           </label>
         </div>
@@ -111,9 +111,9 @@ export default {
 .main{}
 
 
-#birth, #employer{
-    width:130px;
-}
+// #birth, #employer{
+//     width:130px;
+// }
 #license{
     box-shadow: none;
 } 

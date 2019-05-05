@@ -9,7 +9,7 @@ input,input[type=text] {
 
   .input-item{
       padding: 0 8px;
-      width: 100%;
+      // width: 100%;
       display: flex;
       align-items: center;
 
@@ -41,7 +41,13 @@ input,input[type=text] {
           min-width: 100px;
         }
         input{
+          width: 44%;
+      }
+
+        &.xl{
+          input{
             width: 30%;
+          }
         }
     }
   }

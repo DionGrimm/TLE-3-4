@@ -23,12 +23,12 @@
           <input type="text" id="to" v-model="route.to" placeholder="Kies een locatie">
         </div>
         <hr>
-        <div class="input-item large-label">
+        <div class="input-item large-label xl">
           <label for="time1">Verktrek heenreis</label>
           <input class="orange" type="text" id="time1" v-model="route.time1" value="09:00">
         </div>
         <hr>
-        <div class="input-item large-label">
+        <div class="input-item large-label xl">
           <label for="time2">Verktrek terugreis</label>
           <input class="orange" type="text" id="time2" v-model="route.time2" value="17:30">
         </div>
