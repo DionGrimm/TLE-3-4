@@ -116,11 +116,16 @@ input,input[type=text] {
   //Form elements inside white content block
 
   .content{
-    input[type=date], input[type=text], input[type=time], input[type=password], input[type=date]{
+    input[type=date], input[type=text], input[type=time], input[type=password]{
       padding: 5px 16px;
       box-shadow: none;
     }
   }
+
+  input[type=time]::-webkit-clear-button, input[type=date]::-webkit-clear-button {
+    display: none;
+}
+
   .errormessage{
     color: red !important;
     font-weight: bold !important;
