@@ -50,7 +50,7 @@ export default {
       return {
         socket : io('localhost:3000'),
         profile: {},
-        user: this.$route.params.user,
+        user: localStorage.getItem('username'),
         emptyName: false,
         emptyBirth: false,
         emptyEmployer: false,
@@ -71,7 +71,7 @@ export default {
         user: this.profile.username,
         data: this.profile
         });
-        this.$router.push({ name: 'routecheck', params: { user: this.profile.username } })
+        this.$router.push({ name: 'routecheck' })
       }
       //Check for empty fields
       if(!this.profile.name){

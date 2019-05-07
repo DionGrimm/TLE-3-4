@@ -29,7 +29,7 @@ export default {
       return {
         socket : io('localhost:3000'),
         profile: {},
-        user: this.$route.params.user,
+        user: localStorage.getItem('username'),
         routeWork: ''
       }
   },
