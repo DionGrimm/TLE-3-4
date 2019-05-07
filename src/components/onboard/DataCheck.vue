@@ -15,7 +15,7 @@
         <hr>
         <div class="input-item large-label" v-bind:class="{ errorfield: emptyBirth }">
           <label for="from">Geboortedatum</label>
-          <input type="text" id="birth" v-model="profile.birth">
+          <input type="date" id="birth" v-model="profile.birth">
         </div>
         <hr>
         <div class="input-item large-label" v-bind:class="{ errorfield: emptyEmployer }">
@@ -111,9 +111,11 @@ export default {
 .main{}
 
 
-// #birth, #employer{
-//     width:130px;
-// }
+#birth {
+      margin-left: 15px;
+      padding-left: 0px;
+      padding-right: 0px;
+}
 #license{
     box-shadow: none;
 } 
