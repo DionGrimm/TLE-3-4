@@ -52,7 +52,8 @@ export default {
         .then(function(res){
           if(res != false){
             if(app.username == res.username && app.password == res.password){
-              app.$router.push({ name: 'datacheck', params: { user: res.username } })
+              app.$router.push({ name: 'datacheck'});
+              localStorage.setItem('username', app.username);
             }else{
               app.error = 'Fout wachtwoord';
               app.passwordError = true;
