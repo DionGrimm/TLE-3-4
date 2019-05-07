@@ -5,18 +5,18 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
-        <div class="content-blank">
+      <div class="content-blank">
         <h6>Kies de beste route</h6>
         <div class="scene">
             <p>17 : 15</p>
             <img src="..\..\..\src\assets\clouds.png"/>
             <p>11 &deg;C</p>
         </div>
-        <slick class="slider" >
-            <div  v-bind:key="route" v-for="route in routes">
+        <div class="route-slider" >
               <route-one></route-one>
-            </div>
-        </slick>
+              <route-one></route-one>
+              <route-one></route-one>
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@ window.$ = window.jQuery = $;
 import Slick from 'vue-slick'
 
 export default {
-  name: 'Homepage',
+  name: 'Slider',
   component: {
     RouteOne,
     Slick
@@ -39,20 +39,20 @@ export default {
         routes : [1,2,3]
     }
   },
-  
-  sliderSetup: function () {
-      $('.slider').slick({
+  methods:{
+    sliderSetup: () => {
+      $('.route-slider').slick({
           lazyLoad: 'ondemand',
           accessibility: false,
           arrows: false,
-          draggable: true,
           mobileFirst: true,
-          swipe: true,
-          centerMode: true,
-          dots: true,
-          infinite: false
+          ifinitive: false
       });
+    }
   },
+  mounted: function(){
+    this.sliderSetup();
+  }
 }
 
 

@@ -5,7 +5,7 @@ import RouteCheck from './components/onboard/RouteCheck'
 import Ai from './components/Ai'
 import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
-import Slider from './components/onboard/Slider'
+import Carousel from './components/onboard/Carousel'
 
 export const routes = [
     {
@@ -44,8 +44,8 @@ export const routes = [
         component: AddRoute
     },
     {
-        name: 'slider',
-        path: '/slider',
-        component: Slider
-    },
+        name: 'carousel',
+        path: '/carousel',
+        component: Carousel
+    }
 ];
