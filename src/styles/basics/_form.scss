@@ -115,9 +115,11 @@ input,input[type=text] {
 
   //Form elements inside white content block
 
-  .content input, .content input[type=text]{
-    padding: 5px 16px;
-    box-shadow: none;
+  .content{
+    input[type=date], input[type=text], input[type=time], input[type=password], input[type=date]{
+      padding: 5px 16px;
+      box-shadow: none;
+    }
   }
   .errormessage{
     color: red !important;
