@@ -1,0 +1,90 @@
+.scene {
+    max-width: 310px;
+    width: 100%;
+    min-height: 6vh;
+    background-color: $white;
+    margin: 5vh 0;
+    text-align: center;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-evenly;
+    img {
+        height: 6vh;
+        padding: 1.4em 1.2em;
+    }
+    p {
+        padding: 0 .2em;
+        font-size: 1.6em;
+    }
+}
+slick {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.card {
+    max-width: 310px;
+    width: 70vw;
+    height: 100vw;
+    background-color: $white;
+    margin: 5vh 0;
+    text-align: center;
+    align-content: space-between;
+    justify-content: space-around;
+    img {
+        height: 70vw;
+        border-top: 2px solid $light-orange;
+    }
+    .sm-card{
+        height: calc(30vw - 2em); 
+        width: 100%; 
+        padding: 1em 0;
+        .route {
+            display: flex;
+            padding: 0 1em;
+            justify-content: flex-start;
+            img {
+                width: 7%;
+                height: 7%;
+                border: none;
+                margin: .8em;
+            }
+            p {
+                padding: 0 1em;
+                font-size: 0.8em;
+                color: $main-orange;
+            }
+        } 
+        .info {
+            display: flex;
+            padding: 0 1em;
+            justify-content: space-between;
+            align-items: center;
+            img {
+                width: 10%;
+                height: 10%;
+                border: none;
+                margin: .8em;
+            }
+            p {
+                padding: 0 1em;
+                font-size: 0.8em;
+            }
+            .time {
+                display: flex;
+                padding: 0.2em;
+                justify-content: flex-end;
+                p{
+                    padding: 0 0.8em;
+                    font-size: 0.8em;
+                }
+                img {
+                    width: 10%;
+                    height: 25%;
+                    border: none;
+                    margin: 0.7em;
+                }
+            }
+        } 
+    }
+}
