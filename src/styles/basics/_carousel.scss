@@ -3,7 +3,7 @@
     width: 100%;
     min-height: 6vh;
     background-color: $white;
-    margin: 5vh 0;
+    margin: 2vh 0;
     text-align: center;
     display: flex;
     align-content: space-between;
@@ -21,6 +21,7 @@ slick {
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: absolute;
 }
 .card {
     max-width: 310px;

@@ -112,12 +112,12 @@ export default {
 
 
 #birth {
-      margin-left: 15px;
-      padding-left: 0px;
-      padding-right: 0px;
+  margin-left: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 #license{
-    box-shadow: none;
+  box-shadow: none;
 } 
 
 

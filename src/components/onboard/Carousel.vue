@@ -5,33 +5,34 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
-        <div class="content-blank">
+      <div class="content-blank">
         <h6>Kies de beste route</h6>
         <div class="scene">
             <p>17 : 15</p>
             <img src="..\..\..\src\assets\clouds.png"/>
             <p>11 &deg;C</p>
         </div>
-        <slick class="slider" >
-            <div  v-bind:key="route" v-for="route in routes">
-              <route-one></route-one>
-            </div>
-        </slick>
       </div>
-    </div>
+        <div class="route-slider">
+          <route title=""></route>
+          <route title=""></route>
+          <route title=""></route>
+        </div>
+      </div>
+    
   </div>
 </template>
 
 <script>
-import RouteOne from './routes/RouteOne';
+import RouteItem from './RouteItem';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import Slick from 'vue-slick'
 
 export default {
-  name: 'Homepage',
+  name: 'Slider',
   component: {
-    RouteOne,
+    RouteItem,
     Slick
   },
   data() {
@@ -39,32 +40,55 @@ export default {
         routes : [1,2,3]
     }
   },
-  
-  sliderSetup: function () {
-      $('.slider').slick({
+  methods:{
+    sliderSetup: () => {
+      $('.route-slider').slick({
           lazyLoad: 'ondemand',
           accessibility: false,
-          arrows: false,
-          draggable: true,
-          mobileFirst: true,
-          swipe: true,
-          centerMode: true,
           dots: true,
-          infinite: false
+          infinite: false,
+          arrows: false,
+          centerMode: true,
+          centerPadding: '4vw',
+          slidesToShow: 1,
       });
+    }
   },
+  getData: function(){
+    let app = this;
+    ioreq(this.socket).request("GETUSER", {user: this.user})
+    .then(function(res){
+      app.profile = res;
+    })
+    .catch(function(err){
+      console.error(err.stack || err);
+    });
+  },
+    
+  mounted: function(){
+    this.sliderSetup();
+    this.getData();
+  }
 }
 
 
 </script>
 
 <style scoped lang="scss">
+.route-slider{
+  top: 25%;
+  width: 100%;
+  route {
+    width: 65vw;
+  }
+}
+
 .content-blank {
-    max-width: 310px;
-    width: 70vw;
-    max-height: 100vh;
-    position: absolute;
-    margin: 2vh;
-    text-align: center;
+  max-width: 310px;
+  width: 65%;
+  position: absolute;
+  padding: 10px 20px 20px 20px;
+  margin: 2vh;
+  text-align: center;
 }
 </style>
