@@ -55,6 +55,7 @@ input,input[type=text] {
   .daypicker{
     display: flex;
     flex-grow: 1;
+    cursor: pointer;
 
     span{
       flex-grow: 1;

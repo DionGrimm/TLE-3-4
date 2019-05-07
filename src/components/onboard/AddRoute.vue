@@ -35,9 +35,8 @@
         <hr>
         <div class="input-item">
           <label for="daypicker">Herhaal op:</label>
-          <!-- <div id="daypicker" class="daypicker"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div> -->
           <div id="daypicker" class="daypicker">
-            <span v-for="day in route.repeat" v-bind:key="day.day"> {{ day.label }}</span>
+            <span v-for="day in route.repeat" v-bind:key="day.day" @click="selectDay(day)" v-bind:class="{ active: day.state}"> {{ day.label }}</span>
           </div>
         </div>
         <hr>
@@ -99,6 +98,13 @@ export default {
               return false;
       }
       return true;
+    },
+    selectDay(day){
+      if (day.state == false){
+        day.state = true
+      }else{
+        day.state = false
+      }
     }
 
   },
