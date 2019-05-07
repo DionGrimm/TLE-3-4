@@ -15,6 +15,8 @@
         </div>
         <hr>
 
+        <router-link class="btn circle" to="/routes/add">+</router-link>
+
         <input type="submit" class="btn" @click="saveProfile" value="Ga verder">
       </div>
     </div>
@@ -40,6 +42,7 @@ export default {
         user: this.profile.username,
         data: this.profile
         });
+        this.$router.push({ name: 'infoai'});
     },      
     getData: function(){
       let app = this;
@@ -79,6 +82,18 @@ export default {
         font-size: 1.2rem !important;
         line-height: 1.1rem !important;
     }
+}
+input[type=submit]{
+  display: inline-block;
+  width: 70%;
+  margin-left: 15px;
+}
+
+.circle{
+  display: inline-block;
+  width: 10% !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
 }
 
 

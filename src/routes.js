@@ -5,6 +5,7 @@ import RouteCheck from './components/onboard/RouteCheck'
 import Ai from './components/Ai'
 import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
+import InfoAI from './components/onboard/InfoAI'
 import Slider from './components/onboard/Slider'
 
 export const routes = [
@@ -42,6 +43,11 @@ export const routes = [
         name: 'addroutes',
         path: '/routes/add',
         component: AddRoute
+    },
+    {
+        name: 'infoai',
+        path: '/infoai',
+        component: InfoAI
     },
     {
         name: 'slider',
