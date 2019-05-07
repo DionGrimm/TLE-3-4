@@ -3,13 +3,13 @@
         <div class="sm-card">
             <p class="adress">Parklaan 11 &rarr; Vrijkade 23</p>
         <span class="info">
-            <img src="..\..\..\src\assets\cycle.png"/>
+            <img src="@/assets/cycle.png"/>
             <span class="time">
             <p>17 : 15 &rarr; 18 : 00</p>
             </span>
         </span>
         </div>
-        <img class="map" src="..\..\..\src\assets\kaart.png"/>
+        <img class="map" src="@/assets/kaart.png"/>
     </div>
 </template>
 

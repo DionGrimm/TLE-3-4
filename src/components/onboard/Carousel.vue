@@ -9,7 +9,7 @@
         <h6>Kies de beste route</h6>
         <div class="scene">
             <p>17 : 15</p>
-            <img src="..\..\..\src\assets\clouds.png"/>
+            <img src="@/assets/clouds.png"/>
             <p>11 &deg;C</p>
         </div>
       </div>
