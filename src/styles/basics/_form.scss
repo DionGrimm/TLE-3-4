@@ -21,7 +21,7 @@ input,input[type=text] {
           white-space: nowrap;
       }
 
-      input{
+      input, .daypicker{
           font-size: 1rem;
           color: $grey;
           box-shadow: 0px 2px 10px 1px #7272729c;
@@ -49,6 +49,22 @@ input,input[type=text] {
             width: 30%;
           }
         }
+    }
+  }
+
+  .daypicker{
+    display: flex;
+    flex-grow: 1;
+
+    span{
+      flex-grow: 1;
+
+      &:hover{
+        color: $lighter-orange;
+      }
+      &.active{
+        color: $main-orange;
+      }
     }
   }
 
@@ -116,7 +132,7 @@ input,input[type=text] {
   //Form elements inside white content block
 
   .content{
-    input[type=date], input[type=text], input[type=time], input[type=password]{
+    input[type=date], input[type=text], input[type=time], input[type=password], .daypicker{
       padding: 5px 16px;
       box-shadow: none;
     }

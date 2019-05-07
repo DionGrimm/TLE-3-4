@@ -33,6 +33,14 @@
           <input class="orange" type="time" id="time2" v-model="route.time2">
         </div>
         <hr>
+        <div class="input-item">
+          <label for="daypicker">Herhaal op:</label>
+          <!-- <div id="daypicker" class="daypicker"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div> -->
+          <div id="daypicker" class="daypicker">
+            <span v-for="day in route.repeat" v-bind:key="day.day"> {{ day.label }}</span>
+          </div>
+        </div>
+        <hr>
 
         <input type="submit" class="btn" @click="saveRoute" value="Bewaar route">
       </div>
@@ -47,9 +55,17 @@ export default {
   name: 'AddRoute',
   data() {
       return {
-        route: {},
+        route: { "repeat": [
+          {"label" : "M", "day": "maandag", "state" : false},
+          {"label" : "D", "day": "dinsdag", "state" : false},
+          {"label" : "W", "day": "woensdag", "state" : false},
+          {"label" : "D", "day": "donderdag", "state" : false},
+          {"label" : "V", "day": "vrijdag", "state" : false},
+          {"label" : "Z", "day": "zaterdag", "state" : false},
+          {"label" : "Z", "day": "zondag", "state" : false},
+        ]},
         socket : io('localhost:3000'),
-        profile: {}
+        profile: {},
       }
   },
   methods: {
@@ -62,13 +78,13 @@ export default {
       
       //Send updated profile to backend
       this.socket.emit('SAVE', {
-       user: "frank",
+       user: "frankdewit",
        data: this.profile
       });
     },
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: "frank"})
+      ioreq(this.socket).request("GETUSER", {user: "frankdewit"})
       .then(function(res){
         console.log(res);
         app.profile = res;
@@ -77,7 +93,7 @@ export default {
         console.error(err.stack || err);
       });
     },
-    isEmpty(obj) {
+    isEmpty: (obj) => {
       for(var key in obj) {
           if(obj.hasOwnProperty(key))
               return false;
