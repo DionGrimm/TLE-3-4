@@ -7,6 +7,7 @@ import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
 import InfoAI from './components/onboard/InfoAI'
 import Carousel from './components/onboard/Carousel'
+import Slider from './components/onboard/Slider'
 
 export const routes = [
     {
@@ -53,5 +54,10 @@ export const routes = [
         name: 'carousel',
         path: '/carousel',
         component: Carousel
+    },
+    {
+        name: 'cslider',
+        path: '/slider',
+        component: Slider
     }
 ];
