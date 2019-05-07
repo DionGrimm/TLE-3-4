@@ -12,18 +12,19 @@
             <img src="..\..\..\src\assets\clouds.png"/>
             <p>11 &deg;C</p>
         </div>
-        <div class="route-slider" >
-              <route-one></route-one>
-              <route-one></route-one>
-              <route-one></route-one>
+      </div>
+        <div class="route-slider">
+          <route title=""></route>
+          <route title=""></route>
+          <route title=""></route>
         </div>
       </div>
-    </div>
+    
   </div>
 </template>
 
 <script>
-import RouteOne from './routes/RouteOne';
+import RouteItem from './RouteItem';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import Slick from 'vue-slick'
@@ -31,7 +32,7 @@ import Slick from 'vue-slick'
 export default {
   name: 'Slider',
   component: {
-    RouteOne,
+    RouteItem,
     Slick
   },
   data() {
@@ -44,14 +45,29 @@ export default {
       $('.route-slider').slick({
           lazyLoad: 'ondemand',
           accessibility: false,
+          dots: true,
+          infinite: false,
           arrows: false,
-          mobileFirst: true,
-          ifinitive: false
+          centerMode: true,
+          centerPadding: '4vw',
+          slidesToShow: 1,
       });
     }
   },
+  getData: function(){
+    let app = this;
+    ioreq(this.socket).request("GETUSER", {user: this.user})
+    .then(function(res){
+      app.profile = res;
+    })
+    .catch(function(err){
+      console.error(err.stack || err);
+    });
+  },
+    
   mounted: function(){
     this.sliderSetup();
+    this.getData();
   }
 }
 
@@ -59,12 +75,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.route-slider{
+  top: 25%;
+  width: 100%;
+  route {
+    width: 65vw;
+  }
+}
+
 .content-blank {
-    max-width: 310px;
-    width: 70vw;
-    max-height: 100vh;
-    position: absolute;
-    margin: 2vh;
-    text-align: center;
+  max-width: 310px;
+  width: 65%;
+  position: absolute;
+  padding: 10px 20px 20px 20px;
+  margin: 2vh;
+  text-align: center;
 }
 </style>
