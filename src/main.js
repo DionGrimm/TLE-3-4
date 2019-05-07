@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 import {routes} from './routes';
+import Slick from 'vue-slick';
+import RouteOne from './components/onboard/routes/RouteOne';
 
 import App from './App.vue';
+
+Vue.component('slick', Slick);
+Vue.component('route-one', RouteOne)
 
 import io from 'socket.io-client';
 import ioreq from 'socket.io-request';

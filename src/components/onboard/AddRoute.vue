@@ -25,12 +25,12 @@
         <hr>
         <div class="input-item large-label xl">
           <label for="time1">Verktrek heenreis</label>
-          <input class="orange" type="text" id="time1" v-model="route.time1" value="09:00">
+          <input class="orange" type="time" id="time1" v-model="route.time1">
         </div>
         <hr>
         <div class="input-item large-label xl">
           <label for="time2">Verktrek terugreis</label>
-          <input class="orange" type="text" id="time2" v-model="route.time2" value="17:30">
+          <input class="orange" type="time" id="time2" v-model="route.time2">
         </div>
         <hr>
 
@@ -94,5 +94,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main{}
+input[type=time]{
+  margin-left: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 </style>
