@@ -54,6 +54,7 @@ export default {
   name: 'AddRoute',
   data() {
       return {
+        editMode: false,
         route: { "repeat": [
           {"label" : "M", "day": "maandag", "state" : false},
           {"label" : "D", "day": "dinsdag", "state" : false},
@@ -71,15 +72,19 @@ export default {
     saveRoute: function(){
       if (this.isEmpty(this.route)) return;
 
-      //Save new route to profile
-      this.profile.routes.push(this.route);
-      this.route = {};
-      
-      //Send updated profile to backend
-      this.socket.emit('SAVE', {
-       user: "frankdewit",
-       data: this.profile
-      });
+      if(this.editMode){
+        console.log('todo: edit mode')
+      }else{
+        //Save new route to profile
+        this.profile.routes.push(this.route);
+        this.route = {};
+        
+        //Send updated profile to backend
+        this.socket.emit('SAVE', {
+        user: "frankdewit",
+        data: this.profile
+        });
+      }
 
       this.$router.push({ name: 'routecheck'})
     },
@@ -113,6 +118,11 @@ export default {
   mounted(){
     //Get user data on load
     this.getData();
+    if (!this.isEmpty(this.$route.params.edit)){
+      this.editMode = true;
+      this.route = this.$route.params.edit
+    }
+
   }
 }
 </script>

@@ -8,7 +8,7 @@
       <div class="content">
         <h3 class="card-title">Controleer uw gegevens</h3>
         <hr>
-        <div v-for="route in profile.routes" v-bind:key="route.title">
+        <div class="checkroute" v-for="route in profile.routes" v-bind:key="route.title" @click="editRoute(route)">
           <div class="content-container">
             <label>{{route.title}}</label><br>
             <span>{{route.from}} - {{route.to}}</span>
@@ -58,6 +58,9 @@ export default {
       .catch(function(err){
         console.error(err.stack || err);
       });
+    },
+    editRoute: function(route){
+      this.$router.push({ name: 'addroutes', params: { edit: route } })
     }
   },
   mounted(){
@@ -69,8 +72,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main{}
-
 .content-container{
     padding: 0 8px;
     width: 100%;
@@ -96,6 +97,10 @@ input[type=submit]{
   width: 10% !important;
   padding-left: 15px !important;
   padding-right: 15px !important;
+}
+
+.checkroute{
+  cursor: pointer;
 }
 
 
