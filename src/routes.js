@@ -8,6 +8,8 @@ import AddRoute from './components/onboard/AddRoute'
 import InfoAI from './components/onboard/InfoAI'
 import Carousel from './components/onboard/Carousel'
 import Slider from './components/onboard/Slider'
+import CompletedProfile from './components/onboard/CompletedProfile'
+import Homepage from './components/onboard/Homepage'
 
 export const routes = [
     {
@@ -59,5 +61,15 @@ export const routes = [
         name: 'cslider',
         path: '/slider',
         component: Slider
-    }
+    },
+    {
+        name: 'completedprofile',
+        path: '/completedprofile',
+        component: CompletedProfile
+    },
+    {
+        name: 'homepage',
+        path: '/homepage',
+        component: Homepage
+    },
 ];
