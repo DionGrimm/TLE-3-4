@@ -10,6 +10,7 @@ import Carousel from './components/onboard/Carousel'
 import Slider from './components/onboard/Slider'
 import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/onboard/Homepage'
+import NotFound from './components/NotFound'
 
 export const routes = [
     {
@@ -72,4 +73,14 @@ export const routes = [
         path: '/homepage',
         component: Homepage
     },
+
+    //App routes before this section//
+    {   
+        path: '/404',
+        component: NotFound 
+    },  
+    { 
+        path: '*',
+        redirect: '/404' 
+    },  
 ];

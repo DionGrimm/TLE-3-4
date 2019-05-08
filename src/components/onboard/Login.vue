@@ -43,6 +43,11 @@ export default {
   methods: {
     checkLogin: function(){
       let app = this;
+      if(app.socket.connected == false){
+        console.log('Server not connected')
+        app.$router.push('/404');
+      }
+
       app.usernameError = false;
       app.passwordError = false;
       app.error = '';
@@ -65,6 +70,7 @@ export default {
         })
         .catch(function(err){
           console.error(err.stack || err);
+          app.$router.push('/404');
         })
       }else{
         app.error = 'Vul alle velden in';
@@ -78,8 +84,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main{}
-
 .logincontainer{
     max-width: 310px;
     width: 65%;
