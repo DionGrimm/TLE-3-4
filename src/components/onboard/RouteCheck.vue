@@ -8,12 +8,14 @@
       <div class="content">
         <h3 class="card-title">Controleer uw gegevens</h3>
         <hr>
-        <div class="content-container">
-          <label>{{routeWork.title}}</label><br>
-          <span>{{routeWork.from}} - {{routeWork.to}}</span>
-          <p><span>M </span><span>D </span><span>W </span><span>D </span><span>V </span><span>Z </span><span>Z </span></p>
+        <div v-for="route in profile.routes" v-bind:key="route.title">
+          <div class="content-container">
+            <label>{{route.title}}</label><br>
+            <span>{{route.from}} - {{route.to}}</span>
+            <p><span>M </span><span>D </span><span>W </span><span>D </span><span>V </span><span>Z </span><span>Z </span></p>
+          </div>
+          <hr>
         </div>
-        <hr>
 
         <router-link class="btn circle" to="/routes/add">+</router-link>
 
@@ -49,9 +51,9 @@ export default {
       ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
-        app.routeWork = app.profile.routes.find(obj => {
-            return obj.title === 'Huis - Werk'
-        })
+        // app.routeWork = app.profile.routes.find(obj => {
+        //     return obj.title === 'Huis - Werk'
+        // })
       })
       .catch(function(err){
         console.error(err.stack || err);

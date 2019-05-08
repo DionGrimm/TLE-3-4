@@ -15,7 +15,7 @@
         <hr>
         <div class="input-item">
           <label for="from">Van</label>
-          <input type="text" id="from" v-model="route.rom" placeholder="Kies een locatie">
+          <input type="text" id="from" v-model="route.from" placeholder="Kies een locatie">
         </div>
         <hr>
         <div class="input-item">
@@ -80,6 +80,8 @@ export default {
        user: "frankdewit",
        data: this.profile
       });
+
+      this.$router.push({ name: 'routecheck'})
     },
     getData: function(){
       let app = this;
