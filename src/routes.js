@@ -11,6 +11,7 @@ import Slider from './components/onboard/Slider'
 import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/onboard/Homepage'
 import NotFound from './components/NotFound'
+import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
 
 export const routes = [
     {
@@ -72,6 +73,11 @@ export const routes = [
         name: 'homepage',
         path: '/homepage',
         component: Homepage
+    },
+    {
+        name: 'privacyverklaring',
+        path: '/privacyverklaring',
+        component: PrivacyVerklaring
     },
 
     //App routes before this section//

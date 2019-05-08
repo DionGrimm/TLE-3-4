@@ -18,6 +18,7 @@
           </p>
 
           <button class="btn" @click="infoScreen = 2">Volgende</button>
+           <router-link  to="/privacyverklaring">Privacyverklaring</router-link>
         </div>
 
       </div>
