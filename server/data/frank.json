@@ -1,1 +1,54 @@
-{"username":"frankdewit","name":"Frank de Wit","employer":"KPN","birth":"23-09-1989","license":true,"password":"1234","routes":[{"title":"Huis - Werk","from":"Parklaan 11","to":"Vrijkade 23"},{"title":"Vrijdag route","from":"Eurolaan 4","to":"Vrijkade 23"}]}
+{
+    "username": "frankdewit",
+    "name": "Frank de Wit",
+    "employer": "KPN",
+    "birth": "23-09-1989",
+    "license": true,
+    "password": "1234",
+    "routes": [
+        {
+            "repeat": [
+                {
+                    "label": "M",
+                    "day": "maandag",
+                    "state": true
+                },
+                {
+                    "label": "D",
+                    "day": "dinsdag",
+                    "state": true
+                },
+                {
+                    "label": "W",
+                    "day": "woensdag",
+                    "state": true
+                },
+                {
+                    "label": "D",
+                    "day": "donderdag",
+                    "state": true
+                },
+                {
+                    "label": "V",
+                    "day": "vrijdag",
+                    "state": true
+                },
+                {
+                    "label": "Z",
+                    "day": "zaterdag",
+                    "state": false
+                },
+                {
+                    "label": "Z",
+                    "day": "zondag",
+                    "state": false
+                }
+            ],
+            "time1": "08:45",
+            "time2": "18:00",
+            "title": "Huis - Kantoor",
+            "from": "Europalaan 3",
+            "to": "Parklaan 14"
+        }
+    ]
+}

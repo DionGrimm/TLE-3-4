@@ -70,7 +70,14 @@ export default {
   },
   methods: {
     saveRoute: function(){
-      if (this.isEmpty(this.route)) return;
+      if (this.isEmpty(
+        this.route.title) || 
+        this.isEmpty(this.route.from) || 
+        this.isEmpty(this.route.to) || 
+        this.isEmpty(this.route.time1) ||
+        this.isEmpty(this.route.time2) ||
+        (this.route.repeat[0].state == false && this.route.repeat[1].state == false && this.route.repeat[2].state == false && this.route.repeat[3].state == false && this.route.repeat[4].state == false && this.route.repeat[5].state == false && this.route.repeat[6].state == false)
+      ) return;
 
       if(this.editMode){
         console.log('todo: edit mode')
