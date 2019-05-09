@@ -9,7 +9,7 @@ import InfoAI from './components/onboard/InfoAI'
 import Carousel from './components/onboard/Carousel'
 import Slider from './components/onboard/Slider'
 import CompletedProfile from './components/onboard/CompletedProfile'
-import Homepage from './components/onboard/Homepage'
+import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
 

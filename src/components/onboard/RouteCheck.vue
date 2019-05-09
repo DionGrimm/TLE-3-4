@@ -8,12 +8,12 @@
       <div class="content">
         <h3 class="card-title">Controleer uw gegevens</h3>
         <hr>
-        <div class="checkroute" v-for="route in profile.routes" v-bind:key="route.title" @click="editRoute(route)">
+        <div class="checkroute" v-for="(route, index) in profile.routes" v-bind:key="route.title" @click="editRoute(route, index)">
           <div class="content-container">
             <label>{{route.title}}</label><br>
             <span>{{route.from}} - {{route.to}}</span>
             <div id="daypicker" class="daypicker">
-              <span v-for="day in route.repeat" v-bind:key="day.day" @click="selectDay(day)" v-bind:class="{ active: day.state}"> {{ day.label }}</span>
+              <span v-for="day in route.repeat" v-bind:key="day.day" v-bind:class="{ active: day.state}"> {{ day.label }}</span>
             </div>
           </div>
           <hr>
@@ -61,8 +61,8 @@ export default {
         console.error(err.stack || err);
       });
     },
-    editRoute: function(route){
-      this.$router.push({ name: 'addroutes', params: { edit: route } })
+    editRoute: function(route, index){
+      this.$router.push({ name: 'addroutes', params: { edit: route, key: index  } })
     }
   },
   mounted(){
