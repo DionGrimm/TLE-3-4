@@ -54,6 +54,8 @@ export default {
   name: 'AddRoute',
   data() {
       return {
+        socket : io('localhost:3000'),
+        title : "",
         editMode: false,
         route: { "repeat": [
           {"label" : "M", "day": "maandag", "state" : false},
@@ -64,7 +66,6 @@ export default {
           {"label" : "Z", "day": "zaterdag", "state" : false},
           {"label" : "Z", "day": "zondag", "state" : false},
         ]},
-        socket : io('localhost:3000'),
         profile: {},
       }
   },
@@ -81,6 +82,17 @@ export default {
 
       if(this.editMode){
         console.log('todo: edit mode')
+        console.log(this.title)
+
+        var routes = this.profile.routes
+
+        var result = routes.filter(obj => {
+          return obj.title == this.title
+        })
+
+        result = this.route
+
+
       }else{
         //Save new route to profile
         this.profile.routes.push(this.route);
@@ -128,6 +140,7 @@ export default {
     if (!this.isEmpty(this.$route.params.edit)){
       this.editMode = true;
       this.route = this.$route.params.edit
+      this.title = this.route.title
     }
 
   }
