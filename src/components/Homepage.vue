@@ -5,15 +5,18 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
-      <div class="homecontainer">
+      <div class="transparentcontainer">
 
-        <img src="../../assets/logo_leaseplan.png" class="logo_leaseplan">
+        <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
 
-        <div class="input-item">
+        <div class="custom-select">
           <select>
-              <option v-for="route in profile.routes">
+              <!-- <option v-for="route in profile.routes" v-bind:key="route.title">
                   {{ route.from }} - {{ route.to }}
-              </option>
+              </option> -->
+              <option>route1</option>
+              <option>route2</option>
+              <option>route3</option>
           </select>
         </div>
 
@@ -25,6 +28,7 @@
 </template>
 
 <script>
+import Select from "../select.js";
 
 export default {
   name: 'Homepage',
@@ -55,36 +59,10 @@ export default {
     this.getData();
   }
 }
+
 </script>
 
 <style scoped lang="scss">
 .main{}
-
-.homecontainer{
-    max-width: 310px;
-    width: 65%;
-    min-height: 200px;
-    background-color: transparent;
-    position: absolute;
-    padding: 10px 20px 20px 20px;
-    text-align: center;
-    .input-item{
-        padding:0px;
-        input{
-            width: 100%;
-        }
-    }
-    button{
-      width:100%;
-      margin-top: 60px;
-    }  
-    
-    img{
-      margin-bottom: 60px;
-      margin-top: 40px;
-    }
-
-
-}
 
 </style>
