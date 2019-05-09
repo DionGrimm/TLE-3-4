@@ -7,24 +7,20 @@
     <div class="content-wrapper">
       <div class="content-blank">
         <h6>Kies de beste route</h6>
-        <div class="scene">
-            <p>17 : 15</p>
-            <img src="@/assets/clouds.png"/>
-            <p>11 &deg;C</p>
-        </div>
+        <scene ></scene>
       </div>
-        <div class="route-slider">
-          <route title=""></route>
-          <route title=""></route>
-          <route title=""></route>
-        </div>
+      <div class="route-slider" v-if="!isEmpty(profile)">
+        <route v-bind:user="profile"></route>
+        <route v-bind:user="profile"></route>
+        <route v-bind:user="profile"></route>
       </div>
-    
+    </div>
   </div>
 </template>
 
 <script>
 import RouteItem from './RouteItem';
+import Scene from './Scene';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import Slick from 'vue-slick'
@@ -33,13 +29,18 @@ export default {
   name: 'Slider',
   component: {
     RouteItem,
-    Slick
+    Slick,
+    Scene
   },
   data() {
     return {
-        routes : [1,2,3]
+      socket : io('localhost:3000'),
+      user: localStorage.getItem('username'),
+      profile: {},
+      test: {"naam" : "klaas"}
     }
   },
+
   methods:{
     sliderSetup: () => {
       $('.route-slider').slick({
@@ -49,25 +50,41 @@ export default {
           infinite: false,
           arrows: false,
           centerMode: true,
-          centerPadding: '4vw',
+          centerPadding: '5vw',
           slidesToShow: 1,
       });
-    }
-  },
-  getData: function(){
-    let app = this;
-    ioreq(this.socket).request("GETUSER", {user: this.user})
-    .then(function(res){
-      app.profile = res;
-    })
-    .catch(function(err){
-      console.error(err.stack || err);
-    });
+    }, 
+    getData: function(){
+      let app = this;
+      ioreq(this.socket).request("GETUSER", {user: this.user})
+      .then(function(res){
+        app.profile = res;
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
+      });
+    },
+    savePreference: function(){
+      // Sla de voorkeur van de gebruiker op
+    },
+    nextRoute: function(){
+      // Ga naar de volgende scene
+      // Na 3x klaar 
+    },
+    isEmpty: (obj) => {
+      for(var key in obj) {
+          if(obj.hasOwnProperty(key))
+              return false;
+      }
+      return true;
+      this.sliderSetup();
+    },
   },
     
   mounted: function(){
-    this.sliderSetup();
     this.getData();
+    console.log(this.user);
+    console.log(this.profile);
   }
 }
 
@@ -78,17 +95,26 @@ export default {
 .route-slider{
   top: 25%;
   width: 100%;
-  route {
-    width: 65vw;
-  }
+  margin: 0 10%;
 }
 
 .content-blank {
-  max-width: 310px;
-  width: 65%;
+  width: 80%;
   position: absolute;
   padding: 10px 20px 20px 20px;
   margin: 2vh;
   text-align: center;
 }
 </style>
+
+
+/*
+
+  - goede styling
+  - welke user is ingelogd?
+  - welke route(s) hoort er bij deze user?
+  - weergeef scene 1 met route 
+  - wanneer route gekozen (onclick) -> nieuwe scene (3x)
+  - gekozen route opslaan bij scene voor de ai
+
+*/

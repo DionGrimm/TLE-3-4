@@ -1,7 +1,7 @@
 <template>
     <div class="route">
         <div class="sm-card">
-            <p class="adress">Parklaan 11 &rarr; Vrijkade 23</p>
+            <p class="adress">{{from}} &rarr;  {{to}}</p>
         <span class="info">
             <img src="@/assets/cycle.png"/>
             <span class="time">
@@ -14,21 +14,48 @@
 </template>
 
 <script>
+
+// import Vue from 'vue';
+// Vue.forceUpdate();
+
     export default {
         name: 'route',
+        props:{
+            user: {
+                type: Object,
+                default: {
+                    from: '',
+                    to: ''
+                } 
+            }
+        },
+        data(){
+            return{
+                from : '',
+                to : ''
+            }
+        },
         methods: {
-            // nextSlide: function () {
-            //     $(".slider").slick('slickNext')
-            // }
-        }
+            getRoute: function(){
+                // Route van de user koppelen aan de card
+                // this.$forceUpdate();
+                // this.from = this.user.routes[0].from
+                // this.to = this.user.routes[0].to
+            },
+        },
+        mounted: function() {
+            this.getRoute();
+            console.log(this.user)
+            console.log(this.from);
+            console.log(this.to);   
+        },
     }
 </script>
 
 <style scoped>
 .route {
     max-width: 310px;
-    width: 70vw;
-    height: 100vw;
+    width: 70%;
     background-color: white;
     margin: 5vh 0;
     text-align: center;
