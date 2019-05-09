@@ -54,6 +54,8 @@ export default {
   name: 'AddRoute',
   data() {
       return {
+        socket : io('localhost:3000'),
+        title : "",
         editMode: false,
         route: { "repeat": [
           {"label" : "M", "day": "maandag", "state" : false},
@@ -64,16 +66,33 @@ export default {
           {"label" : "Z", "day": "zaterdag", "state" : false},
           {"label" : "Z", "day": "zondag", "state" : false},
         ]},
-        socket : io('localhost:3000'),
         profile: {},
       }
   },
   methods: {
     saveRoute: function(){
-      if (this.isEmpty(this.route)) return;
+      if (this.isEmpty(
+        this.route.title) || 
+        this.isEmpty(this.route.from) || 
+        this.isEmpty(this.route.to) || 
+        this.isEmpty(this.route.time1) ||
+        this.isEmpty(this.route.time2) ||
+        (this.route.repeat[0].state == false && this.route.repeat[1].state == false && this.route.repeat[2].state == false && this.route.repeat[3].state == false && this.route.repeat[4].state == false && this.route.repeat[5].state == false && this.route.repeat[6].state == false)
+      ) return;
 
       if(this.editMode){
         console.log('todo: edit mode')
+        console.log(this.title)
+
+        var routes = this.profile.routes
+
+        var result = routes.filter(obj => {
+          return obj.title == this.title
+        })
+
+        result = this.route
+
+
       }else{
         //Save new route to profile
         this.profile.routes.push(this.route);
@@ -121,6 +140,7 @@ export default {
     if (!this.isEmpty(this.$route.params.edit)){
       this.editMode = true;
       this.route = this.$route.params.edit
+      this.title = this.route.title
     }
 
   }
