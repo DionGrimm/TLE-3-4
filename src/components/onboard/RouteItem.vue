@@ -38,9 +38,8 @@
         methods: {
             getRoute: function(){
                 // Route van de user koppelen aan de card
-                // this.$forceUpdate();
-                // this.from = this.user.routes[0].from
-                // this.to = this.user.routes[0].to
+                this.from = this.user.routes[0].from
+                this.to = this.user.routes[0].to
             },
         },
         mounted: function() {

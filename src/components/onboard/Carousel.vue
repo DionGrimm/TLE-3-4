@@ -7,10 +7,10 @@
     <div class="content-wrapper">
       <div class="content-blank">
         <h6>Kies de beste route</h6>
-        <scene ></scene>
+        <scene v-bind:title="i"></scene>
       </div>
       <div class="route-slider" v-if="!isEmpty(profile)">
-        <route v-bind:user="profile"></route>
+        <route v-bind:user="profile" @click="$emit(nextRoute())"></route>
         <route v-bind:user="profile"></route>
         <route v-bind:user="profile"></route>
       </div>
@@ -37,7 +37,7 @@ export default {
       socket : io('localhost:3000'),
       user: localStorage.getItem('username'),
       profile: {},
-      test: {"naam" : "klaas"}
+      i: 1
     }
   },
 
@@ -70,21 +70,29 @@ export default {
     nextRoute: function(){
       // Ga naar de volgende scene
       // Na 3x klaar 
+      if(i < 3){
+        // Naar de volgende scene
+        i++
+        return i
+      } else {
+        // Afsluiten 
+      }
     },
     isEmpty: (obj) => {
       for(var key in obj) {
-          if(obj.hasOwnProperty(key))
-              return false;
+        if(obj.hasOwnProperty(key))
+        return false;
       }
       return true;
-      this.sliderSetup();
     },
   },
     
   mounted: function(){
     this.getData();
+    this.sliderSetup();
     console.log(this.user);
     console.log(this.profile);
+    console.log(this.i);
   }
 }
 
