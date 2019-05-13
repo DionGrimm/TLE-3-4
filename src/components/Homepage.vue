@@ -9,15 +9,12 @@
 
         <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
 
-        <div class="custom-select">
-          <select>
-              <!-- <option v-for="route in profile.routes" v-bind:key="route.title">
-                  {{ route.from }} - {{ route.to }}
-              </option> -->
-              <option>route1</option>
-              <option>route2</option>
-              <option>route3</option>
-          </select>
+        <div class="input-item">
+          <v-select :options="profile.routes" label="title">
+            <template slot="option" slot-scope="route">
+              {{route.from}} - {{route.to}}
+            </template>
+          </v-select>
         </div>
 
         <button class="btn">Go</button>
@@ -28,8 +25,6 @@
 </template>
 
 <script>
-import Select from "../select.js";
-
 export default {
   name: 'Homepage',
   data() {

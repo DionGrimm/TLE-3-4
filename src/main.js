@@ -4,12 +4,18 @@ import {routes} from './routes';
 import Slick from 'vue-slick';
 import RouteItem from './components/onboard/RouteItem';
 import Scene from './components/onboard/Scene';
+import vSelect from 'vue-select'
+
+//Styling for v-select
+import "vue-select/src/scss/vue-select.scss";
+
 
 import App from './App.vue';
 
 Vue.component('slick', Slick);
 Vue.component('route', RouteItem)
 Vue.component('scene', Scene)
+Vue.component('v-select', vSelect)
 
 import io from 'socket.io-client';
 import ioreq from 'socket.io-request';
