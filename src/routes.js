@@ -12,6 +12,8 @@ import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
+import Maps from './components/Maps'
+
 
 export const routes = [
     {
@@ -78,6 +80,11 @@ export const routes = [
         name: 'privacyverklaring',
         path: '/privacyverklaring',
         component: PrivacyVerklaring
+    },
+    {
+        name: 'Maps',
+        path: '/maps',
+        component: Maps
     },
 
     //App routes before this section//
