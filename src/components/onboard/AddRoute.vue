@@ -55,7 +55,7 @@ export default {
   data() {
       return {
         socket : io('localhost:3000'),
-        title : "",
+        arrayIndex : 0,
         editMode: false,
         route: { "repeat": [
           {"label" : "M", "day": "maandag", "state" : false},
@@ -81,29 +81,18 @@ export default {
       ) return;
 
       if(this.editMode){
-        console.log('todo: edit mode')
-        console.log(this.title)
 
-        var routes = this.profile.routes
-
-        var result = routes.filter(obj => {
-          return obj.title == this.title
-        })
-
-        result = this.route
-
-
+        this.profile.routes[this.arrayIndex] = this.route
       }else{
         //Save new route to profile
         this.profile.routes.push(this.route);
         this.route = {};
-        
-        //Send updated profile to backend
-        this.socket.emit('SAVE', {
-        user: "frankdewit",
-        data: this.profile
-        });
       }
+      //Send updated profile to backend
+        this.socket.emit('SAVE', {
+          user: "frankdewit",
+          data: this.profile
+        });
 
       this.$router.push({ name: 'routecheck'})
     },
@@ -139,8 +128,8 @@ export default {
     this.getData();
     if (!this.isEmpty(this.$route.params.edit)){
       this.editMode = true;
+      this.arrayIndex = this.$route.params.key
       this.route = this.$route.params.edit
-      this.title = this.route.title
     }
 
   }
