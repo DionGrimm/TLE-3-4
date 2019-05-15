@@ -10,9 +10,12 @@
         <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
 
         <div class="input-item">
-          <v-select :options="profile.routes" label="title">
+          <v-select placeholder="Kies een route" :options="profile.routes" label="title">
             <template slot="option" slot-scope="route">
-              {{route.from}} - {{route.to}}
+              <div class="dropdownItem">
+                 {{route.title}}
+              </div>
+              <hr>
             </template>
           </v-select>
         </div>
@@ -40,6 +43,8 @@ export default {
       ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
+        app.profile.routes.push("+");
+        // this.appendPlus()
       })
       .catch(function(err){
         console.error(err.stack || err);
@@ -47,7 +52,15 @@ export default {
     },
     editRoute: function(route){
       this.$router.push({ name: 'addroutes', params: { edit: route } })
-    }
+    },
+    // appendPlus(){
+    //   let listItem = document.createElement("LI");
+    //   let span = document.createElement("span").classList.add("plus");
+    //   let node = document.createTextNode("+")
+    //   node.appendChild(span);
+    //   span.appendChild(listItem);
+    //   document.getElementsByClassName("vs__dropdown-menu")[0].appendChild(listItem);
+    // }
   },
   mounted(){
     //Get user data on load
@@ -59,5 +72,11 @@ export default {
 
 <style scoped lang="scss">
 .main{}
+
+.dropdownItem {
+  //do stuff
+}
+
+
 
 </style>

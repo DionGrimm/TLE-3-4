@@ -81,10 +81,6 @@ input,select,input[type=text] {
 
   span{
     flex-grow: 1;
-
-    &:hover{
-      color: $lighter-orange;
-    }
     &.active{
       color: $main-orange;
     }
