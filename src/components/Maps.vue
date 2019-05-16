@@ -29,46 +29,49 @@ export default {
             },
           },
         ],
+        google : {},
+        map : {},
+        directionsService : {},
+        directionsDisplay : {},
       }
   },
   async mounted() {
     try {
-      const google = await gmapsInit();
-      const geocoder = new google.maps.Geocoder();
-      const map = new google.maps.Map(this.$refs["map"]);
-      const directionsService = new google.maps.DirectionsService();
-      const directionsDisplay = new google.maps.DirectionsRenderer();
+      this.google = await gmapsInit();
+      const geocoder = new this.google.maps.Geocoder();
+      this.map = new this.google.maps.Map(this.$refs["map"]);
+      this.directionsService = new this.google.maps.DirectionsService();
+      this.directionsDisplay = new this.google.maps.DirectionsRenderer();
 
-      directionsDisplay.setMap(map);
+      this.directionsDisplay.setMap(this.map);
 
       geocoder.geocode({ address: 'Rotterdam' }, (results, status) => {
         if (status !== 'OK' || !results[0]) {
           throw new Error(status);
         }
 
-        map.setCenter(this.locations[0].position);
-        map.setZoom(11);
+        this.map.setCenter(this.locations[0].position);
+        this.map.setZoom(11);
       });
-
-      var start = "Kruisplein 1";
-      var end = "Wijnhaven 61";
-      var request = {
-        origin: start,
-        destination: end,
-        travelMode: 'BICYCLING'
-      };
-      directionsService.route(request, function(result, status) {
-        if (status == 'OK') {
-          directionsDisplay.setDirections(result);
-        }
-      });
+      
+      this.calcRoute();
 
     } catch (error) {
       console.error(error);
     }
   },
   methods:{
-    calcRoute() {
+    calcRoute(start = "Kruisplein 1", end = "Wijnhaven 61") {
+      var request = {
+        origin: start,
+        destination: end,
+        travelMode: 'BICYCLING'
+      };
+      this.directionsService.route(request, (result, status) =>{
+        if (status == 'OK') {
+          this.directionsDisplay.setDirections(result);
+        }
+      });
     }
   }
 }
