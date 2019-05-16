@@ -13,6 +13,7 @@ import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
 import Maps from './components/Maps'
+import Unlock from './components/Unlock'
 
 
 export const routes = [
@@ -85,6 +86,11 @@ export const routes = [
         name: 'Maps',
         path: '/maps',
         component: Maps
+    },
+    {
+        name: 'Unlock',
+        path: '/unlock',
+        component: Unlock
     },
 
     //App routes before this section//
