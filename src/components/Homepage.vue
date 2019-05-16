@@ -12,10 +12,7 @@
         <div class="input-item">
           <v-select placeholder="Kies een route" :options="profile.routes" label="title">
             <template slot="option" slot-scope="route">
-              <div class="dropdownItem">
                  {{route.title}}
-              </div>
-              <hr>
             </template>
           </v-select>
         </div>
@@ -43,24 +40,24 @@ export default {
       ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
-        app.profile.routes.push("+");
-        // this.appendPlus()
+        app.profile.routes.push("");//add listitem for + button
+
+        //click on toggle
+        let toggle = document.getElementsByClassName("vs__dropdown-toggle")[0];
+        toggle.addEventListener("click", app.addClick);
       })
       .catch(function(err){
         console.error(err.stack || err);
       });
     },
-    editRoute: function(route){
-      this.$router.push({ name: 'addroutes', params: { edit: route } })
+    addClick: function(){
+      //click on button
+        let button = document.getElementsByClassName("vs__dropdown-menu")[0].lastElementChild;
+        button.addEventListener("click", this.addRoute);
     },
-    // appendPlus(){
-    //   let listItem = document.createElement("LI");
-    //   let span = document.createElement("span").classList.add("plus");
-    //   let node = document.createTextNode("+")
-    //   node.appendChild(span);
-    //   span.appendChild(listItem);
-    //   document.getElementsByClassName("vs__dropdown-menu")[0].appendChild(listItem);
-    // }
+    addRoute: function(){
+      this.$router.push({ name: 'addroutes'});
+    },
   },
   mounted(){
     //Get user data on load
@@ -72,11 +69,5 @@ export default {
 
 <style scoped lang="scss">
 .main{}
-
-.dropdownItem {
-  //do stuff
-}
-
-
 
 </style>
