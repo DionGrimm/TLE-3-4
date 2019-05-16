@@ -7,12 +7,13 @@ import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
 import InfoAI from './components/onboard/InfoAI'
 import Carousel from './components/onboard/Carousel'
+import CarouselRes from './components/onboard/CarouselRes'
 import Slider from './components/onboard/Slider'
 import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
-import Maps from './components/Maps'
+import Map from './components/Map'
 import Unlock from './components/Unlock'
 
 
@@ -63,6 +64,11 @@ export const routes = [
         component: Carousel
     },
     {
+        name: 'carouselRes',
+        path: '/carouselRes',
+        component: CarouselRes
+    },
+    {
         name: 'cslider',
         path: '/slider',
         component: Slider
@@ -85,7 +91,7 @@ export const routes = [
     {
         name: 'Maps',
         path: '/maps',
-        component: Maps
+        component: Map
     },
     {
         name: 'Unlock',

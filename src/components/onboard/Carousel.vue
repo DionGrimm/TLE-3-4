@@ -50,7 +50,7 @@ export default {
           infinite: false,
           arrows: false,
           centerMode: true,
-          centerPadding: '5vw',
+          centerPadding: '28px',
           slidesToShow: 1,
       });
     }, 
@@ -59,6 +59,8 @@ export default {
       ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
+
+        
       })
       .catch(function(err){
         console.error(err.stack || err);
@@ -90,9 +92,6 @@ export default {
   mounted: function(){
     this.getData();
     this.sliderSetup();
-    console.log(this.user);
-    console.log(this.profile);
-    console.log(this.i);
   }
 }
 
@@ -103,15 +102,15 @@ export default {
 .route-slider{
   top: 25%;
   width: 100%;
-  margin: 0 10%;
+  margin: 20% 0;
 }
 
 .content-blank {
   width: 80%;
   position: absolute;
-  padding: 10px 20px 20px 20px;
-  margin: 2vh;
+  margin: 10%;
   text-align: center;
+  left: 0;
 }
 </style>
 

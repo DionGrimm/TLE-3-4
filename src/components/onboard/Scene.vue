@@ -26,11 +26,11 @@
             setScene: function(){
                 if(this.title === 0){
                     this.time = '17 : 00'
-                    this.img = '/clouds.png'
+                    this.img = 'src\assets\clouds.png'
                     this.temp = '11'
                 } else if(this.title === 1){
                     this.time = '17 : 15'
-                    this.img = '@/assets/clouds.png'
+                    this.img = './assets/clouds.png'
                     this.temp = '11'
                 } else {                    
                     this.time = '17 : 30'
@@ -46,19 +46,20 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .scene {
+    max-width: 310px;
     width: 100%;
-    min-height: 6vh;
+    min-height: 20%;
     background-color: white;
-    margin: 2vh 0;
+    margin: 2% 0;
     text-align: center;
     display: flex;
     align-content: space-between;
     justify-content: space-evenly;
 }
 img {
-    height: 6vh;
+    height: 20%;
     padding: 1.4em 1.2em;
 }
 p {
