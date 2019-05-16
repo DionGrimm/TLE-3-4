@@ -26,11 +26,11 @@
             setScene: function(){
                 if(this.title === 0){
                     this.time = '17 : 00'
-                    this.img = '/clouds.png'
+                    this.img = 'src\assets\clouds.png'
                     this.temp = '11'
                 } else if(this.title === 1){
                     this.time = '17 : 15'
-                    this.img = '@/assets/clouds.png'
+                    this.img = './assets/clouds.png'
                     this.temp = '11'
                 } else {                    
                     this.time = '17 : 30'
