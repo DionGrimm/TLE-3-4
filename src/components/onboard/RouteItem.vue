@@ -56,7 +56,6 @@
     max-width: 310px;
     width: 70%;
     background-color: white;
-    margin: 5vh 0;
     text-align: center;
     align-content: space-between;
     justify-content: space-around;
