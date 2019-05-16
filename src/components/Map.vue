@@ -1,18 +1,10 @@
 <template>
-  <div class="main animation">
-    <div class="background">
-        <div class="overlay"></div>
-        <div class="main-background"></div>
-      </div>
-      <div class="content-wrapper">
-        <div class="map" ref="map"></div>
-      </div>
-    </div>
+  <div class="map" ref="map"></div>
 </template>
 <script>
 import gmapsInit from '../utils/Gmaps';
 export default {
-  name: 'Maps',
+  name: 'Map',
   data() {
       return {
           locations : [
@@ -79,9 +71,8 @@ export default {
 
 <style scoped lang="scss">
 .map{
-    max-width: 310px;
-    width: 80%;
-    min-height: 600px;
+    width: 100%;
+    height: 100%;
     position: absolute;
 }
 
