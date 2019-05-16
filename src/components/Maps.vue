@@ -13,22 +13,62 @@
 import gmapsInit from '../utils/Gmaps';
 export default {
   name: 'Maps',
+  data() {
+      return {
+          locations : [
+          {
+            position: {
+              lat: 51.918109,
+              lng: 4.488430,
+            },
+          },
+          {
+            position: {
+              lat: 51.924290,
+              lng: 4.470047,
+            },
+          },
+        ],
+      }
+  },
   async mounted() {
     try {
       const google = await gmapsInit();
       const geocoder = new google.maps.Geocoder();
       const map = new google.maps.Map(this.$refs["map"]);
+      const directionsService = new google.maps.DirectionsService();
+      const directionsDisplay = new google.maps.DirectionsRenderer();
 
-      geocoder.geocode({ address: 'Netherlands' }, (results, status) => {
+      directionsDisplay.setMap(map);
+
+      geocoder.geocode({ address: 'Rotterdam' }, (results, status) => {
         if (status !== 'OK' || !results[0]) {
           throw new Error(status);
         }
 
-        map.setCenter(results[0].geometry.location);
-        map.fitBounds(results[0].geometry.viewport);
+        map.setCenter(this.locations[0].position);
+        map.setZoom(11);
       });
+
+      var start = "Kruisplein 1";
+      var end = "Wijnhaven 61";
+      var request = {
+        origin: start,
+        destination: end,
+        travelMode: 'BICYCLING'
+      };
+      directionsService.route(request, function(result, status) {
+        if (status == 'OK') {
+          directionsDisplay.setDirections(result);
+        }
+      });
+
     } catch (error) {
       console.error(error);
+    }
+  },
+  methods:{
+    calcRoute() {
     }
   }
 }
