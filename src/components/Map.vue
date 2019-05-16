@@ -5,6 +5,17 @@
 import gmapsInit from '../utils/Gmaps';
 export default {
   name: 'Map',
+  props:{
+    from: {
+        type: String,
+        default: "Kruisplein 1"
+    },
+    to: {
+        type: String,
+        default: "Wijnhaven 61"
+    },
+
+  },
   data() {
       return {
           locations : [
@@ -53,10 +64,10 @@ export default {
     }
   },
   methods:{
-    calcRoute(start = "Kruisplein 1", end = "Wijnhaven 61") {
+    calcRoute() {
       var request = {
-        origin: start,
-        destination: end,
+        origin: this.from,
+        destination: this.to,
         travelMode: 'BICYCLING'
       };
       this.directionsService.route(request, (result, status) =>{
