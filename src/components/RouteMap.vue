@@ -4,7 +4,7 @@
 <script>
 import gmapsInit from '../utils/Gmaps';
 export default {
-  name: 'Map',
+  name: 'RouteMap',
   props:{
     from: {
         type: String,

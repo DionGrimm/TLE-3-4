@@ -1,17 +1,21 @@
 <template>
     <div class="route">
         <div class="sm-card">
-        <p class="adress">{{from}} &rarr;  {{to}}</p>
-        <span class="info">
-            <img src="@/assets/cycle.png"/>
-            <p>17 : 15 &rarr; 18 : 00</p>
-        </span>
+            <p class="adress">{{from}} &rarr;  {{to}}</p>
+            <span class="info">
+                <img src="@/assets/cycle.png"/>
+                <p>17 : 15 &rarr; 18 : 00</p>
+            </span>
         </div>
-        <img class="map" src="@/assets/kaart.png"/>
+        <RouteMap></RouteMap>
     </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import RouteMap from '../RouteMap';
+
+Vue.component('RouteMap', RouteMap);
 
 export default {
     name: 'route',
@@ -49,6 +53,7 @@ export default {
 <style scoped>
 .route {
     max-width: 310px;
+    min-height: 200px;
 }
 
 .sm-card{

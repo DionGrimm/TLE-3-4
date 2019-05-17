@@ -13,7 +13,7 @@ import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
-import Map from './components/Map'
+import RouteMap from './components/RouteMap'
 import Unlock from './components/Unlock'
 
 
@@ -91,7 +91,7 @@ export const routes = [
     {
         name: 'Maps',
         path: '/maps',
-        component: Map
+        component: RouteMap
     },
     {
         name: 'Unlock',

@@ -20,6 +20,15 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Slick from 'vue-slick';
+import RouteItem from './RouteItem';
+import Scene from './Scene';
+
+Vue.component('slick', Slick);
+Vue.component('route', RouteItem)
+Vue.component('scene', Scene)
+
 export default {
     name: 'Slider',
     data() {
@@ -55,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 h6{
-    margin: 10% 0;
+    margin: 20px 0;
 }
 
 .content-blank {
