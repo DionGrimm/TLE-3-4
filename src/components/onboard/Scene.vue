@@ -52,7 +52,7 @@
     width: 100%;
     min-height: 20%;
     background-color: white;
-    margin: 2% 0;
+    margin: 8% auto;
     text-align: center;
     display: flex;
     align-content: space-between;

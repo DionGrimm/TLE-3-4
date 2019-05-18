@@ -7,6 +7,7 @@
 
      <div class="content-wrapper">
       <div class="routes">
+        <scene/>
         <div class="route-slider">
             <route title=""></route>
             <route title=""></route>
@@ -19,9 +20,13 @@
 </template>
 
 <script>
+import Scene from './Scene';
 
 export default {
   name: 'Slider',
+  components: {
+    Scene
+  },
   methods:{
     sliderSetup: () => {
       $('.route-slider').slick({
@@ -43,17 +48,12 @@ export default {
 
 <style scoped lang="scss">
 .routes{
-    height: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-height: 800px;
     width: 100%;
-    position: absolute;
     text-align: center;
 }
 
 .route-slider{
-  position: absolute;
   width: 100%;
 }
 
@@ -63,6 +63,4 @@ export default {
   height: 500px;
   background-color: $main-orange;
 }
-
-.center .slick-center {-moz-transform:scale(1.08);-ms-transform:scale(1.08);-o-transform:scale(1.08);-webkit-transform:scale(1.08);color:#e67e22;opacity:1;transform:scale(1.08);}
 </style>

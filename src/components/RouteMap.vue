@@ -42,20 +42,14 @@ export default {
     try {
       this.google = await gmapsInit();
       const geocoder = new this.google.maps.Geocoder();
-      this.map = new this.google.maps.Map(this.$refs["map"]);
+      this.map = new this.google.maps.Map(this.$refs["map"], {disableDefaultUI: true, draggable: false});
       this.directionsService = new this.google.maps.DirectionsService();
       this.directionsDisplay = new this.google.maps.DirectionsRenderer();
 
       this.directionsDisplay.setMap(this.map);
 
-      geocoder.geocode({ address: 'Rotterdam' }, (results, status) => {
-        if (status !== 'OK' || !results[0]) {
-          throw new Error(status);
-        }
-
-        this.map.setCenter(this.locations[0].position);
-        this.map.setZoom(11);
-      });
+      this.map.setCenter(this.locations[0].position);
+      this.map.setZoom(11);
       
       this.calcRoute();
 

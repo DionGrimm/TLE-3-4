@@ -7,7 +7,10 @@
                 <p>17 : 15 &rarr; 18 : 00</p>
             </span>
         </div>
-        <RouteMap></RouteMap>
+        <div class="map">
+            <RouteMap></RouteMap>
+        </div>
+        
     </div>
 </template>
 
@@ -53,11 +56,13 @@ export default {
 <style scoped>
 .route {
     max-width: 310px;
-    min-height: 200px;
+    height: 450px;
+    position: relative;
 }
 
 .sm-card{
     width: 100%;
+    height: 25%;
     background-color: white;
     display: inline-block;
 }
@@ -75,8 +80,7 @@ img {
 }
 
 .map {
-    border-top: 2px solid #E18030;
     width: 100%;
-    padding: 0;
+    height: 75%
 }
 </style>
