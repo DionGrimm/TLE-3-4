@@ -1,54 +1,29 @@
 <template>
     <div class="route">
         <div class="sm-card">
-            <p class="adress">{{from}} &rarr;  {{to}}</p>
+            <p class="adress">{{routeData.from}} &rarr;  {{routeData.to}}</p>
             <span class="info">
                 <img src="@/assets/cycle.png"/>
                 <p>17 : 15 &rarr; 18 : 00</p>
             </span>
         </div>
         <div class="map">
-            <RouteMap></RouteMap>
+            <RouteMap v-bind:from="routeData.from" v-bind:to="routeData.to"></RouteMap>
         </div>
         
     </div>
 </template>
 
 <script>
-import Vue from 'vue'
 import RouteMap from '../RouteMap';
-
-Vue.component('RouteMap', RouteMap);
 
 export default {
     name: 'route',
-    // props:{
-    //     user: {
-    //         type: Object,
-    //         default: {
-    //             from: '',
-    //             to: ''
-    //         } 
-    //     }
-    // },
-    data(){
-        return{
-            from : '',
-            to : ''
-        }
+    components: {
+        RouteMap
     },
-    methods: {
-        getRoute: function(){
-            // Route van de user koppelen aan de card
-            this.from = this.user.routes[0].from
-            this.to = this.user.routes[0].to
-        },
-    },
-    mounted: function() {
-        // this.getRoute();
-        // console.log(this.user)
-        // console.log(this.from);
-        // console.log(this.to);   
+    props:{
+        routeData : Object,
     },
 }
 </script>

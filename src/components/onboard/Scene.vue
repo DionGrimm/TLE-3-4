@@ -41,7 +41,6 @@
         },
         mounted() {
             this.setScene();
-            console.log(this.title)
         },
     }
 </script>

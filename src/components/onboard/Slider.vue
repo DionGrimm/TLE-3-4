@@ -9,10 +9,7 @@
       <div class="routes">
         <scene/>
         <div class="route-slider">
-            <route title=""></route>
-            <route title=""></route>
-            <route title=""></route>
-
+            <RouteItem v-for="route in profile.routes" v-bind:key="route.name" v-bind:routeData="route"></RouteItem>
         </div>
       </div>
     </div>
@@ -21,27 +18,48 @@
 
 <script>
 import Scene from './Scene';
+import RouteItem from './RouteItem';
 
 export default {
   name: 'Slider',
   components: {
-    Scene
+    Scene,
+    RouteItem
+  },
+  data() {
+      return {
+        socket : io('localhost:3000'),
+        profile: {},
+        user: localStorage.getItem('username'),
+      }
   },
   methods:{
-    sliderSetup: () => {
-      $('.route-slider').slick({
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1,
-        dots: true,
-        infinite: false,
-        
+    sliderSetup: function(){
+        $('.route-slider').slick({
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1,
+          dots: true,
+          infinite: false,
+          
+        });
+    },
+    getData: function(){
+      ioreq(this.socket).request("GETUSER", {user: this.user})
+      .then((res) => {
+        this.profile = res;
+        setTimeout(() =>{
+          this.sliderSetup();
+        }, 1);
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
       });
-    }
+    },
   },
   mounted: function(){
-    this.sliderSetup();
+    this.getData();
   }
 }
 </script>
