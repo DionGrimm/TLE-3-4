@@ -94,7 +94,8 @@ export default {
           data: this.profile
         });
 
-      this.$router.push({ name: 'routecheck'})
+      this.$router.go(-1)
+      // this.$router.push({ name: 'routecheck'})
     },
     getData: function(){
       let app = this;
