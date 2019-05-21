@@ -55,6 +55,7 @@ export default {
       if(app.username && app.password){
         ioreq(this.socket).request("GETUSER", {user: app.username})
         .then(function(res){
+          console.log(res)
           if(res != false){
             if(app.username == res.username && app.password == res.password){
               app.$router.push({ name: 'datacheck'});

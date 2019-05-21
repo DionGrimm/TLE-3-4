@@ -67,9 +67,11 @@ export default {
           {"label" : "Z", "day": "zondag", "state" : false},
         ]},
         profile: {},
+        user: localStorage.getItem('username'),
       }
   },
   methods: {
+    // Dit laat ik nog even op todo
     saveRoute: function(){
       if (this.isEmpty(
         this.route.title) || 
@@ -90,8 +92,13 @@ export default {
       }
       //Send updated profile to backend
         this.socket.emit('SAVE', {
+<<<<<<< HEAD
+        user: this.user,
+        data: this.profile
+=======
           user: "frankdewit",
           data: this.profile
+>>>>>>> be1e5888d477581d2e37f6392a6230b51db0e067
         });
 
       this.$router.go(-1)
@@ -99,7 +106,7 @@ export default {
     },
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: "frankdewit"})
+      ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         console.log(res);
         app.profile = res;

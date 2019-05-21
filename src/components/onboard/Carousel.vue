@@ -35,9 +35,9 @@ export default {
   data() {
     return {
       socket : io('localhost:3000'),
-      user: localStorage.getItem('username'),
+      routes : [1,2,3],
       profile: {},
-      i: 1
+      user: localStorage.getItem('username'),
     }
   },
 
@@ -53,19 +53,31 @@ export default {
           centerPadding: '28px',
           slidesToShow: 1,
       });
-    }, 
-    getData: function(){
+    },
+      // getData: function(){
+      //   let app = this;
+      //   ioreq(this.socket).request("GETUSER", {user: app.user})
+      //   .then(function(res){
+      //     app.profile = res;
+      //   })
+      //   .catch(function(err){
+      //     console.error(err.stack || err);
+      //   });
+      // },
+    getAI: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: this.user})
-      .then(function(res){
-        app.profile = res;
 
+      ioreq(this.socket).request("BRAIN", {user: app.user})
+      .then(function(res){
+        console.log(res)
         
       })
       .catch(function(err){
         console.error(err.stack || err);
-      });
+        app.$router.push('/404');
+      })
     },
+    
     savePreference: function(){
       // Sla de voorkeur van de gebruiker op
     },
@@ -88,10 +100,11 @@ export default {
       return true;
     },
   },
+
     
   mounted: function(){
-    this.getData();
     this.sliderSetup();
+    this.getAI();
   }
 }
 
