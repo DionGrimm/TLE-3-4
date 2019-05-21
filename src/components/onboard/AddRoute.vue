@@ -54,6 +54,8 @@ export default {
   name: 'AddRoute',
   data() {
       return {
+        socket : io('localhost:3000'),
+        arrayIndex : 0,
         editMode: false,
         route: { "repeat": [
           {"label" : "M", "day": "maandag", "state" : false},
@@ -64,7 +66,6 @@ export default {
           {"label" : "Z", "day": "zaterdag", "state" : false},
           {"label" : "Z", "day": "zondag", "state" : false},
         ]},
-        socket : io('localhost:3000'),
         profile: {},
         user: localStorage.getItem('username'),
       }
@@ -72,23 +73,36 @@ export default {
   methods: {
     // Dit laat ik nog even op todo
     saveRoute: function(){
-      if (this.isEmpty(this.route)) return;
+      if (this.isEmpty(
+        this.route.title) || 
+        this.isEmpty(this.route.from) || 
+        this.isEmpty(this.route.to) || 
+        this.isEmpty(this.route.time1) ||
+        this.isEmpty(this.route.time2) ||
+        (this.route.repeat[0].state == false && this.route.repeat[1].state == false && this.route.repeat[2].state == false && this.route.repeat[3].state == false && this.route.repeat[4].state == false && this.route.repeat[5].state == false && this.route.repeat[6].state == false)
+      ) return;
 
       if(this.editMode){
-        console.log('todo: edit mode')
+
+        this.profile.routes[this.arrayIndex] = this.route
       }else{
         //Save new route to profile
         this.profile.routes.push(this.route);
         this.route = {};
-        
-        //Send updated profile to backend
+      }
+      //Send updated profile to backend
         this.socket.emit('SAVE', {
+<<<<<<< HEAD
         user: this.user,
         data: this.profile
+=======
+          user: "frankdewit",
+          data: this.profile
+>>>>>>> be1e5888d477581d2e37f6392a6230b51db0e067
         });
-      }
 
-      this.$router.push({ name: 'routecheck'})
+      this.$router.go(-1)
+      // this.$router.push({ name: 'routecheck'})
     },
     getData: function(){
       let app = this;
@@ -122,6 +136,7 @@ export default {
     this.getData();
     if (!this.isEmpty(this.$route.params.edit)){
       this.editMode = true;
+      this.arrayIndex = this.$route.params.key
       this.route = this.$route.params.edit
     }
 

@@ -5,7 +5,7 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
-      <div class="logincontainer" v-on:keyup.enter="checkLogin">
+      <div class="transparentcontainer" v-on:keyup.enter="checkLogin">
 
         <img src="../../assets/logo_leaseplan.png" class="logo_leaseplan">
 
@@ -85,31 +85,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.logincontainer{
-    max-width: 310px;
-    width: 65%;
-    min-height: 200px;
-    background-color: transparent;
-    position: absolute;
-    padding: 10px 20px 20px 20px;
-    text-align: center;
-    .input-item{
-        padding:0px;
-        input{
-            width: 100%;
-        }
-    }
-    button{
-      width:100%;
-      margin-top: 60px;
-    }  
-    
-    img{
-      margin-bottom: 60px;
-      margin-top: 40px;
-    }
-
-
-}
+.main{}
 
 </style>

@@ -7,11 +7,9 @@
 
      <div class="content-wrapper">
       <div class="routes">
+        <scene/>
         <div class="route-slider">
-            <route title=""></route>
-            <route title=""></route>
-            <route title=""></route>
-
+            <RouteItem v-for="route in profile.routes" v-bind:key="route.name" v-bind:routeData="route"></RouteItem>
         </div>
       </div>
     </div>
@@ -19,41 +17,61 @@
 </template>
 
 <script>
+import Scene from './Scene';
+import RouteItem from './RouteItem';
 
 export default {
   name: 'Slider',
+  components: {
+    Scene,
+    RouteItem
+  },
+  data() {
+      return {
+        socket : io('localhost:3000'),
+        profile: {},
+        user: localStorage.getItem('username'),
+      }
+  },
   methods:{
-    sliderSetup: () => {
-      $('.route-slider').slick({
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1,
-        dots: true,
-        infinite: false,
-        
+    sliderSetup: function(){
+        $('.route-slider').slick({
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1,
+          dots: true,
+          infinite: false,
+          
+        });
+    },
+    getData: function(){
+      ioreq(this.socket).request("GETUSER", {user: this.user})
+      .then((res) => {
+        this.profile = res;
+        setTimeout(() =>{
+          this.sliderSetup();
+        }, 1);
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
       });
-    }
+    },
   },
   mounted: function(){
-    this.sliderSetup();
+    this.getData();
   }
 }
 </script>
 
 <style scoped lang="scss">
 .routes{
-    height: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-height: 800px;
     width: 100%;
-    position: absolute;
     text-align: center;
 }
 
 .route-slider{
-  position: absolute;
   width: 100%;
 }
 
@@ -63,6 +81,4 @@ export default {
   height: 500px;
   background-color: $main-orange;
 }
-
-.center .slick-center h3{-moz-transform:scale(1.08);-ms-transform:scale(1.08);-o-transform:scale(1.08);-webkit-transform:scale(1.08);color:#e67e22;opacity:1;transform:scale(1.08);}
 </style>

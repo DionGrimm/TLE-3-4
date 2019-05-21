@@ -1,70 +1,61 @@
 <template>
     <div class="route">
         <div class="sm-card">
-            <p class="adress">Parklaan 11 &rarr; Vrijkade 23</p>
-        <span class="info">
-            <img src="@/assets/cycle.png"/>
-            <span class="time">
-            <p>17 : 15 &rarr; 18 : 00</p>
+            <p class="adress">{{routeData.from}} &rarr;  {{routeData.to}}</p>
+            <span class="info">
+                <img src="@/assets/cycle.png"/>
+                <p>17 : 15 &rarr; 18 : 00</p>
             </span>
-        </span>
         </div>
-        <img class="map" src="@/assets/kaart.png"/>
+        <div class="map">
+            <RouteMap v-bind:from="routeData.from" v-bind:to="routeData.to"></RouteMap>
+        </div>
+        
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'route',
-        methods: {
-            // nextSlide: function () {
-            //     $(".slider").slick('slickNext')
-            // }
-        }
-    }
+import RouteMap from '../RouteMap';
+
+export default {
+    name: 'route',
+    components: {
+        RouteMap
+    },
+    props:{
+        routeData : Object,
+    },
+}
 </script>
 
 <style scoped>
 .route {
     max-width: 310px;
-    width: 70vw;
-    height: 100vw;
-    background-color: white;
-    margin: 5vh 0;
-    text-align: center;
-    align-content: space-between;
-    justify-content: space-around;
+    height: 450px;
+    position: relative;
 }
-.map {
-    height: 70vw;
-    width: 100%;
-    border-top: 2px solid #FF9C1A;
-    margin: 0;
-}
+
 .sm-card{
-    height: calc(30vw - 2em); 
-    width: 100%; 
-    padding: 1em 0;
+    width: 100%;
+    height: 25%;
+    background-color: white;
+    display: inline-block;
 }
-img {
-    width: 15%;
-    margin: .8em;
-}
-.adress {
-    padding: 0 1em;
-    margin: 0;
-    font-size: 1em;
-    color: #E18030;
-}
-p {
-    padding: 0 1em;
-    font-size: 0.8em;
-    color: black;
-}   
+
 .info {
-    display: flex;
-    padding: 0.5em 1em;
+    width: 100%;
+    display: inline-flex;
     justify-content: space-around;
-    align-items: center;
+
+}
+
+img {
+    height: 50%;
+    padding: auto;
+}
+
+.map {
+    width: 100%;
+    height: 75%
 }
 </style>

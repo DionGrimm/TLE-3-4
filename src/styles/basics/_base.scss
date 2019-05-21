@@ -1,26 +1,26 @@
-.main{
+.main {
     position: fixed;
     width: 100vw;
     height: 100vh;
     background-color: $white;
 }
 
-hr{
+hr {
     border-top: 1px solid $main-orange;
 }
 
-.logo_leaseplan{
-    width:200px;
+.logo_leaseplan {
+    width: 200px;
 }
 
-.background{
+.background {
     width: 100vw;
     height: 100vh;
     position: fixed;
-    .main-background{
+    .main-background {
         background-image: url('/img/background-image.jpg');
         background-size: cover;
-        background-repeat:no-repeat;
+        background-repeat: no-repeat;
         background-position: center center;
         background-color: $white;
         opacity: 0.3;
@@ -28,8 +28,7 @@ hr{
         height: 100%;
         z-index: 0;
     }
-
-    .overlay{
+    .overlay {
         position: absolute;
         background-color: $lighter-orange;
         opacity: 0.6;
@@ -38,20 +37,20 @@ hr{
         height: 100%;
         z-index: 1;
     }
-
 }
 
-.content-wrapper{
+.content-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
     margin: initial;
     width: 100vw;
-    height: 100vh;;
+    height: 100vh;
+    ;
     position: relative;
     overflow: auto;
-    .content{
+    .content {
         max-width: 310px;
         width: 65%;
         min-height: 200px;
@@ -59,39 +58,78 @@ hr{
         position: absolute;
         padding: 10px 20px 20px 20px;
         text-align: center;
-
-        h1{
+        h1 {
             text-align: center;
         }
-
-        p{
+        p {
             width: 100%;
             font-size: 1.4rem;
             line-height: 2.1rem;
             text-align: left;
         }
-        
-        button{
-            width:100%;
+        button {
+            width: 100%;
         }
+    }
+    .transparentbackground {
+        background-color: transparent;
     }
 }
 
-
-.page{
+.page {
     height: 100%;
     width: 80%;
     margin: auto;
 }
 
+//menu
+.bm-menu {
+    padding-top: 0;
+    background-color: #727272;
+    white-space: nowrap;
+    .bm-item-list {
+        margin-left: 0;
+        div {
+            background-image: linear-gradient(to right, #FF9238, #DE6E33);
+            display: block;
+            h1,
+            span {
+                color: white;
+                margin-left: 10%;
+                margin-bottom: 0;
+            }
+        }
+        a {
+            border-bottom: 1px solid #4d4c4c;
+        }
+    }
+}
+
+//burger-icon
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 25px;
+    top: 25px;
+    cursor: pointer;
+    .bm-burger-bars {
+        background-color: #ffffff;
+    }
+    .line-style {
+        position: absolute;
+        height: 20%;
+        left: 0;
+        right: 0;
+    }
+}
+
 @media only screen and (max-width: 400px) {
     .content-wrapper {
         align-items: start;
-
-        .content{
+        .content {
             margin-top: 40px;
             margin-bottom: 40px;
         }
-
     }
 }

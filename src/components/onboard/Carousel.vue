@@ -7,24 +7,20 @@
     <div class="content-wrapper">
       <div class="content-blank">
         <h6>Kies de beste route</h6>
-        <div class="scene">
-            <p>17 : 15</p>
-            <img src="@/assets/clouds.png"/>
-            <p>11 &deg;C</p>
-        </div>
+        <scene v-bind:title="i"></scene>
       </div>
-        <div class="route-slider">
-          <route title=""></route>
-          <route title=""></route>
-          <route title=""></route>
-        </div>
+      <div class="route-slider" v-if="!isEmpty(profile)">
+        <route v-bind:user="profile" @click="$emit(nextRoute())"></route>
+        <route v-bind:user="profile"></route>
+        <route v-bind:user="profile"></route>
       </div>
-    
+    </div>
   </div>
 </template>
 
 <script>
 import RouteItem from './RouteItem';
+import Scene from './Scene';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import Slick from 'vue-slick'
@@ -33,7 +29,8 @@ export default {
   name: 'Slider',
   component: {
     RouteItem,
-    Slick
+    Slick,
+    Scene
   },
   data() {
     return {
@@ -43,6 +40,7 @@ export default {
       user: localStorage.getItem('username'),
     }
   },
+
   methods:{
     sliderSetup: () => {
       $('.route-slider').slick({
@@ -52,7 +50,7 @@ export default {
           infinite: false,
           arrows: false,
           centerMode: true,
-          centerPadding: '4vw',
+          centerPadding: '28px',
           slidesToShow: 1,
       });
     },
@@ -79,6 +77,28 @@ export default {
         app.$router.push('/404');
       })
     },
+    
+    savePreference: function(){
+      // Sla de voorkeur van de gebruiker op
+    },
+    nextRoute: function(){
+      // Ga naar de volgende scene
+      // Na 3x klaar 
+      if(i < 3){
+        // Naar de volgende scene
+        i++
+        return i
+      } else {
+        // Afsluiten 
+      }
+    },
+    isEmpty: (obj) => {
+      for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+        return false;
+      }
+      return true;
+    },
   },
 
     
@@ -95,17 +115,26 @@ export default {
 .route-slider{
   top: 25%;
   width: 100%;
-  route {
-    width: 65vw;
-  }
+  margin: 20% 0;
 }
 
 .content-blank {
-  max-width: 310px;
-  width: 65%;
+  width: 80%;
   position: absolute;
-  padding: 10px 20px 20px 20px;
-  margin: 2vh;
+  margin: 10%;
   text-align: center;
+  left: 0;
 }
 </style>
+
+
+/*
+
+  - goede styling
+  - welke user is ingelogd?
+  - welke route(s) hoort er bij deze user?
+  - weergeef scene 1 met route 
+  - wanneer route gekozen (onclick) -> nieuwe scene (3x)
+  - gekozen route opslaan bij scene voor de ai
+
+*/
