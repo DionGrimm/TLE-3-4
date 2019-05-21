@@ -1,8 +1,19 @@
-*{
+* {
     font-family: 'Didact Gothic', sans-serif;
 }
 
-h1,h2,h3,h4,h5{
+.fa,
+.far,
+.fas {
+    font-family: "Font Awesome 5 Free" !important;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     color: $grey;
@@ -17,25 +28,36 @@ h6 {
     align-self: center;
 }
 
-h3.card-title{
+h3.card-title {
     font-weight: 600;
     text-align: left;
     font-size: 1.4rem;
 }
 
-p, li{
+p,
+li {
     font-family: 'Didact Gothic', sans-serif;
     color: $light-grey;
     font-size: 1rem;
 }
 
-input.orange, p.orange, li.orange, h1.orange, h2.orange, h3.orange, h4.orange, h5.orange{
+input.orange,
+p.orange,
+li.orange,
+h1.orange,
+h2.orange,
+h3.orange,
+h4.orange,
+h5.orange {
     color: $main-orange !important;
 }
 
-input.black, li.black, h1.black, h2.black, h3.black, h4.black, h5.black{
+input.black,
+li.black,
+h1.black,
+h2.black,
+h3.black,
+h4.black,
+h5.black {
     color: $black !important;
 }
-
-
-
