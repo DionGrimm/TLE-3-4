@@ -66,10 +66,14 @@ export default {
       this.emptyLicense = false;
       this.errorMessage = '';
       if(this.profile.name && this.profile.birth && this.profile.employer){
+        // Update profile with new values
+        this.profile.name = document.getElementById("name").value
+        this.profile.birth = document.getElementById("birth").value
+        this.profile.employer = document.getElementById("employer").value
         //Send updated profile to backend
         this.socket.emit('SAVE', {
-        user: this.profile.username,
-        data: this.profile
+          user: this.profile.username,
+          data: this.profile
         });
         this.$router.push({ name: 'routecheck' })
       }

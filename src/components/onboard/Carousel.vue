@@ -37,7 +37,10 @@ export default {
   },
   data() {
     return {
-        routes : [1,2,3]
+      socket : io('localhost:3000'),
+      routes : [1,2,3],
+      profile: {},
+      user: localStorage.getItem('username'),
     }
   },
   methods:{
@@ -52,22 +55,36 @@ export default {
           centerPadding: '4vw',
           slidesToShow: 1,
       });
-    }
+    },
+      // getData: function(){
+      //   let app = this;
+      //   ioreq(this.socket).request("GETUSER", {user: app.user})
+      //   .then(function(res){
+      //     app.profile = res;
+      //   })
+      //   .catch(function(err){
+      //     console.error(err.stack || err);
+      //   });
+      // },
+    getAI: function(){
+      let app = this;
+
+      ioreq(this.socket).request("BRAIN", {user: app.user})
+      .then(function(res){
+        console.log(res)
+        
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
+        app.$router.push('/404');
+      })
+    },
   },
-  getData: function(){
-    let app = this;
-    ioreq(this.socket).request("GETUSER", {user: this.user})
-    .then(function(res){
-      app.profile = res;
-    })
-    .catch(function(err){
-      console.error(err.stack || err);
-    });
-  },
+
     
   mounted: function(){
     this.sliderSetup();
-    this.getData();
+    this.getAI();
   }
 }
 
