@@ -14,7 +14,7 @@ export default {
         type: String,
         default: "Wijnhaven 61"
     },
-
+    waypoints : Array,
   },
   data() {
       return {
@@ -44,7 +44,11 @@ export default {
       const geocoder = new this.google.maps.Geocoder();
       this.map = new this.google.maps.Map(this.$refs["map"], {disableDefaultUI: true, draggable: false});
       this.directionsService = new this.google.maps.DirectionsService();
-      this.directionsDisplay = new this.google.maps.DirectionsRenderer();
+      this.directionsDisplay = new this.google.maps.DirectionsRenderer({
+        polylineOptions: {
+          strokeColor: "#FF9C1A"
+        }
+      });
 
       this.directionsDisplay.setMap(this.map);
 
@@ -62,6 +66,8 @@ export default {
       var request = {
         origin: this.from,
         destination: this.to,
+        waypoints: this.waypoints,
+        
         travelMode: 'BICYCLING'
       };
       this.directionsService.route(request, (result, status) =>{

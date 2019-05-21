@@ -8,7 +8,7 @@
             </span>
         </div>
         <div class="map">
-            <RouteMap v-bind:from="routeData.from" v-bind:to="routeData.to"></RouteMap>
+            <RouteMap v-bind:from="routeData.from" :waypoints="[{location: 'Eindhoven'},{location: 'Antwerpen'}]" v-bind:to="routeData.to"></RouteMap>
         </div>
         
     </div>
