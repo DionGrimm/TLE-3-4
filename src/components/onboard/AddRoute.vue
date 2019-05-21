@@ -92,13 +92,8 @@ export default {
       }
       //Send updated profile to backend
         this.socket.emit('SAVE', {
-<<<<<<< HEAD
         user: this.user,
         data: this.profile
-=======
-          user: "frankdewit",
-          data: this.profile
->>>>>>> be1e5888d477581d2e37f6392a6230b51db0e067
         });
 
       this.$router.go(-1)
