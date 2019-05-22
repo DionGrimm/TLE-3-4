@@ -17,7 +17,7 @@ const brain = require('brain.js')
 
 // Get userdata
 let users = [
-  "aiData1557354306",
+  "frank",
 ]
 
 let data = []
@@ -52,8 +52,6 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
     console.log('user disconnected')
   })
-  
-  //io.emit('brain', getResult(routesForClient))
 
   // Check is req.username exist and give back the corresponding data
   ioreq(socket).response("GETUSER", function(req, res){ // method, handler
@@ -63,7 +61,7 @@ io.on('connection', function(socket) {
       const d = data[i]
       if(d.username == req.user) {
         console.log("User " + d.username + " has tried to login")
-        file = 'data/generated/'+ u +'.json'
+        file = 'data/'+ u +'.json'
         fs.readFile(file, (err, data) => {  
           if (err) throw err
           let user = JSON.parse(data)
@@ -73,19 +71,6 @@ io.on('connection', function(socket) {
       }
 
     }
-    // if(req.user == "frankdewit" || req.user == "keesdewit"){
-    //   if(req.user == "frankdewit") file = 'data/frank.json'
-    //   if(req.user == "keesdewit") file = 'data/kees.json'
-    //   // Get profile from json file and pass it to the front-end
-    //   fs.readFile(file, (err, data) => {  
-    //     if (err) throw err
-    //     let user = JSON.parse(data)
-    //     res(user)
-    //   })
-    // }else{
-    //   // If username is not found
-    //   res(false)
-    // }
   })
 
  // Update userfile
@@ -95,7 +80,7 @@ io.on('connection', function(socket) {
       const u = users[i]
       const d = data[i]
       if(d.username == input.user) {
-        file = 'data/generated/'+ u +'.json'
+        file = 'data/'+ u +'.json'
         let json = JSON.stringify(input.data)
         fs.writeFile(file, json, 'utf8', function(err) {
           if (err) throw err
@@ -104,18 +89,6 @@ io.on('connection', function(socket) {
         console.log("User doesn't exist")
       }
     }
-    // if(input.user == "frankdewit" || input.user == "keesdewit"){
-    //   if(input.user == "frankdewit") file = 'data/frank.json'
-    //   if(input.user == "keesdewit") file = 'data/kees.json'
-
-    //   // Write updated profile back to json file
-    //   let json = JSON.stringify(input.data)
-    //   fs.writeFile(file, json, 'utf8', function(err) {
-    //     if (err) throw err
-    //   })
-    // }else{
-    //   console.log("User doesn't exist")
-    // }
   })
 
   ioreq(socket).response("BRAIN", function(req, res){
@@ -143,7 +116,7 @@ http.listen(port, (err) => {
 function startup() {
   for (let i = 0; i < users.length; i++) {
     const e = users[i]
-    data.push(JSON.parse(fs.readFileSync('data/generated/'+ e +'.json', 'utf8')))
+    data.push(JSON.parse(fs.readFileSync('data/'+ e +'.json', 'utf8')))
   }
 
   // brain.js
