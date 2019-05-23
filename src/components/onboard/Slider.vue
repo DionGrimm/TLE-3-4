@@ -31,6 +31,7 @@ export default {
         socket : io('localhost:3000'),
         profile: {},
         user: localStorage.getItem('username'),
+        routes : {}, // Hier staat de route in. Check in server.js de variabele "routesForClients" voor de structure
       }
   },
   methods:{
@@ -49,6 +50,7 @@ export default {
       ioreq(this.socket).request("GETUSER", {user: this.user})
       .then((res) => {
         this.profile = res;
+        console.log(this.profile.username)
         setTimeout(() =>{
           this.sliderSetup();
         }, 1);
@@ -57,9 +59,24 @@ export default {
         console.error(err.stack || err);
       });
     },
+
+    getAI: function(){
+      let app = this;
+
+      ioreq(this.socket).request("BRAIN", {user: app.user})
+      .then(function(res){
+        app.routes = res
+        console.log(app.routes)
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
+        app.$router.push('/404');
+      })
+    },
   },
   mounted: function(){
     this.getData();
+    this.getAI();
   }
 }
 </script>

@@ -103,7 +103,6 @@ export default {
       let app = this;
       ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
-        console.log(res);
         app.profile = res;
       })
       .catch(function(err){

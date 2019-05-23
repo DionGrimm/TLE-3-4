@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       socket : io('localhost:3000'),
-      routes : [1,2,3],
+      routes : [],
       profile: {},
       user: localStorage.getItem('username'),
     }
@@ -54,23 +54,25 @@ export default {
           slidesToShow: 1,
       });
     },
-      // getData: function(){
-      //   let app = this;
-      //   ioreq(this.socket).request("GETUSER", {user: app.user})
-      //   .then(function(res){
-      //     app.profile = res;
-      //   })
-      //   .catch(function(err){
-      //     console.error(err.stack || err);
-      //   });
-      // },
+
+    getData: function(){
+      let app = this;
+      ioreq(this.socket).request("GETUSER", {user: app.user})
+      .then(function(res){
+        app.profile = res;
+      })
+      .catch(function(err){
+        console.error(err.stack || err);
+      });
+    },
+    
     getAI: function(){
       let app = this;
 
       ioreq(this.socket).request("BRAIN", {user: app.user})
       .then(function(res){
         console.log(res)
-        
+        app.routes = res
       })
       .catch(function(err){
         console.error(err.stack || err);

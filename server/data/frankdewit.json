@@ -3,7 +3,7 @@
     "password": "1234",
     "name": "Frank de Wit",
     "employer": "KPN",
-    "birth": "04-03-1982",
+    "birth": "1111-11-11",
     "license": true,
     "routes": [
         {
@@ -11,17 +11,17 @@
                 {
                     "label": "M",
                     "day": "maandag",
-                    "state": true
+                    "state": false
                 },
                 {
                     "label": "D",
                     "day": "dinsdag",
-                    "state": true
+                    "state": false
                 },
                 {
                     "label": "W",
                     "day": "woensdag",
-                    "state": true
+                    "state": false
                 },
                 {
                     "label": "D",
@@ -31,7 +31,7 @@
                 {
                     "label": "V",
                     "day": "vrijdag",
-                    "state": true
+                    "state": false
                 },
                 {
                     "label": "Z",
@@ -44,7 +44,7 @@
                     "state": false
                 }
             ],
-            "time1": "08:45",
+            "time1": "09:50",
             "time2": "18:00",
             "title": "Huis - Kantoor",
             "from": "Europalaan 3",
