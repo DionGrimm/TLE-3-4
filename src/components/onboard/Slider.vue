@@ -5,11 +5,15 @@
       <div class="main-background"></div>
     </div>
 
-     <div class="content-wrapper">
+    <div class="content-wrapper">
       <div class="routes">
         <scene/>
         <div class="route-slider">
-            <RouteItem v-for="route in profile.routes" v-bind:key="route.name" v-bind:routeData="route"></RouteItem>
+          <RouteItem
+            v-for="route in profile.routes"
+            v-bind:key="route.name"
+            v-bind:routeData="route"
+          ></RouteItem>
         </div>
       </div>
     </div>
@@ -17,83 +21,82 @@
 </template>
 
 <script>
-import Scene from './Scene';
-import RouteItem from './RouteItem';
+import Scene from "./Scene";
+import RouteItem from "./RouteItem";
 
 export default {
-  name: 'Slider',
+  name: "Slider",
   components: {
     Scene,
     RouteItem
   },
   data() {
-      return {
-        socket : io('localhost:3000'),
-        profile: {},
-        user: localStorage.getItem('username'),
-        routes : {}, // Hier staat de route in. Check in server.js de variabele "routesForClients" voor de structure
-      }
+    return {
+      socket: io("localhost:3000"),
+      profile: {},
+      user: localStorage.getItem("username"),
+      routes: {} // Hier staat de route in. Check in server.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
+    };
   },
-  methods:{
-    sliderSetup: function(){
-        $('.route-slider').slick({
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 1,
-          dots: true,
-          infinite: false,
-          
-        });
-    },
-    getData: function(){
-      ioreq(this.socket).request("GETUSER", {user: this.user})
-      .then((res) => {
-        this.profile = res;
-        console.log(this.profile.username)
-        setTimeout(() =>{
-          this.sliderSetup();
-        }, 1);
-      })
-      .catch(function(err){
-        console.error(err.stack || err);
+  methods: {
+    sliderSetup: function() {
+      $(".route-slider").slick({
+        arrows: false,
+        centerMode: true,
+        centerPadding: "40px",
+        slidesToShow: 1,
+        dots: true,
+        infinite: false
       });
     },
+    getData: function() {
+      ioreq(this.socket)
+        .request("GETUSER", { user: this.user })
+        .then(res => {
+          this.profile = res;
+          setTimeout(() => {
+            this.sliderSetup();
+          }, 1);
+        })
+        .catch(function(err) {
+          console.error(err.stack || err);
+        });
+    },
 
-    getAI: function(){
+    getAI: function() {
       let app = this;
 
-      ioreq(this.socket).request("BRAIN", {user: app.user})
-      .then(function(res){
-        app.routes = res
-        console.log(app.routes)
-      })
-      .catch(function(err){
-        console.error(err.stack || err);
-        app.$router.push('/404');
-      })
-    },
+      ioreq(this.socket)
+        .request("BRAIN", { user: app.user })
+        .then(function(res) {
+          app.routes = res;
+        })
+        .catch(function(err) {
+          console.error(err.stack || err);
+          app.$router.push("/404");
+        });
+    }
   },
-  mounted: function(){
+  mounted: function() {
     this.getData();
     this.getAI();
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
-.routes{
-    max-height: 800px;
-    width: 100%;
-    text-align: center;
+.routes {
+  max-height: 800px;
+  width: 100%;
+  text-align: center;
 }
 
-.route-slider{
+.route-slider {
   width: 100%;
 }
 
-.route-item{
-  color: #FFFFFF;
+.route-item {
+  color: #ffffff;
   width: 100%;
   height: 500px;
   background-color: $main-orange;

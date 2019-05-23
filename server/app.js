@@ -98,7 +98,7 @@ io.on('connection', function (socket) {
       const d = data[i]
       if (d.username == req.user) {
         let routes = getResult(routesForClient[0], d)
-        console.log(routes)
+        //console.log(routes)
         res(routes)
         return
       }
@@ -131,7 +131,6 @@ function startup() {
   for (let i = 0; i < data.length; i++) {
     const e = data[i].network
     e.train(data[i].data)
-    console.log("finished ai training user " + data[i])
   }
   //console.log(users, data)
 }
@@ -152,13 +151,10 @@ function getResult(routes, user) {
 
     let result = network.run(e)
     r.output = [result]
-
     results.push(r)
   }
-
-  // Still need to sort the results
-
-  //route.options = results
+  results.sort(function (a, b) { return b.output[0] - a.output[0] });
+  route.options = results
   return route
 }
 
