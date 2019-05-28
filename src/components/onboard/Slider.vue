@@ -6,6 +6,7 @@
     </div>
 
     <div class="content-wrapper">
+      <situation/>
       <div class="routes">
         <scene v-if="routes.context" :time="routes.departure" :temp="routes.context.temp" :weather="routes.context.weather"/>
         <div class="route-slider">
@@ -23,12 +24,14 @@
 <script>
 import Scene from "./Scene";
 import RouteItem from "./RouteItem";
+import Situation from "./Situation";
 
 export default {
   name: "Slider",
   components: {
     Scene,
-    RouteItem
+    RouteItem,
+    Situation
   },
   data() {
     return {
