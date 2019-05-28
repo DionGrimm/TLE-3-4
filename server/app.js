@@ -97,7 +97,7 @@ io.on('connection', function (socket) {
     for (let i = 0; i < users.length; i++) {
       const d = data[i]
       if (d.username == req.user) {
-        let routes = getResult(routesForClient[0], d)
+        let routes = getResult(routesForClient[req.route], d)
         //console.log(routes)
         res(routes)
         return

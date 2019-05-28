@@ -37,7 +37,7 @@ export default {
     return {
       socket: io("localhost:3000"),
       user: localStorage.getItem("username"),
-      routes: {} // Hier staat de route in. Check in server.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
+      routes: {} // Hier staat de route in. Check in app.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
     };
   },
   methods: {
@@ -53,7 +53,7 @@ export default {
     },
     getAI: function() {
       ioreq(this.socket)
-        .request("BRAIN", { user: this.user })
+        .request("BRAIN", { user: this.user, route: 0 })
         .then((res) => {
           this.routes = res;
           setTimeout(() => {
