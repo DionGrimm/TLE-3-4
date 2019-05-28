@@ -6,8 +6,6 @@ import Ai from './components/Ai'
 import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
 import InfoAI from './components/onboard/InfoAI'
-import Carousel from './components/onboard/Carousel'
-import CarouselRes from './components/onboard/CarouselRes'
 import Slider from './components/onboard/Slider'
 import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/Homepage'
@@ -57,16 +55,6 @@ export const routes = [
         name: 'infoai',
         path: '/infoai',
         component: InfoAI
-    },
-    {
-        name: 'carousel',
-        path: '/carousel',
-        component: Carousel
-    },
-    {
-        name: 'carouselRes',
-        path: '/carouselRes',
-        component: CarouselRes
     },
     {
         name: 'cslider',
