@@ -36,7 +36,7 @@ export default {
             if(transport == 4) img = "bike.png";
             if(transport == 5) img = "scooter.png";
 
-            return require('../../assets/transport/'+img)
+            return require('@/assets/transport/'+img)
         }
     },
 }

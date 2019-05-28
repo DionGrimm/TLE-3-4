@@ -25,8 +25,8 @@ let data = []
 let routesForClient = [
   {
     title: "Huis - Kantoor",
-    from: "Europalaan 3",
-    to: "Parklaan 14",
+    from: "Kruisplein 1",
+    to: "Wijnhaven 61",
     departure: "7:00",
     // Weather: 0=sunny, 1=windy, 3=rain
     // Order: 1=foot, 2=car, 3=step, 4=bike, 5=scooter

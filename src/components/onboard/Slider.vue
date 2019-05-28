@@ -7,7 +7,7 @@
 
     <div class="content-wrapper">
       <div class="routes">
-        <scene/>
+        <scene v-if="routes.context" :time="routes.departure" :temp="routes.context.temp" :weather="routes.context.weather"/>
         <div class="route-slider">
           <RouteItem
             v-for="(option, index) in routes.options"

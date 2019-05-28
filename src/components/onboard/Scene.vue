@@ -1,46 +1,32 @@
 <template>    
     <div class="scene">
-        <p>{{this.time}}</p>
-        <img v-bind:src="img"/>
-        <p>{{this.temp}}  &deg;C</p>
+        <p>{{time}}</p>
+        <img :src="getImgUrl(weather)"/>
+        <p>{{temp}}  &deg;C</p>
     </div>
 </template>
 
 <script>
     export default {
         name: 'scene',
-        data(){
-          return {  
-            time: '',
-            img: '',
-            temp: ''
-          }
-        },
         props:{
-            title:  {
-                type: Number,
-                default: 0
-            }
+            time : String,
+            temp: Number,
+            weather: Number
         },
         methods: {
-            setScene: function(){
-                if(this.title === 0){
-                    this.time = '17 : 00'
-                    this.img = 'src\assets\clouds.png'
-                    this.temp = '11'
-                } else if(this.title === 1){
-                    this.time = '17 : 15'
-                    this.img = './assets/clouds.png'
-                    this.temp = '11'
-                } else {                    
-                    this.time = '17 : 30'
-                    this.img = '@/assets/clouds.png'
-                    this.temp = '11'
-                }
+            getImgUrl(w){
+            console.log(w)
+            let img ="";
+            if(w == 0) img = "sun.png";
+            if(w == 1) img = "wind.png";
+            if(w == 2) img = "rain.png";
+
+            return require('@/assets/weather/'+img)
             }
         },
         mounted() {
-            this.setScene();
+            
         },
     }
 </script>
@@ -56,10 +42,10 @@
     display: flex;
     align-content: space-between;
     justify-content: space-evenly;
+    align-items: center;
 }
 img {
-    height: 20%;
-    padding: 1.4em 1.2em;
+    width: 60px;;
 }
 p {
     padding: 0 .2em;
