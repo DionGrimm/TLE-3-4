@@ -1,7 +1,7 @@
 <template>
     <div v-show="visible" class="situation content-wrapper" >
         <div class="content">
-            <h3>Situatie 1</h3>
+            <h3>Situatie</h3>
             <hr>
 
             <h1>{{this.time}}</h1>
