@@ -13,6 +13,7 @@ import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
 import RouteMap from './components/RouteMap'
 import Unlock from './components/Unlock'
+import PlannedRoute from './components/PlannedRoute'
 
 
 export const routes = [
@@ -85,6 +86,11 @@ export const routes = [
         name: 'Unlock',
         path: '/unlock',
         component: Unlock
+    },
+    {
+        name: 'PlannedRoute',
+        path: '/plannedroute',
+        component: PlannedRoute
     },
 
     //App routes before this section//
