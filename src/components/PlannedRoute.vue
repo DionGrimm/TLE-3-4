@@ -5,20 +5,20 @@
     <div class="content-wrapper">
         <div class="top"> 
             <div class="header">
-                <img src="@/assets/left-arrow.png" class="back">
+                <img src="@/assets/left-arrow.png" class="back" on-click="">
                 <h6>Mijn Route</h6>
                 <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
             </div>
-            <div class="title"><p>Rotterdam Centraal &rarr; Parklaan 11</p></div>
-            <div class="routeStep">
-                <img src="@/assets/transport/walk.png" class="transport">
-                <div class="info">
-                    <p class="adress">Parklaan 11 &rarr; Parklaan 8</p>
-                    <p class="time">07:15 &rarr; 07:30</p>
+            <div class="title"><p>{{steps.step1.from}} &rarr; {{steps.step4.to}}</p></div>
+            <div class="routeStep" v-for="step in steps">
+                <img :src="getImgUrl(step.transport)" class="transport">
+                <div class="info" >
+                    <p class="adress">{{step.from}} &rarr; {{step.to}}</p>
+                    <p class="time">{{step.start}} &rarr; {{step.end}}</p>
                 </div>
             </div>
         </div>
-        <div class="btn">RESERVEER ROUTE</div>
+        <div class="btn" on-click="/unlock">RESERVEER ROUTE</div>
     </div>
   </div>
 </template>
@@ -26,12 +26,53 @@
 <script>
 export default {
     name: 'plannedRoute',
-    // data() {
-    //     steps: {
-    //         transport: walk.png;
-    //         adress: Parklaan 11
-    //     }
-    // }
+    data() {
+        return{
+            steps: {
+                step1: {
+                    transport: 1,
+                    from: "Parklaan 11",
+                    to: "Parklaan 8",
+                    start: "07:15",
+                    end: "07:30"
+                },
+                step2: {
+                    transport: 4,
+                    from: "Parklaan 11",
+                    to: "Havenweg 33",
+                    start: "07:15",
+                    end: "07:30"
+                },
+                step3: {
+                    transport: 5,
+                    from: "Havenweg 33",
+                    to: "Plataanlaan 2",
+                    start: "07:15",
+                    end: "07:30"
+                },
+                step4: {
+                    transport: 1,
+                    from: "Plataanlaan 2",
+                    to: "Rotterdam Centraal",
+                    start: "07:15",
+                    end: "07:30"
+                }
+            }
+        }
+    },
+    methods: {
+        getImgUrl(w){
+            console.log(w)
+            let img ="";
+            if(w == 1) img = "walk.png";
+            if(w == 2) img = "car.png";
+            if(w == 3) img = "step.png";
+            if(w == 4) img = "bike.png";
+            if(w == 5) img = "scooter.png";
+
+            return require('@/assets/transport/'+img)
+        }
+    },
 }
 </script>
 
