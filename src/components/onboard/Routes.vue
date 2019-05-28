@@ -14,13 +14,14 @@ export default {
   data() {
       return {
         socket : io('localhost:3000'),
-        profile: {}
+        profile: {},
+        user: localStorage.getItem("username"),
       }
   },
   methods: {
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: "frank"})
+      ioreq(this.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
       })
