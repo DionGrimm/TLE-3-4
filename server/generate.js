@@ -54,7 +54,8 @@ let persona =
       time2: "18:00",
       title: "Huis - Kantoor",
       from: "Europalaan 3",
-      to: "Parklaan 14"
+      to: "Parklaan 14",
+      route: 0
     },
     {
       repeat: [
@@ -98,7 +99,8 @@ let persona =
       from: "Kruisplein 1",
       to: "Wijnhaven 61",
       time1: "03:33",
-      time2: "23:03"
+      time2: "23:03",
+      route: 1
     },
   ],
 
