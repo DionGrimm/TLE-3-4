@@ -6,7 +6,7 @@
                 <div class="icons">
                     <img v-for="icon in routeData.order" v-bind:key="icon" :src="getImgUrl(icon)">
                 </div>
-                <p>{{routeData.eta}} &rarr; 18 : 00</p>
+                <p>{{routeData.eta}} &rarr; 00:00</p>
             </span>
         </div>
         <div class="map">
@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .route {
     max-width: 310px;
     height: 450px;
@@ -56,16 +56,32 @@ export default {
     display: inline-block;
 }
 
-.info {
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-around;
-
+.adress{
+    text-align: left;
+    padding-left: 30px;
+    color: $main-orange;
+    font-size: 1.1rem;
 }
 
-img {
-    height: 50%;
-    padding: auto;
+.info {
+    width: 100%;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    padding-left: 30px;
+
+    .icons{
+        display: inline-block;
+
+        img{
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
+
+    p{
+        display: inline-block;
+    }
 }
 
 .map {
