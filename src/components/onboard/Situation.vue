@@ -7,7 +7,7 @@
             <h1>{{this.time}}</h1>
 
             <span>
-                <img v-bind:src="img"/>
+                <img v-bind:src="getImgUrl(weather)"/>
                 {{this.temp}}  &deg;C
             </span>
 
@@ -23,24 +23,26 @@
         name: 'situation',
         data(){
           return {  
-            time: '',
-            img: '',
-            temp: '',
             description: '',
             visible: true
           }
         },
         props:{
-            title:  {
-                type: Number,
-                default: 0
-            }
+            time : String,
+            temp: Number,
+            weather: Number
         },
         methods: {
+            getImgUrl(w){
+            let img ="";
+            if(w == 0) img = "sun.png";
+            if(w == 1) img = "wind.png";
+            if(w == 2) img = "rain.png";
+
+            return require('@/assets/weather/'+img)
+            },
             setScene: function(){
-                this.time = '07 : 15'
-                this.img = '@/assets/sunny.png'
-                this.temp = '14'
+               
                 this.description = 'Het is maandagochtend en overwegend zonnig. Je wilt om 08:00 uur op je werk zijn. Welke optie kies je?'
             },
             closeSituation: function(){
@@ -76,7 +78,8 @@ span{
 }
 
 img {
-    height: 20%;
+    width: 80px;
+    margin-bottom: -25px;
 }
 p {
     padding: 0 .2em;

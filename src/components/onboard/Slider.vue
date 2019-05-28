@@ -6,7 +6,7 @@
     </div>
 
     <div class="content-wrapper">
-      <situation/>
+      <situation v-if="routes.context" :time="routes.departure" :temp="routes.context.temp" :weather="routes.context.weather"/>
       <div class="routes">
         <scene v-if="routes.context" :time="routes.departure" :temp="routes.context.temp" :weather="routes.context.weather"/>
         <div class="route-slider">

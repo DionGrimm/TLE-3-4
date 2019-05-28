@@ -16,7 +16,6 @@
         },
         methods: {
             getImgUrl(w){
-            console.log(w)
             let img ="";
             if(w == 0) img = "sun.png";
             if(w == 1) img = "wind.png";
