@@ -20,7 +20,7 @@ let routesForClient = [
     from: "Europalaan 3",
     to: "Parklaan 14",
     departure: "9:50",
-    // Weather: 0=sunny, 1=windy, 3=rain
+    // Weather: 0=sunny, 1=windy, 2=rain
     // Order: 1=foot, 2=car, 3=step, 4=bike, 5=scooter
     context: { weather: 0, temp: 20 },
     options:
@@ -37,7 +37,7 @@ let routesForClient = [
     from: "Parklaan 14",
     to: "Europalaan 3",
     departure: "18:00",
-    // Weather: 0=sunny, 1=windy, 3=rain
+    // Weather: 0=sunny, 1=windy, 2=rain
     // Order: 1=foot, 2=car, 3=step, 4=bike, 5=scooter
     context: { weather: 1, temp: 16 },
     options:
@@ -53,10 +53,10 @@ let routesForClient = [
     title: "School",
     from: "Kruisplein 1",
     to: "Wijnhaven 61",
-    departure: "8:30",
-    // Weather: 0=sunny, 1=windy, 3=rain
+    departure: "10:30",
+    // Weather: 0=sunny, 1=windy, 2=rain
     // Order: 1=foot, 2=car, 3=step, 4=bike, 5=scooter
-    context: { weather: 0, temp: 18 },
+    context: { weather: 0, temp: 21 },
     options:
       [
         { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [1, 2], eta: "15:23", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
@@ -64,6 +64,40 @@ let routesForClient = [
         { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [1, 5], eta: "15:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
         { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [1, 4, 5], eta: "18:40", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
         { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [1, 5], eta: "18:25", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
+      ]
+  },
+  {
+    title: "School",
+    from: "Kruisplein 1",
+    to: "Wijnhaven 61",
+    departure: "8:30",
+    // Weather: 0=sunny, 1=windy, 2=rain
+    // Order: 1=foot, 2=car, 3=step, 4=bike, 5=scooter
+    context: { weather: 1, temp: 14 },
+    options:
+      [
+        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [1, 2], eta: "8:53", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
+        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [1, 4, 2], eta: "8:48", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
+        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [1, 5], eta: "8:55", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [1, 4, 5], eta: "9:10", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [1, 5], eta: "8:55", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
+      ]
+  },
+  {
+    title: "School",
+    from: "Kruisplein 1",
+    to: "Wijnhaven 61",
+    departure: "9:00",
+    // Weather: 0=sunny, 1=windy, 3=rain
+    // Order: 1=foot, 2=car, 3=step, 4=bike, 5=scooter
+    context: { weather: 2, temp: 9 },
+    options:
+      [
+        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [1, 2], eta: "9:23", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
+        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [1, 4, 2], eta: "9:18", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
+        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [1, 5], eta: "9:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [1, 4, 5], eta: "9:40", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [1, 5], eta: "9:25", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
       ]
   },
 ]
