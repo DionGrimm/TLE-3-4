@@ -10,9 +10,9 @@
         <scene/>
         <div class="route-slider">
           <RouteItem
-            v-for="route in profile.routes"
-            v-bind:key="route.name"
-            v-bind:routeData="route"
+            v-for="(option, index) in routes.options"
+            v-bind:key="index"
+            v-bind:routeData="option"
           ></RouteItem>
         </div>
       </div>
@@ -33,7 +33,6 @@ export default {
   data() {
     return {
       socket: io("localhost:3000"),
-      profile: {},
       user: localStorage.getItem("username"),
       routes: {} // Hier staat de route in. Check in server.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
     };
@@ -49,36 +48,22 @@ export default {
         infinite: false
       });
     },
-    getData: function() {
+    getAI: function() {
       ioreq(this.socket)
-        .request("GETUSER", { user: this.user })
-        .then(res => {
-          this.profile = res;
+        .request("BRAIN", { user: this.user })
+        .then((res) => {
+          this.routes = res;
           setTimeout(() => {
             this.sliderSetup();
           }, 1);
         })
-        .catch(function(err) {
-          console.error(err.stack || err);
-        });
-    },
-
-    getAI: function() {
-      let app = this;
-
-      ioreq(this.socket)
-        .request("BRAIN", { user: app.user })
-        .then(function(res) {
-          app.routes = res;
-        })
-        .catch(function(err) {
+        .catch((err) => {
           console.error(err.stack || err);
           app.$router.push("/404");
         });
     }
   },
   mounted: function() {
-    this.getData();
     this.getAI();
   }
 };

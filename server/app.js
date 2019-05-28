@@ -33,11 +33,11 @@ let routesForClient = [
     context: { weather: 0, temp: 20 },
     options:
       [
-        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [1, 2], eta: "7:23", locations: ["Europalaan 3", [{ location: "tussenstop1" }], "Parklaan 14"] },
-        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [1, 4, 2], eta: "7:28", locations: ["Europalaan 3", [{ location: "tussenstop1" }, { location: "tussenstop2" }], "Parklaan 14"] },
-        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [1, 5], eta: "7:25", locations: ["Europalaan 3", [{ location: "tussenstop1" }], "Parklaan 14"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [1, 4, 5], eta: "7:40", locations: ["Europalaan 3", [{ location: "tussenstop1" }, { location: "tussenstop2" }], "Parklaan 14"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [1, 5], eta: "7:25", locations: ["Europalaan 3", [{ location: "tussenstop1" }], "Parklaan 14"] },
+        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [1, 2], eta: "7:23", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
+        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [1, 4, 2], eta: "7:28", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
+        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [1, 5], eta: "7:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [1, 4, 5], eta: "7:40", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [1, 5], eta: "7:25", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
       ]
   },
 ]

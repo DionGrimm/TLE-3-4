@@ -1,14 +1,16 @@
 <template>
     <div class="route">
         <div class="sm-card">
-            <p class="adress">{{routeData.from}} &rarr;  {{routeData.to}}</p>
+            <p class="adress">{{routeData.locations[0]}} &rarr;  {{ routeData.locations[2] }}</p>
             <span class="info">
-                <img src="@/assets/cycle.png"/>
-                <p>17 : 15 &rarr; 18 : 00</p>
+                <div class="icons">
+                    <img v-for="icon in routeData.order" v-bind:key="icon" :src="getImgUrl(icon)">
+                </div>
+                <p>{{routeData.eta}} &rarr; 18 : 00</p>
             </span>
         </div>
         <div class="map">
-            <RouteMap v-bind:from="routeData.from" :waypoints="[{location: 'Eindhoven'},{location: 'Antwerpen'}]" v-bind:to="routeData.to"></RouteMap>
+            <RouteMap :from="routeData.locations[0]" :waypoints="routeData.locations[1]" :to="routeData.locations[2]"></RouteMap>
         </div>
         
     </div>
@@ -24,6 +26,18 @@ export default {
     },
     props:{
         routeData : Object,
+    },
+    methods:{
+        getImgUrl(transport){
+            let img ="";
+            if(transport == 1) img = "walk.png";
+            if(transport == 2) img = "car.png";
+            if(transport == 3) img = "step.png";
+            if(transport == 4) img = "bike.png";
+            if(transport == 5) img = "scooter.png";
+
+            return require('../../assets/transport/'+img)
+        }
     },
 }
 </script>

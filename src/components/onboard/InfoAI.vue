@@ -22,7 +22,7 @@
             Let in de volgende situaties op de tijd, het weer, de temperatuur en de verschillende vervoersmiddelen.
           </p>
 
-          <router-link class="btn" to="/carousel">Aan de slag</router-link>
+          <router-link class="btn" to="/slider">Aan de slag</router-link>
         </div>
 
       </div>
