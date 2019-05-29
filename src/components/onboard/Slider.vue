@@ -67,6 +67,7 @@ export default {
         });
     },
     selectRoute(routes, index){
+      //to-do Stuur data terug naar server
       if(this.$route.params.index < 2){
         let pageNumber = this.$route.params.index
         pageNumber++
