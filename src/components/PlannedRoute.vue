@@ -28,6 +28,13 @@ export default {
     name: 'plannedRoute',
     data() {
         return{
+            route: {
+                input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, 
+                order: [1, 2], 
+                eta: "10:13", 
+                locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
+            },
+
             steps: {
                 step1: {
                     transport: 1,
@@ -62,7 +69,7 @@ export default {
     },
     methods: {
         getImgUrl(w){
-            console.log(w)
+            // console.log(w)
             let img ="";
             if(w == 1) img = "walk.png";
             if(w == 2) img = "car.png";
@@ -71,8 +78,61 @@ export default {
             if(w == 5) img = "scooter.png";
 
             return require('@/assets/transport/'+img)
+        },
+        getTransport(w){
+            // console.log(w)
+            let transport ="";
+            if(w == 1) transport = "foot";
+            if(w == 2) transport = "car";
+            if(w == 3) transport = "step";
+            if(w == 4) transport = "bike";
+            if(w == 5) transport = "scooter";
+
+            return transport
+        },
+        getRouteSteps(){
+            for(let i =0; i < this.route.order.length; i++){
+                console.log('vervoersmiddel: '+this.route.order[i])
+                console.log('starttijd: ' + this.route.eta)   
+                console.log('vervoersmiddeltijd: ' + this.route.input[this.getTransport(this.route.order[i])])
+                var event = new Date('1999-10-10T' + this.route.eta + ':00Z')                
+                var time = event.toLocaleString('nl-NL', { timeZone: 'UTC' })
+                console.log(time);
+                
+                time.prototype.setMinutes(this.route.eta)
+                // als je in de 1e stap zit
+                if(i == 0){
+                    console.log('tijd1: ' + this.route.eta);
+                }else{
+                    
+                }
+                // als je in het object zit
+                if(i != 0 && i != this.route.order.length){
+                    console.log("speciaal")
+                    console.log('adres1:' + this.route.locations[1][i-1].location)                        
+                }else{
+                    console.log('adres1:'+this.route.locations[i]);
+                }
+
+                // als je in het object zit voor het 2e adres
+                if(i+1 != 0 && i+1 != this.route.order.length){
+                    console.log("speciaal")
+                        console.log('adres2:' + this.route.locations[1][i].location)
+                }else{
+                    console.log('adres2:'+this.route.locations[i+1]);
+                }
+
+                console.log(i);
+                
+                console.log('-------------');
+                
+            }
         }
     },
+  mounted(){
+    //Get user data on load
+    this.getRouteSteps();
+  }
 }
 </script>
 
@@ -121,7 +181,8 @@ export default {
 }
 
 .transport{
-    height: 45%;
+    max-height: 45%;
+    max-width: 5%;
     margin: auto 10%;
 }
 
