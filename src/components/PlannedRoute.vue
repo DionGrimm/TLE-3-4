@@ -9,7 +9,7 @@
                 <h6>Mijn Route</h6>
                 <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
             </div>
-            <div class="title"><p>{{steps.step1.from}} &rarr; {{steps.step4.to}}</p></div>
+            <!-- <div class="title"><p>{{steps.step1.from}} &rarr; {{steps.step4.to}}</p></div> -->
             <div class="routeStep" v-for="step in steps">
                 <img :src="getImgUrl(step.transport)" class="transport">
                 <div class="info" >
@@ -30,104 +30,92 @@ export default {
         return{
             route: {
                 input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, 
-                order: [1, 2], 
+                order: [0, 1], 
                 eta: "10:13", 
                 locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
             },
 
-            steps: {
-                step1: {
-                    transport: 1,
-                    from: "Parklaan 11",
-                    to: "Parklaan 8",
-                    start: "07:15",
-                    end: "07:30"
-                },
-                step2: {
-                    transport: 4,
-                    from: "Parklaan 11",
-                    to: "Havenweg 33",
-                    start: "07:15",
-                    end: "07:30"
-                },
-                step3: {
-                    transport: 5,
-                    from: "Havenweg 33",
-                    to: "Plataanlaan 2",
-                    start: "07:15",
-                    end: "07:30"
-                },
-                step4: {
-                    transport: 1,
-                    from: "Plataanlaan 2",
-                    to: "Rotterdam Centraal",
-                    start: "07:15",
-                    end: "07:30"
-                }
-            }
+            steps: []
+                // step1: {
+                //     transport: 0,
+                //     from: "Parklaan 11",
+                //     to: "Parklaan 8",
+                //     start: "07:15",
+                //     end: "07:30"
+                // },
+
+
         }
     },
     methods: {
         getImgUrl(w){
             // console.log(w)
             let img ="";
-            if(w == 1) img = "walk.png";
-            if(w == 2) img = "car.png";
-            if(w == 3) img = "step.png";
-            if(w == 4) img = "bike.png";
-            if(w == 5) img = "scooter.png";
+            if(w == 0) img = "walk.png";
+            if(w == 1) img = "car.png";
+            if(w == 2) img = "step.png";
+            if(w == 3) img = "bike.png";
+            if(w == 4) img = "scooter.png";
 
             return require('@/assets/transport/'+img)
         },
         getTransport(w){
             // console.log(w)
             let transport ="";
-            if(w == 1) transport = "foot";
-            if(w == 2) transport = "car";
-            if(w == 3) transport = "step";
-            if(w == 4) transport = "bike";
-            if(w == 5) transport = "scooter";
+            if(w == 0) transport = "foot";
+            if(w == 1) transport = "car";
+            if(w == 2) transport = "step";
+            if(w == 3) transport = "bike";
+            if(w == 4) transport = "scooter";
 
             return transport
         },
         getRouteSteps(){
             for(let i =0; i < this.route.order.length; i++){
-                console.log('vervoersmiddel: '+this.route.order[i])
-                console.log('starttijd: ' + this.route.eta)   
+                var transport = this.route.order[i]
                 console.log('vervoersmiddeltijd: ' + this.route.input[this.getTransport(this.route.order[i])])
-                var event = new Date('1999-10-10T' + this.route.eta + ':00Z')                
-                var time = event.toLocaleString('nl-NL', { timeZone: 'UTC' })
-                console.log(time);
-                
-                time.prototype.setMinutes(this.route.eta)
-                // als je in de 1e stap zit
-                if(i == 0){
-                    console.log('tijd1: ' + this.route.eta);
-                }else{
-                    
+                var time = this.route.eta.split(':')
+                var newHour = parseInt(time[0])
+                var newMinutes = parseInt(time[1]) + this.route.input[this.getTransport(this.route.order[i])]
+                if(newMinutes >= 60){
+                    newHour += 1
+                    newMinutes -= 60
                 }
+                var start = this.route.eta  
+                console.log(newHour + ':' + newMinutes)
+                // overschrijft de toekomstige starttijd
+                this.route.eta = newHour + ':' + newMinutes
+               
                 // als je in het object zit
                 if(i != 0 && i != this.route.order.length){
                     console.log("speciaal")
-                    console.log('adres1:' + this.route.locations[1][i-1].location)                        
+                    var adresOne = this.route.locations[1][i-1].location                     
                 }else{
-                    console.log('adres1:'+this.route.locations[i]);
+                    var adresOne = this.route.locations[i]
                 }
 
                 // als je in het object zit voor het 2e adres
                 if(i+1 != 0 && i+1 != this.route.order.length){
                     console.log("speciaal")
-                        console.log('adres2:' + this.route.locations[1][i].location)
+                    var adresTwo = this.route.locations[1][i].location
                 }else{
-                    console.log('adres2:'+this.route.locations[i+1]);
+                    var adresTwo = this.route.locations[i+1]
                 }
 
                 console.log(i);
                 
                 console.log('-------------');
+
+                this.steps.push({
+                    transport: transport,
+                    from: adresOne,
+                    to: adresTwo,
+                    start: start,
+                    end: this.route.eta
+                })
                 
             }
-        }
+        },
     },
   mounted(){
     //Get user data on load
