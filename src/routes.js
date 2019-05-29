@@ -3,7 +3,6 @@ import Login from './components/onboard/Login'
 import DataCheck from './components/onboard/DataCheck'
 import RouteCheck from './components/onboard/RouteCheck'
 import Ai from './components/Ai'
-import Routes from './components/onboard/Routes'
 import AddRoute from './components/onboard/AddRoute'
 import InfoAI from './components/onboard/InfoAI'
 import Slider from './components/onboard/Slider'
@@ -41,11 +40,6 @@ export const routes = [
         name: 'routecheck',
         path: '/routecheck',
         component: RouteCheck
-    },
-    {
-        name: 'routes',
-        path: '/routes',
-        component: Routes
     },
     {
         name: 'addroutes',
