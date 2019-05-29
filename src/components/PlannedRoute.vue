@@ -9,7 +9,7 @@
                 <h6>Mijn Route</h6>
                 <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
             </div>
-            <!-- <div class="title"><p>{{steps.step1.from}} &rarr; {{steps.step4.to}}</p></div> -->
+            <div class="title"><p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p></div>
             <div class="routeStep" v-for="step in steps">
                 <img :src="getImgUrl(step.transport)" class="transport">
                 <div class="info" >
