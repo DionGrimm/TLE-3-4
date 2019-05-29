@@ -52,8 +52,8 @@ export const routes = [
         component: InfoAI
     },
     {
-        name: 'cslider',
-        path: '/slider',
+        name: 'slider',
+        path: '/slider/:index',
         component: Slider
     },
     {

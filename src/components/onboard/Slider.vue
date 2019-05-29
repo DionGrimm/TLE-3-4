@@ -14,7 +14,8 @@
             v-for="(option, index) in routes.options"
             v-bind:key="index"
             v-bind:routeData="option"
-          ></RouteItem>
+            v-on:click.native="selectRoute(routes, index)"
+          />
         </div>
       </div>
     </div>
@@ -51,9 +52,9 @@ export default {
         infinite: false
       });
     },
-    getAI: function() {
+    getAI: function(r) {
       ioreq(this.socket)
-        .request("BRAIN", { user: this.user, route: 0 })
+        .request("BRAIN", { user: this.user, route: r })
         .then((res) => {
           this.routes = res;
           setTimeout(() => {
@@ -64,12 +65,28 @@ export default {
           console.error(err.stack || err);
           app.$router.push("/404");
         });
+    },
+    selectRoute(routes, index){
+      if(this.$route.params.index < 2){
+        let pageNumber = this.$route.params.index
+        pageNumber++
+        this.$router.push({name: 'slider', params: { index: pageNumber}});
+        this.$router.go();
+      }else{
+        this.$router.push({name: 'completedprofile'});
+      }
+      
     }
   },
   mounted: function() {
-    this.getAI();
+    // console.log(this.$route.params.index )
+    if(this.$route.params.index == 0 || this.$route.params.index == 1 || this.$route.params.index == 2){
+      this.getAI(this.$route.params.index);
+    }else{
+      this.$router.push({path: '/404'});
+    }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
