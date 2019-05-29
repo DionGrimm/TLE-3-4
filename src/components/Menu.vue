@@ -8,7 +8,7 @@
           <i class="fas fa-map-marked-alt"></i>
           <span>Reizen</span>
         </router-link>
-        <router-link to='/routes'>
+        <router-link to='/personalroutes'>
           <i class="fas fa-route"></i>
           <span>Routes</span>
         </router-link>

@@ -13,6 +13,7 @@ import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
 import RouteMap from './components/RouteMap'
 import Unlock from './components/Unlock'
 import PlannedRoute from './components/PlannedRoute'
+import PersonalRoute from './components/PersonalRoutes'
 
 
 export const routes = [
@@ -85,6 +86,11 @@ export const routes = [
         name: 'PlannedRoute',
         path: '/plannedroute',
         component: PlannedRoute
+    },
+    {
+        name: 'PersonalRoute',
+        path: '/personalroutes',
+        component: PersonalRoute
     },
 
     //App routes before this section//

@@ -158,6 +158,7 @@ export default {
     width: 100%;
     text-align: center;
     height: 6%;
+    font-weight: 1000;
 }
 
 .routeStep{
