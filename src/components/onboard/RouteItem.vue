@@ -30,11 +30,11 @@ export default {
     methods:{
         getImgUrl(transport){
             let img ="";
-            if(transport == 1) img = "walk.png";
-            if(transport == 2) img = "car.png";
-            if(transport == 3) img = "step.png";
-            if(transport == 4) img = "bike.png";
-            if(transport == 5) img = "scooter.png";
+            if(transport == 0) img = "walk.png";
+            if(transport == 1) img = "car.png";
+            if(transport == 2) img = "step.png";
+            if(transport == 3) img = "bike.png";
+            if(transport == 4) img = "scooter.png";
 
             return require('@/assets/transport/'+img)
         }

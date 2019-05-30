@@ -6,6 +6,7 @@ import Ai from './components/Ai'
 import AddRoute from './components/onboard/AddRoute'
 import InfoAI from './components/onboard/InfoAI'
 import Slider from './components/onboard/Slider'
+import MainSlider from './components/Slider'
 import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
@@ -56,6 +57,11 @@ export const routes = [
         name: 'slider',
         path: '/slider/:index',
         component: Slider
+    },
+    {
+        name: 'mainslider',
+        path: '/mainslider/:index',
+        component: MainSlider
     },
     {
         name: 'completedprofile',
