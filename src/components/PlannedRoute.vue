@@ -3,14 +3,14 @@
     <div class="background">
     </div>
     <div class="content-wrapper">
-        <div class="top"> 
+        <div class="top" v-if="steps[0]"> 
             <div class="header">
                 <img src="@/assets/left-arrow.png" class="back" on-click="">
                 <h6>Mijn Route</h6>
                 <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
             </div>
             <div class="title"><p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p></div>
-            <div class="routeStep" v-for="step in steps">
+            <div class="routeStep" v-for="(step, index) in steps"  v-bind:key="index">
                 <img :src="getImgUrl(step.transport)" class="transport">
                 <div class="info" >
                     <p class="adress">{{step.from}} &rarr; {{step.to}}</p>
@@ -26,14 +26,17 @@
 <script>
 export default {
     name: 'plannedRoute',
+    props:{
+        route : Object,
+    },
     data() {
         return{
-            route: {
-                input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, 
-                order: [0, 1], 
-                eta: "10:13", 
-                locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
-            },
+            // route: {
+            //     input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, 
+            //     order: [0, 1], 
+            //     eta: "10:13", 
+            //     locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
+            // },
 
             steps: []
                 // step1: {

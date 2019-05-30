@@ -60,8 +60,8 @@ export const routes = [
     },
     {
         name: 'mainslider',
-        path: '/mainslider/:index',
-        component: MainSlider
+        path: '/mainslider',
+        component: MainSlider,
     },
     {
         name: 'completedprofile',
@@ -91,7 +91,8 @@ export const routes = [
     {
         name: 'PlannedRoute',
         path: '/plannedroute',
-        component: PlannedRoute
+        component: PlannedRoute,
+        props: true
     },
     {
         name: 'PersonalRoute',

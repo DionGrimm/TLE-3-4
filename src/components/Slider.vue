@@ -13,7 +13,7 @@
             v-for="(option, index) in routes.options"
             v-bind:key="index"
             v-bind:routeData="option"
-            v-on:click.native="selectRoute(routes, index)"
+            v-on:click.native="selectRoute(option)"
           />
         </div>
       </div>
@@ -47,9 +47,9 @@ export default {
         infinite: false
       });
     },
-    getAI: function(r) {
+    getAI: function() {
       ioreq(this.socket)
-        .request("BRAIN", { user: this.user, route: r })
+        .request("BRAIN", { user: this.user, route: 0 })
         .then((res) => {
           this.routes = res;
           setTimeout(() => {
@@ -61,26 +61,12 @@ export default {
           app.$router.push("/404");
         });
     },
-    selectRoute(routes, index){
-      //to-do Stuur data terug naar server
-      if(this.$route.params.index < 2){
-        let pageNumber = this.$route.params.index
-        pageNumber++
-        this.$router.push({name: 'slider', params: { index: pageNumber}});
-        this.$router.go();
-      }else{
-        this.$router.push({name: 'completedprofile'});
-      }
-      
+    selectRoute(data){
+      this.$router.push({ name: 'PlannedRoute', params: {route: data }})
     }
   },
   mounted: function() {
-    // console.log(this.$route.params.index )
-    if(this.$route.params.index == 0 || this.$route.params.index == 1 || this.$route.params.index == 2){
-      this.getAI(this.$route.params.index);
-    }else{
-      this.$router.push({path: '/404'});
-    }
+    this.getAI()
   }
 }
 </script>
@@ -90,6 +76,12 @@ export default {
   max-height: 800px;
   width: 100%;
   text-align: center;
+
+  h2{
+    color: white;
+    font-size: 1.8em;
+    margin-bottom: 47px;
+  }
 }
 
 .route-slider {
