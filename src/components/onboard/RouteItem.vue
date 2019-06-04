@@ -6,7 +6,7 @@
                 <div class="icons">
                     <img v-for="icon in routeData.order" v-bind:key="icon" :src="getImgUrl(icon)">
                 </div>
-                <p>{{routeData.eta}} &rarr; 00:00</p>
+                <p>{{routeData.departure}} &rarr; {{routeData.eta}}</p>
             </span>
         </div>
         <div class="map">
