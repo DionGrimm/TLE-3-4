@@ -62,6 +62,7 @@ export const routes = [
         name: 'mainslider',
         path: '/mainslider',
         component: MainSlider,
+        props: true,
     },
     {
         name: 'completedprofile',

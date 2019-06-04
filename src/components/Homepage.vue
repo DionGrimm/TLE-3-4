@@ -10,14 +10,14 @@
         <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
 
         <div class="input-item">
-          <v-select placeholder="Kies een route" :options="profile.routes" label="title">
+          <v-select placeholder="Kies een route" :options="profile.routes" v-model="selected" label="title">
             <template slot="option" slot-scope="route">
                  {{route.title}}
             </template>
           </v-select>
         </div>
 
-        <button class="btn">Go</button>
+        <button @click="selectRoute" class="btn">Go</button>
       </div>
     </div>
 
@@ -37,6 +37,7 @@ export default {
         socket : io('localhost:3000'),
         profile: {},
         user: localStorage.getItem('username'),
+        selected : null,
       }
   },
   methods: {
@@ -55,10 +56,8 @@ export default {
         console.error(err.stack || err);
       });
     },
-    addClick: function(){
-      //click on button
-        let button = document.getElementsByClassName("vs__dropdown-menu")[0].lastElementChild;
-        button.addEventListener("click", this.addRoute);
+    selectRoute: function(){
+      this.$router.push({ name: 'mainslider', params: {route: this.profile.routes.indexOf(this.selected) }})
     },
     addRoute: function(){
       this.$router.push({ name: 'addroutes'});
