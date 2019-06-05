@@ -56,11 +56,18 @@ export default {
         console.error(err.stack || err);
       });
     },
+    addClick: function(){
+      //click on button
+        console.log("click on button")
+        let button = document.getElementsByClassName("vs__dropdown-menu")[0].lastElementChild;
+        button.addEventListener("click", this.addRoute);
+    },
     selectRoute: function(){
       this.$router.push({ name: 'mainslider', params: {route: this.profile.routes.indexOf(this.selected) }})
     },
     addRoute: function(){
       this.$router.push({ name: 'addroutes'});
+      console.log("add route")
     },
   },
   mounted(){

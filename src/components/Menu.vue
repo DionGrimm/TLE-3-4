@@ -24,6 +24,10 @@
           <i class="fas fa-question-circle"></i>
           <span>Help</span>
         </router-link>
+        <router-link to='/login'>
+          <i class="fas fa-sign-out-alt"></i>          
+          <span>Log out</span>
+        </router-link>
       </Slide>
 </template>
 

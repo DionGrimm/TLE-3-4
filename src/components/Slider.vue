@@ -6,8 +6,9 @@
     </div>
 
     <div class="content-wrapper">
+      <Header/>
       <div class="routes">
-        <h2>Aanbevole routes</h2>
+        <h2>Aanbevolen routes</h2>
         <div class="route-slider">
           <RouteItem
             v-for="(option, index) in routes.options"
@@ -22,11 +23,13 @@
 </template>
 
 <script>
+import Header from './Header'
 import RouteItem from "./onboard/RouteItem";
 
 export default {
   name: "Slider",
   components: {
+    Header,
     RouteItem,
   },
   props:{

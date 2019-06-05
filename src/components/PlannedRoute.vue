@@ -4,11 +4,7 @@
     </div>
     <div class="content-wrapper">
         <div class="top" v-if="steps[0]"> 
-            <div class="header">
-                <img src="@/assets/left-arrow.png" class="back" on-click="">
-                <h6>Mijn Route</h6>
-                <img src="@/assets/logo_leaseplan.png" class="logo_leaseplan">
-            </div>
+            <Header/>
             <div class="title"><p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p></div>
             <div class="routeStep" v-for="(step, index) in steps"  v-bind:key="index">
                 <img :src="getImgUrl(step.transport)" class="transport">
@@ -24,8 +20,13 @@
 </template>
 
 <script>
+import Header from './Header'
+
 export default {
     name: 'plannedRoute',
+    components: {
+        Header,
+    },
     props:{
         route : Object,
     },
@@ -135,25 +136,8 @@ export default {
 
 .top{
     height: 90%;
-}
-
-.header{
     width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: space-between;
-    background-color: $lighter-orange;
-}
-
-.back{
-    height: 50%;
-    margin: auto 2%;
-}
-
-.logo_leaseplan{
-    height: 70%;
-    width: 20%;
-    margin: auto 2%;
+    margin-top: 70px;
 }
 
 .title{

@@ -5,6 +5,7 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
+      <Header/>
       <div class="content">
         <h3 class="card-title">Voeg bestemming toe</h3>
         <hr>
@@ -49,9 +50,13 @@
 </template>
 
 <script>
+import Header from '../Header'
 
 export default {
   name: 'AddRoute',
+  components: {
+    Header
+  },
   data() {
       return {
         socket : io('localhost:3000'),
@@ -143,6 +148,11 @@ input[type=time]{
   margin-left: 15px;
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.content{
+  margin-top: 40px;
+  margin-bottom: 40px
 }
 
 </style>
