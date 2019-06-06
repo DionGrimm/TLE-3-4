@@ -1,10 +1,13 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const ioreq = require("socket.io-request");
 const fs = require('fs');
+const https = require('https').Server({
+  "key": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/privkey.pem'),
+  "cert": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/fullchain.pem'),
+},app);
+const io = require('socket.io')(https);
+const ioreq = require("socket.io-request");
 const brain = require('brain.js')
 
 // Get userdata
@@ -166,7 +169,7 @@ io.on('connection', function (socket) {
   })
 })
 
-http.listen(port, (err) => {
+https.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }

@@ -59,7 +59,7 @@ export default {
   },
   data() {
       return {
-        socket : io('localhost:3000'),
+        socket : io('leaseplanner.ga:3000'),
         arrayIndex : 0,
         editMode: false,
         route: { "repeat": [

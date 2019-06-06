@@ -12,7 +12,7 @@ export default {
   name: 'Ai',
   data() {
       return {
-          socket : io('localhost:3000'),
+          socket : io('leaseplanner.ga:3000'),
       }
   },
   methods: {
