@@ -37,8 +37,6 @@ export default {
     },
   data() {
     return {
-      socket : io('localhost:3000'),
-      //socket : io('leaseplanner.ga:3000'),
       user: localStorage.getItem("username"),
       routes: {} // Hier staat de route in. Check in app.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
     }
@@ -59,7 +57,7 @@ export default {
       let index = 0;
       if (this.route == 0) index = 4
       if (this.route == 1) index = 0
-      ioreq(this.socket)
+      ioreq(socket)
         .request("BRAIN", { user: this.user, route: index })
         .then((res) => {
           this.routes = res;

@@ -42,8 +42,6 @@ export default {
   name: "Login",
   data() {
     return {
-      socket : io('localhost:3000'),
-      //socket : io('leaseplanner.ga:3000'),
       username: "",
       password: "",
       error: "",
@@ -54,7 +52,7 @@ export default {
   methods: {
     checkLogin: function() {
       let app = this;
-      if (app.socket.connected == false) {
+      if (socket.connected == false) {
         console.log("Server not connected");
         app.$router.push("/404");
       }
@@ -64,7 +62,7 @@ export default {
       app.error = "";
 
       if (app.username && app.password) {
-        ioreq(this.socket)
+        ioreq(window.socket)
           .request("GETUSER", { user: app.username })
           .then(function(res) {
             console.log(res);

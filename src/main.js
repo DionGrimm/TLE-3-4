@@ -20,6 +20,8 @@ import ioreq from 'socket.io-request';
 //Socket client
 window.io = io;
 window.ioreq = ioreq;
+window.socket = io('localhost:3000');
+// 'leaseplanner.ga:3000'
 
 //Jquery
 window.$ = window.jQuery = require('jquery');

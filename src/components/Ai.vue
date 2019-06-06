@@ -6,21 +6,19 @@
 </template>
 
 <script>
-import io from 'socket.io-client';
 
 export default {
   name: 'Ai',
   data() {
       return {
-        socket : io('localhost:3000'),
-        //socket : io('leaseplanner.ga:3000'),
+
       }
   },
   methods: {
       
   },
   mounted() {
-        this.socket.on('brain', (data) => {
+        socket.on('brain', (data) => {
             console.log(data);
         });
     }

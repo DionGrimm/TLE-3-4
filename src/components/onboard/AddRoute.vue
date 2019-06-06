@@ -59,8 +59,6 @@ export default {
   },
   data() {
       return {
-        socket : io('localhost:3000'),
-        //socket : io('leaseplanner.ga:3000'),
         arrayIndex : 0,
         editMode: false,
         route: { "repeat": [
@@ -97,7 +95,7 @@ export default {
         this.route = {};
       }
       //Send updated profile to backend
-        this.socket.emit('SAVE', {
+        socket.emit('SAVE', {
         user: this.user,
         data: this.profile
         });
@@ -107,7 +105,7 @@ export default {
     },
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: this.user})
+      ioreq(socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
       })
