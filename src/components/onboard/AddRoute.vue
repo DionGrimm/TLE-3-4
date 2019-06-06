@@ -151,9 +151,8 @@ input[type=time]{
   padding-right: 0px;
 }
 
-.content{
-  margin-top: 40px;
-  margin-bottom: 40px
+.header{
+  background-color: transparent;
 }
 
 </style>

@@ -83,6 +83,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header{
+  background-color: transparent;
+}
 .routes {
   max-height: 800px;
   width: 100%;
