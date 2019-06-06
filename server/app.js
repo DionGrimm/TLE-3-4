@@ -2,10 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 const fs = require('fs');
-const https = require('https').Server({
-  "key": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/privkey.pem'),
-  "cert": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/fullchain.pem'),
-},app);
+const https = require('https').Server(app);
+// const https = require('https').Server({
+//   "key": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/privkey.pem'),
+//   "cert": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/fullchain.pem'),
+// },app);
 const io = require('socket.io')(https);
 const ioreq = require("socket.io-request");
 const brain = require('brain.js')
