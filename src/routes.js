@@ -11,19 +11,18 @@ import CompletedProfile from './components/onboard/CompletedProfile'
 import Homepage from './components/Homepage'
 import NotFound from './components/NotFound'
 import PrivacyVerklaring from './components/onboard/PrivacyVerklaring'
-import RouteMap from './components/RouteMap'
+import VehicleMap from './components/Map'
 import Unlock from './components/Unlock'
 import PlannedRoute from './components/PlannedRoute'
 import PersonalRoute from './components/PersonalRoutes'
 
 
-export const routes = [
-    {
+export const routes = [{
         name: 'info',
         path: '/',
         component: InfoPage
     },
-    { 
+    {
         name: 'ai',
         path: '/ai',
         component: Ai
@@ -80,9 +79,9 @@ export const routes = [
         component: PrivacyVerklaring
     },
     {
-        name: 'Maps',
-        path: '/maps',
-        component: RouteMap
+        name: 'Map',
+        path: '/vehicles',
+        component: VehicleMap
     },
     {
         name: 'Unlock',
@@ -102,12 +101,12 @@ export const routes = [
     },
 
     //App routes before this section//
-    {   
+    {
         path: '/404',
-        component: NotFound 
-    },  
-    { 
+        component: NotFound
+    },
+    {
         path: '*',
-        redirect: '/404' 
-    },  
+        redirect: '/404'
+    },
 ];
