@@ -40,8 +40,8 @@ export default {
 .main{}
 
 .content{
-    margin-top: 150px;
-    margin-bottom: 40px;
+    // margin-top: 150px;
+    // margin-bottom: 40px;
 }
 
 </style>
