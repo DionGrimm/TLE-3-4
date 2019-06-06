@@ -36,7 +36,8 @@ export default {
   },
   data() {
     return {
-      socket : io('leaseplanner.ga:3000'),
+      socket : io('localhost:3000'),
+      //socket : io('leaseplanner.ga:3000'),
       user: localStorage.getItem("username"),
       routes: {} // Hier staat de route in. Check in app.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
     };

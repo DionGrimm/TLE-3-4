@@ -45,7 +45,8 @@ export default {
   name: "DataCheck",
   data() {
     return {
-      socket : io('leaseplanner.ga:3000'),
+      socket : io('localhost:3000'),
+      //socket : io('leaseplanner.ga:3000'),
       profile: {},
       user: localStorage.getItem("username"),
       emptyName: false,

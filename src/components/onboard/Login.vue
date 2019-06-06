@@ -42,7 +42,8 @@ export default {
   name: "Login",
   data() {
     return {
-      socket : io('leaseplanner.ga:3000'),
+      socket : io('localhost:3000'),
+      //socket : io('leaseplanner.ga:3000'),
       username: "",
       password: "",
       error: "",
