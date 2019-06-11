@@ -62,7 +62,8 @@ export default {
         button.addEventListener("click", this.addRoute);
     },
     selectRoute: function(){
-      this.$router.push({ name: 'mainslider', params: {route: this.selected.route }})
+      this.$router.push({ name: 'mainslider'})
+      localStorage.setItem("selectedRoute", this.selected.route)
     },
     addRoute: function(){
       this.$router.push({ name: 'addroutes'});

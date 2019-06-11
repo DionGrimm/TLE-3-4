@@ -1,8 +1,10 @@
 <template>
+  <div class="main animation">
     <div class="content-wrapper">
       <Header/>
       <VehicleMarkers/>
     </div>
+  </div>
 </template>
 
 <script>
