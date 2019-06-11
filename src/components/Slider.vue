@@ -54,9 +54,7 @@ export default {
     },
     getAI: function() {
       //Dirty fix for making slider (semi-)dynamic
-      let index = 0;
-      if (this.route == 0) index = 4
-      if (this.route == 1) index = 0
+      let index = 0
       ioreq(socket)
         .request("BRAIN", { user: this.user, route: index })
         .then((res) => {
@@ -72,8 +70,8 @@ export default {
     },
     selectRoute(data, index){
       // Train AI (Dit moet eigenlijk op de reserveer route knop)
-      let trainingData = this.routes.options[index].input
-      socket.emit("TRAIN", {user: this.user, trainingData: trainingData})
+      let trainingData = this.routes.options
+      socket.emit("TRAIN", {user: this.user, trainingData: trainingData, index: index})
 
       this.$router.push({ name: 'PlannedRoute', params: {route: data }})
     }

@@ -161,22 +161,45 @@ io.on('connection', function (socket) {
     for (let i = 0; i < users.length; i++) {
       const d = data[i]
       if (d.username == req.user) {
-        let routes = getResult(routesForClient[req.route], d)
-        //console.log(routes)
-        res(routes)
+        if (d.data.length > 0) {
+          let routes = getResult(routesForClient[req.route], d)
+          //console.log(routes)
+          res(routes)
+          return
+        } else {
+          res(routesForClient[req.route])
+          return
+        }
+      }
+    }
+  })
+
+  socket.on("TRAIN", function (_data) {
+    for (let i = 0; i < users.length; i++) {
+      const d = data[i]
+      if (d.username == _data.user) {
+        let goodOption = _data.trainingData[_data.index]
+        _data.trainingData.splice(_data.index, 1)
+        let badOptions = _data.trainingData
+
+        for (let i = 0; i < badOptions; i++) {
+          const e = badOptions[i];
+          d.data.push({ input: e.input, output: [0] })
+        }
+        d.data.push({ input: goodOption.input, output: [1] })
+        let network = d.network
+        network.train(d.data)
+        console.log("AI updated")
         return
       }
     }
   })
 
-  socket.on("TRAIN", function (trainingData) {
+  socket.on("RESET", function (_data) {
     for (let i = 0; i < users.length; i++) {
       const d = data[i]
-      if (d.username == trainingData.user) {
-        d.data.push({input: trainingData.trainingData, output: [5]})
-        let network = d.network
-        network.train(d.data)
-        return
+      if (d.username == _data.user) {
+        d.data = []
       }
     }
   })
@@ -206,7 +229,7 @@ function startup() {
   // Train every network with the correct data
   for (let i = 0; i < data.length; i++) {
     const e = data[i].network
-    e.train(data[i].data)
+    if (data[i].data.length > 0) e.train(data[i].data)
   }
   //console.log(users, data)
 }
@@ -228,12 +251,13 @@ function getResult(routes, user) {
     let result = network.run(e)
     r.output = [result]
     results.push(r)
-    console.log(e, r.output)
   }
   results.sort(function (a, b) { return b.output[0] - a.output[0] });
   route.options = results
+
   return route
 }
+
 
 // Helpers
 // function getRandomInt(min, max) {
