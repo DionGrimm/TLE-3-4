@@ -18,7 +18,7 @@ export default {
       
   },
   mounted() {
-        socket.on('brain', (data) => {
+        window.socket.on('brain', (data) => {
             console.log(data);
         });
     }

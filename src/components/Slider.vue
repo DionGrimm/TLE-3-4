@@ -57,7 +57,7 @@ export default {
       let index = 0;
       if (this.route == 0) index = 4
       if (this.route == 1) index = 0
-      ioreq(socket)
+      ioreq(window.socket)
         .request("BRAIN", { user: this.user, route: index })
         .then((res) => {
           this.routes = res;

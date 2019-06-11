@@ -52,7 +52,7 @@ export default {
   methods: {
     checkLogin: function() {
       let app = this;
-      if (socket.connected == false) {
+      if (window.socket.connected == false) {
         console.log("Server not connected");
         app.$router.push("/404");
       }
