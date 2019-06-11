@@ -7,7 +7,9 @@
         <div class="title">
           <p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p>
         </div>
-        <div class="routeStep" v-for="(step, index) in steps" v-bind:key="index">
+        <div class="routeStep" v-for="(step, index) in steps" v-bind:key="index"
+            v-bind:routeData="step"
+            v-on:click="selectRoute(step)">
           <img :src="getImgUrl(step.transport)" class="transport">
           <div class="info">
             <p class="adress">{{step.from}} &rarr; {{step.to}}</p>
@@ -15,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="btn" on-click="/unlock">RESERVEER ROUTE</div>
+      <div class="btn" v-on:click="selectRoute(step)">RESERVEER ROUTE</div>
     </div>
   </div>
 </template>
@@ -40,7 +42,7 @@ export default {
       //     locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
       // },
 
-      steps: []
+      steps: [],
       // step1: {
       //     transport: 0,
       //     from: "Parklaan 11",
@@ -48,6 +50,8 @@ export default {
       //     start: "07:15",
       //     end: "07:30"
       // },
+
+    //   step: localStorage.setItem('steps'),
     };
   },
   methods: {
@@ -129,11 +133,17 @@ export default {
           end: passedTime
         });
       }
-    }
+    },
+    selectRoute: function(){
+        this.$router.push({ name: 'RouteStep', params: {step: this.step }})
+    },
   },
   mounted() {
     //Get user data on load
     this.getRouteSteps();
+    // if(step){
+
+    // }
   }
 };
 </script>

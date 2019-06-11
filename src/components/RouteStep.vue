@@ -4,7 +4,7 @@
     </div>
     <div class="content-wrapper">
         <Header />
-        <div class="btn" on-click="/unlock">Ik ben er!</div>
+        <router-link class="btn" to="/unlock">Ik ben er!</router-link>
         <RouteMap />
     </div>
 </div>
@@ -23,7 +23,7 @@ export default {
     },
     methods:{
         selectRoute: function(){
-            this.$router.push({ name: 'routemap', params: {from: this.route.from, to: this.route.to}})
+            this.$router.push({ name: 'RouteMap', params: {from: this.route.from, to: this.route.to}})
         },
     },
     mounted(){
