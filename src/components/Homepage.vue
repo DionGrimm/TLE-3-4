@@ -42,7 +42,7 @@ export default {
   methods: {
     getData: function(){
       let app = this;
-      ioreq(socket).request("GETUSER", {user: this.user})
+      ioreq(window.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
         app.profile.routes.push("");//add listitem for + button

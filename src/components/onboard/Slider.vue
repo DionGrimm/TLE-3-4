@@ -62,7 +62,7 @@ export default {
       });
     },
     getAI: function(r) {
-      ioreq(socket)
+      ioreq(window.socket)
         .request("BRAIN", { user: this.user, route: r })
         .then(res => {
           this.routes = res;

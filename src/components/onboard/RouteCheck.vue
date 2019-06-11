@@ -41,7 +41,7 @@ export default {
   methods: {
     saveProfile: function(){
         //Send updated profile to backend
-        socket.emit('SAVE', {
+        window.socket.emit('SAVE', {
         user: this.profile.username,
         data: this.profile
         });
@@ -49,7 +49,7 @@ export default {
     },      
     getData: function(){
       let app = this;
-      ioreq(socket).request("GETUSER", {user: this.user})
+      ioreq(window.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
         // app.routeWork = app.profile.routes.find(obj => {
