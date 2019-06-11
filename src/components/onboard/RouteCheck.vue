@@ -33,8 +33,6 @@ export default {
   name: 'RouteCheck',
   data() {
       return {
-        socket : io('localhost:3000'),
-        //socket : io('leaseplanner.ga:3000'),
         profile: {},
         user: localStorage.getItem('username'),
         routeWork: ''
@@ -43,7 +41,7 @@ export default {
   methods: {
     saveProfile: function(){
         //Send updated profile to backend
-        this.socket.emit('SAVE', {
+        socket.emit('SAVE', {
         user: this.profile.username,
         data: this.profile
         });
@@ -51,7 +49,7 @@ export default {
     },      
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: this.user})
+      ioreq(socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
         // app.routeWork = app.profile.routes.find(obj => {

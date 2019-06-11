@@ -6,9 +6,19 @@
     </div>
 
     <div class="content-wrapper">
-      <situation v-if="routes.context" :time="routes.departure" :temp="routes.context.temp" :weather="routes.context.weather"/>
+      <situation
+        v-if="routes.context"
+        :time="routes.departure"
+        :temp="routes.context.temp"
+        :weather="routes.context.weather"
+      />
       <div class="routes">
-        <scene v-if="routes.context" :time="routes.departure" :temp="routes.context.temp" :weather="routes.context.weather"/>
+        <scene
+          v-if="routes.context"
+          :time="routes.departure"
+          :temp="routes.context.temp"
+          :weather="routes.context.weather"
+        />
         <div class="route-slider">
           <RouteItem
             v-for="(option, index) in routes.options"
@@ -36,8 +46,6 @@ export default {
   },
   data() {
     return {
-      socket : io('localhost:3000'),
-      //socket : io('leaseplanner.ga:3000'),
       user: localStorage.getItem("username"),
       routes: {} // Hier staat de route in. Check in app.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
     };
@@ -54,41 +62,47 @@ export default {
       });
     },
     getAI: function(r) {
-      ioreq(this.socket)
+      ioreq(socket)
         .request("BRAIN", { user: this.user, route: r })
-        .then((res) => {
+        .then(res => {
           this.routes = res;
           setTimeout(() => {
             this.sliderSetup();
           }, 1);
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err.stack || err);
           app.$router.push("/404");
         });
     },
-    selectRoute(routes, index){
-      //to-do Stuur data terug naar server
-      if(this.$route.params.index < 2){
-        let pageNumber = this.$route.params.index
-        pageNumber++
-        this.$router.push({name: 'slider', params: { index: pageNumber}});
+    selectRoute(routes, index) {
+      //Train AI
+      let trainingData = this.routes.options[index].input
+      socket.emit("TRAIN", {user: this.user, trainingData: trainingData})
+
+      if (this.$route.params.index < 2) {
+        let pageNumber = this.$route.params.index;
+        pageNumber++;
+        this.$router.push({ name: "slider", params: { index: pageNumber } });
         this.$router.go();
-      }else{
-        this.$router.push({name: 'completedprofile'});
+      } else {
+        this.$router.push({ name: "completedprofile" });
       }
-      
     }
   },
   mounted: function() {
     // console.log(this.$route.params.index )
-    if(this.$route.params.index == 0 || this.$route.params.index == 1 || this.$route.params.index == 2){
+    if (
+      this.$route.params.index == 0 ||
+      this.$route.params.index == 1 ||
+      this.$route.params.index == 2
+    ) {
       this.getAI(this.$route.params.index);
-    }else{
-      this.$router.push({path: '/404'});
+    } else {
+      this.$router.push({ path: "/404" });
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

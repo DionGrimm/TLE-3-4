@@ -34,8 +34,6 @@ export default {
   },
   data() {
       return {
-        socket : io('localhost:3000'),
-        //socket : io('leaseplanner.ga:3000'),
         profile: {},
         user: localStorage.getItem('username'),
         selected : null,
@@ -44,7 +42,7 @@ export default {
   methods: {
     getData: function(){
       let app = this;
-      ioreq(this.socket).request("GETUSER", {user: this.user})
+      ioreq(socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
         app.profile.routes.push("");//add listitem for + button

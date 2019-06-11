@@ -1,6 +1,6 @@
 <template>
     <div v-show="visible" class="situation content-wrapper" >
-        <div class="content">
+        <div class="content situation">
             <h3>Situatie</h3>
             <hr>
 
@@ -58,6 +58,7 @@
 <style lang="scss" scoped>
 .situation {
     position: absolute !important;
+    top: 0;
     background-color:rgba(0, 0, 0, 0.3);
 }
 
