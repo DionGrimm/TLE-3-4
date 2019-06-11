@@ -54,9 +54,7 @@ export default {
     },
     getAI: function() {
       //Dirty fix for making slider (semi-)dynamic
-      let index = 0;
-      if (this.route == 0) index = 4
-      if (this.route == 1) index = 0
+      let index = this.route;
       ioreq(socket)
         .request("BRAIN", { user: this.user, route: index })
         .then((res) => {
@@ -80,6 +78,7 @@ export default {
   },
   mounted: function() {
     this.getAI()
+    console.log(this.route)
   }
 }
 </script>

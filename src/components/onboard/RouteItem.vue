@@ -12,7 +12,6 @@
         <div class="map">
             <RouteMap :from="routeData.locations[0]" :waypoints="routeData.locations[1]" :to="routeData.locations[2]"></RouteMap>
         </div>
-        
     </div>
 </template>
 

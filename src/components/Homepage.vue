@@ -62,7 +62,7 @@ export default {
         button.addEventListener("click", this.addRoute);
     },
     selectRoute: function(){
-      this.$router.push({ name: 'mainslider', params: {route: this.profile.routes.indexOf(this.selected) }})
+      this.$router.push({ name: 'mainslider', params: {route: this.selected.route }})
     },
     addRoute: function(){
       this.$router.push({ name: 'addroutes'});
