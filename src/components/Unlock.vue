@@ -6,8 +6,10 @@
     </div>
     <div class="content-wrapper">
       <div class="content">
-        <h2>Ontgrendel voertuig</h2>
+         <h2>Sleutel voertuig</h2>
         <hr>
+
+        <h2>Voertuig {{ message }}  </h2>
        
         <div class="unlock-buttons">
          <button class="btn-open" @click="doorOpen" >Open</button>
@@ -29,11 +31,15 @@
 <script>
 export default {
   name: 'Unlock',
- 
+   data() {
+    return {
+      message: 'gesloten'}
+  },
   methods: {
  
       
      doorOpen(){
+        this.message = 'geopend'
         var ip = "192.168.137.143"
 		var url = "http://192.168.137.143/lock/0"
 		var settings = {
@@ -52,6 +58,7 @@ export default {
      },
 
     doorClose(){
+      this.message = 'gesloten'
         var ip = "192.168.137.143"
 		var url = "http://192.168.137.143/lock/1"
 		var settings = {
@@ -70,6 +77,7 @@ export default {
      },
 
       carSearch(){
+        this.message = 'gezocht'
         var ip = "192.168.137.143"
 		var url = "http://192.168.137.143/search/1"
 		var settings = {
