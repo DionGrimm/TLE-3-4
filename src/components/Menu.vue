@@ -12,7 +12,7 @@
           <i class="fas fa-route"></i>
           <span>Routes</span>
         </router-link>
-        <router-link to='/maps'>
+        <router-link to='/vehicles'>
           <i class="fas fa-map"></i>
           <span>Kaart</span>
         </router-link>

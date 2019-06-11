@@ -42,7 +42,7 @@ export default {
   methods: {
     getData: function(){
       let app = this;
-      ioreq(socket).request("GETUSER", {user: this.user})
+      ioreq(window.socket).request("GETUSER", {user: this.user})
       .then(function(res){
         app.profile = res;
         app.profile.routes.push("");//add listitem for + button
@@ -62,7 +62,8 @@ export default {
         button.addEventListener("click", this.addRoute);
     },
     selectRoute: function(){
-      this.$router.push({ name: 'mainslider', params: {route: this.profile.routes.indexOf(this.selected) }})
+      this.$router.push({ name: 'mainslider'})
+      localStorage.setItem("selectedRoute", this.selected.route)
     },
     addRoute: function(){
       this.$router.push({ name: 'addroutes'});

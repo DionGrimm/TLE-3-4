@@ -15,6 +15,7 @@ import VehicleMap from './components/Map'
 import Unlock from './components/Unlock'
 import PlannedRoute from './components/PlannedRoute'
 import PersonalRoute from './components/PersonalRoutes'
+import RouteStep from './components/RouteStep'
 
 
 export const routes = [{
@@ -98,6 +99,12 @@ export const routes = [{
         name: 'PersonalRoute',
         path: '/personalroutes',
         component: PersonalRoute
+    },
+    {
+        name: 'RouteStep',
+        path: '/routestep',
+        component: RouteStep,
+        props: true
     },
 
     //App routes before this section//
