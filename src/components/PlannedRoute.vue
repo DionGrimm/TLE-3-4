@@ -6,7 +6,11 @@
         <div class="top" v-if="steps[0]"> 
             <Header/>
             <div class="title"><p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p></div>
-            <div class="routeStep" v-for="(step, index) in steps"  v-bind:key="index">
+            <div class="routeStep"
+            v-for="(step, index) in steps"  
+            v-bind:key="index"
+            v-bind:routeData="step"
+            v-on:click="selectRoute(step)">
                 <img :src="getImgUrl(step.transport)" class="transport">
                 <div class="info" >
                     <p class="adress">{{step.from}} &rarr; {{step.to}}</p>
@@ -14,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="btn" on-click="/unlock">RESERVEER ROUTE</div>
+        <div class="btn" on-click="/unlock">Reserveer route</div>
     </div>
   </div>
 </template>
@@ -32,23 +36,7 @@ export default {
     },
     data() {
         return{
-            // route: {
-            //     input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, 
-            //     order: [0, 1], 
-            //     eta: "10:13", 
-            //     locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
-            // },
-
             steps: []
-                // step1: {
-                //     transport: 0,
-                //     from: "Parklaan 11",
-                //     to: "Parklaan 8",
-                //     start: "07:15",
-                //     end: "07:30"
-                // },
-
-
         }
     },
     methods: {
@@ -78,17 +66,18 @@ export default {
             for(let i =0; i < this.route.order.length; i++){
                 var transport = this.route.order[i]
                 console.log('vervoersmiddeltijd: ' + this.route.input[this.getTransport(this.route.order[i])])
-                var time = this.route.eta.split(':')
+                var time = this.route.departure.split(':')
                 var newHour = parseInt(time[0])
                 var newMinutes = parseInt(time[1]) + this.route.input[this.getTransport(this.route.order[i])]
                 if(newMinutes >= 60){
                     newHour += 1
                     newMinutes -= 60
+                    // newMinutes = '0'+newMinutes
                 }
-                var start = this.route.eta  
+                var start = this.route.departure  
                 console.log(newHour + ':' + newMinutes)
                 // overschrijft de toekomstige starttijd
-                this.route.eta = newHour + ':' + newMinutes
+                this.route.departure = newHour + ':' + newMinutes
                
                 // als je in het object zit
                 if(i != 0 && i != this.route.order.length){
@@ -115,10 +104,13 @@ export default {
                     from: adresOne,
                     to: adresTwo,
                     start: start,
-                    end: this.route.eta
+                    end: this.route.departure
                 })
                 
             }
+        },
+        selectRoute: function(){
+            this.$router.push({ name: 'RouteStep', params: {step: this.step }})
         },
     },
   mounted(){
