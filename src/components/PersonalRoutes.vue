@@ -6,13 +6,13 @@
         <div class="top"> 
             <Header/>
             <div class="routeStep" v-for="(route, index) in this.profile.routes" v-bind:key="index">
-                <div class="div" @click="selectRoute(route.route)">
-                <p class="title">{{route.title}}</p>
+                <div @click="selectRoute(route.route)">
+                    <p class="title">{{route.title}}</p>
                     <p class="adress">{{route.from}} &rarr; {{route.to}}</p>
                 </div>
             </div>
             
-            <router-link class="btn circle" to="/routes/add">+</router-link>
+            <router-link class="btn fixed" to="/routes/add">+</router-link>
         </div>
     </div>
   </div>
@@ -67,31 +67,14 @@ export default {
     margin-top: 70px;
 }
 
-// .header{
-//     width: 100%;
-//     height: 10%;
-//     display: flex;
-//     justify-content: space-between;
-//     background-color: $lighter-orange;
-// }
-
-// .back{
-//     height: 50%;
-//     margin: auto 2%;
-// }
-
-// .logo_leaseplan{
-//     height: 70%;
-//     width: 20%;
-//     margin: auto 2%;
-// }
-
 .routeStep{
     text-align: left;
     border-bottom: 1px $light-orange solid;
     width: 100%;
     height: 10%;
-    padding: 0 5%;
+    p{
+        margin-left:5%;
+    }
 }
 
 .title{
@@ -99,11 +82,14 @@ export default {
 
 }
 
-.circle{
-  margin-top: 120%;
-  margin-left: 80%;
-  width: 10%;
-  padding-left: 10px;
-  padding-right: 10px;
+.btn{
+    padding: 14px 23px;
+    margin: 15px 0;
+}
+
+.fixed{
+    position: fixed;
+    bottom: 0px;
+    right: 5%;
 }
 </style>
