@@ -47,7 +47,7 @@ export default {
                 from: adresOne,
                 to: adresTwo
             })
-        }
+        },
     },
     mounted(){
         //Get user data on load

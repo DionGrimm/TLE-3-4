@@ -14,7 +14,7 @@
             v-for="(option, index) in routes.options"
             v-bind:key="index"
             v-bind:routeData="option"
-            v-on:click.native="selectRoute(option)"
+            v-on:click.native="selectRoute(option, index)"
           />
         </div>
       </div>
@@ -70,7 +70,11 @@ export default {
           app.$router.push("/404");
         });
     },
-    selectRoute(data){
+    selectRoute(data, index){
+      // Train AI (Dit moet eigenlijk op de reserveer route knop)
+      let trainingData = this.routes.options[index].input
+      socket.emit("TRAIN", {user: this.user, trainingData: trainingData})
+
       this.$router.push({ name: 'PlannedRoute', params: {route: data }})
     }
   },

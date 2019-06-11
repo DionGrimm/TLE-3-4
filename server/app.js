@@ -168,6 +168,18 @@ io.on('connection', function (socket) {
       }
     }
   })
+
+  socket.on("TRAIN", function (trainingData) {
+    for (let i = 0; i < users.length; i++) {
+      const d = data[i]
+      if (d.username == trainingData.user) {
+        d.data.push({input: trainingData.trainingData, output: [5]})
+        let network = d.network
+        network.train(d.data)
+        return
+      }
+    }
+  })
 })
 
 http.listen(port, (err) => {
@@ -216,6 +228,7 @@ function getResult(routes, user) {
     let result = network.run(e)
     r.output = [result]
     results.push(r)
+    console.log(e, r.output)
   }
   results.sort(function (a, b) { return b.output[0] - a.output[0] });
   route.options = results
