@@ -70,7 +70,8 @@ export default {
       let trainingData = this.routes.options
       socket.emit("TRAIN", {user: this.user, trainingData: trainingData, index: index})
 
-      this.$router.push({ name: 'PlannedRoute', params: {route: data }})
+      this.$router.push({ name: 'PlannedRoute'})
+      localStorage.setItem("plannedRoute", JSON.stringify(data))
     }
   },
   mounted: function() {
