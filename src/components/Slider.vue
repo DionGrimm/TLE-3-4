@@ -44,10 +44,21 @@ export default {
       $(".route-slider").slick({
         arrows: false,
         centerMode: true,
-        centerPadding: "40px",
-        slidesToShow: 1,
+        centerPadding: "0px",
+        slidesToShow: 1.5,
         dots: true,
-        infinite: false
+        infinite: false,
+        responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
       });
     },
     getAI: function() {
