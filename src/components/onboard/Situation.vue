@@ -60,6 +60,8 @@
     position: absolute !important;
     top: 0;
     background-color:rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%);
+    top: 50%;
 }
 
 h3{

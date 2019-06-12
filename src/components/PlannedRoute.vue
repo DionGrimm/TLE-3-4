@@ -2,6 +2,7 @@
   <div class="main animation">
     <div class="background"></div>
     <div class="content-wrapper">
+      <Reserved v-show="this.reserved"/>
       <div class="top" v-if="steps[0]">
         <Header/>
         <div class="title">
@@ -17,39 +18,25 @@
           </div>
         </div>
       </div>
-      <div class="btn" v-on:click="selectRoute(step)">RESERVEER ROUTE</div>
+      <div class="btn" v-on:click="reserved = true">RESERVEER ROUTE</div>
     </div>
   </div>
 </template>
 
 <script>
 import Header from "./Header";
+import Reserved from "./Reserved";
 
 export default {
   name: "plannedRoute",
   components: {
-    Header
+    Header,
+    Reserved
   },
   data() {
     return {
-      // route: {},
-      // route: {
-      //     input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 },
-      //     order: [0, 1],
-      //     eta: "10:13",
-      //     locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
-      // },
-
       steps: [],
-      // step1: {
-      //     transport: 0,
-      //     from: "Parklaan 11",
-      //     to: "Parklaan 8",
-      //     start: "07:15",
-      //     end: "07:30"
-      // },
-
-    //   step: localStorage.setItem('steps'),
+      reserved:false
     };
   },
   methods: {
@@ -187,7 +174,7 @@ export default {
 }
 
 .btn {
-  margin-top: 160%;
   position: fixed;
+  bottom: 0;
 }
 </style>
