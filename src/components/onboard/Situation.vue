@@ -58,7 +58,6 @@
 <style lang="scss" scoped>
 .situation {
     position: absolute !important;
-    top: 0;
     background-color:rgba(0, 0, 0, 0.3);
 }
 
