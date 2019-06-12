@@ -5,23 +5,21 @@
       <div class="main-background"></div>
     </div>
     <div class="content-wrapper">
+      <Header/>
       <div class="content">
-         <h2>Sleutel voertuig</h2>
+         <h2>Vergrendeling voertuig</h2>
         <hr>
 
-        <h2>Voertuig {{ message }}  </h2>
+        <h2>Voertuig <b>{{ message }}</b>  </h2>
        
         <div class="unlock-buttons">
-         <button class="btn-open" @click="doorOpen" >Open</button>
-         <button class="btn-close" @click="doorClose">op slot</button>
+         <button class="btn-open btn" @click="doorOpen" >Open</button>
+         <button class="btn-close btn" @click="doorClose">op slot</button>
          <br>
           <br>
           </div>
-         <button class="btn-search" @click="carSearch">Zoek voertuig</button>
+         <button class="btn-search btn" @click="carSearch">Zoek voertuig</button>
        
-        <hr>
-
-      <router-link class="btn" to="/">Kaart</router-link>
       </div>
     </div>
 
@@ -29,15 +27,19 @@
 </template>
 
 <script>
+import Header from './Header'
+
 export default {
+   components: {
+        Header
+    },
   name: 'Unlock',
    data() {
     return {
       message: 'gesloten'}
   },
   methods: {
- 
-      
+
      doorOpen(){
         this.message = 'geopend'
         var ip = "192.168.137.143"
@@ -58,7 +60,7 @@ export default {
      },
 
     doorClose(){
-      this.message = 'gesloten'
+      this.message = 'op slot'
         var ip = "192.168.137.143"
 		var url = "http://192.168.137.143/lock/1"
 		var settings = {
@@ -77,7 +79,7 @@ export default {
      },
 
       carSearch(){
-        this.message = 'gezocht'
+        this.message = 'knippert'
         var ip = "192.168.137.143"
 		var url = "http://192.168.137.143/search/1"
 		var settings = {
@@ -113,8 +115,7 @@ export default {
 
 .btn-open{
     width: 20em;
-    background-image: linear-gradient(to right, #00FF09,#00D507);
-  
+    // background-color: $light-orange;
     border: none;
     color: $white;
     padding: 15px 5px;
@@ -130,12 +131,14 @@ export default {
   
 
     &:hover{
-        background-color: $light-orange;
+        background-color: $lighter-orange;
     }
 }
 
 .btn-close{
-    background-image: linear-gradient(to right, #FF0000,#D50000);
+    // background-image: linear-gradient(to right, #FF0000,#D50000);
+    // background-color: $main-orange;
+
     border: none;
     color: $white;
     padding: 15px 5px;
@@ -150,12 +153,12 @@ export default {
     text-transform: uppercase;
 
     &:hover{
-        background-color: $light-orange;
+        background-color: $lighter-orange;
     }
 }
 
 .btn-search{
-    background-image: linear-gradient(to right,#2679ff, #004fd1,);
+    // background-color: $lighter-orange;
     border: none;
     color: $white;
     padding: 15px 32px;
@@ -169,7 +172,7 @@ export default {
     text-transform: uppercase;
 
     &:hover{
-        background-color: $light-orange;
+        background-color: $lighter-orange;
     }
 
 }

@@ -33,9 +33,8 @@ export default {
 }
 
 .logo_leaseplan{
-    height: 70%;
-    width: 20%;
-    margin: auto 4%;
+  width: 100px;
+  margin: 5px 2%;
 }
 
 

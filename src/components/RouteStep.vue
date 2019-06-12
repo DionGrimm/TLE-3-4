@@ -35,7 +35,8 @@ export default {
 <style scoped lang="scss">
 .btn{
     z-index: 99;
-    margin-top: 150%;
+    position: fixed;
+    bottom: 0;
     padding: 15px 64px;
     text-transform: none;
 }
