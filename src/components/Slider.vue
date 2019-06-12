@@ -32,13 +32,11 @@ export default {
     Header,
     RouteItem,
   },
-  props:{
-        route : Number
-    },
   data() {
     return {
       user: localStorage.getItem("username"),
-      routes: {} // Hier staat de route in. Check in app.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
+      routes: {}, // Hier staat de route in. Check in app.js de variabele "routesForClients" voor de structure, volgorde van de reisopties is van best passend en dan aflopend
+      selectedRoute: localStorage.getItem("selectedRoute")
     }
   },
   methods: {
@@ -54,9 +52,8 @@ export default {
     },
     getAI: function() {
       //Dirty fix for making slider (semi-)dynamic
-      let index = this.route;
       ioreq(socket)
-        .request("BRAIN", { user: this.user, route: index })
+        .request("BRAIN", { user: this.user, route: this.selectedRoute })
         .then((res) => {
           this.routes = res;
           setTimeout(() => {
@@ -70,10 +67,11 @@ export default {
     },
     selectRoute(data, index){
       // Train AI (Dit moet eigenlijk op de reserveer route knop)
-      let trainingData = this.routes.options[index].input
-      socket.emit("TRAIN", {user: this.user, trainingData: trainingData})
+      let trainingData = this.routes.options
+      socket.emit("TRAIN", {user: this.user, trainingData: trainingData, index: index})
 
-      this.$router.push({ name: 'PlannedRoute', params: {route: data }})
+      this.$router.push({ name: 'PlannedRoute'})
+      localStorage.setItem("plannedRoute", JSON.stringify(data))
     }
   },
   mounted: function() {

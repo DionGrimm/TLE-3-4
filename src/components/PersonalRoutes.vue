@@ -29,7 +29,6 @@ export default {
     data() {
         return{
             profile: {},
-            selected: null,
             user: localStorage.getItem('username'),
         }
     },
@@ -45,7 +44,8 @@ export default {
             });
         },
         selectRoute: function(r){
-            this.$router.push({ name: 'mainslider', params: {route: r }})
+            this.$router.push({ name: 'mainslider'})
+            localStorage.setItem("selectedRoute", r)
         }
     },
     mounted(){

@@ -7,7 +7,9 @@
         <div class="title">
           <p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p>
         </div>
-        <div class="routeStep" v-for="(step, index) in steps" v-bind:key="index">
+        <div class="routeStep" v-for="(step, index) in steps" v-bind:key="index"
+            v-bind:routeData="step"
+            v-on:click="selectRoute(step)">
           <img :src="getImgUrl(step.transport)" class="transport">
           <div class="info">
             <p class="adress">{{step.from}} &rarr; {{step.to}}</p>
@@ -15,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="btn" on-click="/unlock">RESERVEER ROUTE</div>
+      <div class="btn" v-on:click="selectRoute(step)">RESERVEER ROUTE</div>
     </div>
   </div>
 </template>
@@ -28,11 +30,9 @@ export default {
   components: {
     Header
   },
-  props: {
-    route: Object
-  },
   data() {
     return {
+      // route: {},
       // route: {
       //     input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 },
       //     order: [0, 1],
@@ -40,7 +40,7 @@ export default {
       //     locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
       // },
 
-      steps: []
+      steps: [],
       // step1: {
       //     transport: 0,
       //     from: "Parklaan 11",
@@ -48,6 +48,8 @@ export default {
       //     start: "07:15",
       //     end: "07:30"
       // },
+
+    //   step: localStorage.setItem('steps'),
     };
   },
   methods: {
@@ -74,62 +76,74 @@ export default {
       return transport;
     },
     getRouteSteps() {
-      let passedTime = this.route.departure;
+      let route = {}
+      let data = localStorage.getItem('plannedRoute');
+      if (data){
+        route = JSON.parse(data);    
+      
+        let passedTime = route.departure;
 
-      for (let i = 0; i < this.route.order.length; i++) {
-        let addressOne;
-        let addressTwo;
-        let transport = this.route.order[i];
 
-        let start = passedTime;
+        for (let i = 0; i < route.order.length; i++) {
+          let addressOne;
+          let addressTwo;
+          let transport = route.order[i];
 
-        let vehicleTime = this.route.input[
-          this.getTransport(this.route.order[i])
-        ];
+          let start = passedTime;
 
-        let time = passedTime.split(":");
-        let newHour = parseInt(time[0]);
-        let newMinutes = parseInt(time[1]) + vehicleTime;
-        if (newMinutes >= 60) {
-          newHour += 1;
-          newMinutes -= 60;
-        }
+          let vehicleTime = route.input[
+            this.getTransport(route.order[i])
+          ];
 
-        if (newMinutes < 10) passedTime = newHour + ":0" + newMinutes;
-        else passedTime = newHour + ":" + newMinutes;
-
-        if (this.route.order.length == 1) {
-          addressOne = this.route.locations[0];
-          addressTwo = this.route.locations[1];
-        } else {
-          if (i != 0 && i != this.route.order.length - 1) {
-            addressOne = this.route.locations[1][-1 + i].location;
-            if (
-              this.route.locations[1].length > 1 &&
-              i < this.route.locations[1].length
-            ) {
-              addressTwo = this.route.locations[1][i].location;
-            } else {
-              addressTwo = this.route.locations[2];
-            }
-          } else if (i == 0) {
-            addressOne = this.route.locations[0];
-            addressTwo = this.route.locations[1][0].location;
-          } else if (i == this.route.order.length - 1) {
-            addressOne = this.route.locations[1][this.route.locations[1].length-1].location;
-            addressTwo = this.route.locations[2];
+          let time = passedTime.split(":");
+          let newHour = parseInt(time[0]);
+          let newMinutes = parseInt(time[1]) + vehicleTime;
+          if (newMinutes >= 60) {
+            newHour += 1;
+            newMinutes -= 60;
           }
-        }
 
-        this.steps.push({
-          transport: transport,
-          from: addressOne,
-          to: addressTwo,
-          start: start,
-          end: passedTime
-        });
+          if (newMinutes < 10) passedTime = newHour + ":0" + newMinutes;
+          else passedTime = newHour + ":" + newMinutes;
+
+          if (route.order.length == 1) {
+            addressOne = route.locations[0];
+            addressTwo = route.locations[1];
+          } else {
+            if (i != 0 && i != route.order.length - 1) {
+              addressOne = route.locations[1][-1 + i].location;
+              if (
+                route.locations[1].length > 1 &&
+                i < route.locations[1].length
+              ) {
+                addressTwo = route.locations[1][i].location;
+              } else {
+                addressTwo = route.locations[2];
+              }
+            } else if (i == 0) {
+              addressOne = route.locations[0];
+              addressTwo = route.locations[1][0].location;
+            } else if (i == route.order.length - 1) {
+              addressOne = route.locations[1][route.locations[1].length-1].location;
+              addressTwo = route.locations[2];
+            }
+          }
+
+          this.steps.push({
+            transport: transport,
+            from: addressOne,
+            to: addressTwo,
+            start: start,
+            end: passedTime
+          });
+        }
+      }else{
+        console.log("no route found in localstorage, choose route on homepage first")
       }
-    }
+    },
+    selectRoute: function(){
+        this.$router.push({ name: 'RouteStep', params: {step: this.step }})
+    },
   },
   mounted() {
     //Get user data on load

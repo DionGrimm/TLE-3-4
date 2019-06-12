@@ -88,8 +88,12 @@ export default {
     },
     selectRoute(routes, index) {
       //Train AI
-      let trainingData = this.routes.options[index].input
-      socket.emit("TRAIN", {user: this.user, trainingData: trainingData})
+      let trainingData = this.routes.options;
+      socket.emit("TRAIN", {
+        user: this.user,
+        trainingData: trainingData,
+        index: index
+      });
 
       if (this.$route.params.index < 2) {
         let pageNumber = this.$route.params.index;
@@ -103,6 +107,7 @@ export default {
   },
   mounted: function() {
     // console.log(this.$route.params.index )
+    //socket.emit("RESET", {user: this.user})
     if (
       this.$route.params.index == 0 ||
       this.$route.params.index == 1 ||
