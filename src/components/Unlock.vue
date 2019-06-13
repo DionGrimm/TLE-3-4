@@ -42,8 +42,8 @@ export default {
 
      doorOpen(){
         this.message = 'geopend'
-        var ip = "192.168.137.143"
-		var url = "http://192.168.137.143/lock/0"
+        var ip = "192.168.137.88"
+		var url = "http://192.168.137.88/lock/0"
 		var settings = {
 			"async": true,
 			"crossDomain": true,
@@ -61,8 +61,8 @@ export default {
 
     doorClose(){
       this.message = 'op slot'
-        var ip = "192.168.137.143"
-		var url = "http://192.168.137.143/lock/1"
+        var ip = "192.168.137.88"
+		var url = "http://192.168.137.88/lock/1"
 		var settings = {
 		    "async": true,
 		    "crossDomain": true,
@@ -80,8 +80,8 @@ export default {
 
       carSearch(){
         this.message = 'knippert'
-        var ip = "192.168.137.143"
-		var url = "http://192.168.137.143/search/1"
+        var ip = "192.168.137.88"
+		var url = "http://192.168.137.88/search/1"
 		var settings = {
 		    "async": true,
 		    "crossDomain": true,
