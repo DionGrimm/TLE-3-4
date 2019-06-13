@@ -124,7 +124,8 @@ hr {
     }
 }
 
-@media only screen and (max-width: 400px) {
+
+@media only screen and (max-width: 500px) {
     .content-wrapper {
         // align-items: start;
         .content {
@@ -139,11 +140,10 @@ hr {
         }
     }
 
-    .slick-slide {
-        margin: 0;
-      }
-    .slick-list {
-        margin: 0 -20px;
-    }
+}
 
+@media only screen and (min-width: 767px) {
+    .slick-list {
+        margin-left: 25% !important;
+    }
 }

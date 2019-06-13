@@ -179,11 +179,11 @@ io.on('connection', function (socket) {
       const d = data[i]
       if (d.username == _data.user) {
         let options = _data.route.options
-        for (let index = 0; index < options.length; index++) {
-          const element = options[index];
-          element.input.weather = _data.route.context.weather
-          element.input.temp = _data.route.context.temp
-        }
+        // for (let index = 0; index < options.length; index++) {
+        //   const element = options[index];
+        //   element.input.weather = _data.route.context.weather
+        //   element.input.temp = _data.route.context.temp
+        // }
 
         let goodOption = options[_data.index]
         _data.route.options.splice(_data.index, 1)
@@ -196,8 +196,8 @@ io.on('connection', function (socket) {
           for (let index = 0; index < 5; index++) {
             let variation = { input: {}, output: [] }
 
-            variation.input.weather = element.input.weather
-            variation.input.temp = getRandomInt(element.input.temp - 2, element.input.temp + 2)
+            //variation.input.weather = element.input.weather
+            //variation.input.temp = getRandomInt(element.input.temp - 2, element.input.temp + 2)
             variation.input.foot = getRandomInt(element.input.foot - 2, element.input.foot + 2)
             variation.input.car = getRandomInt(element.input.car - 2, element.input.car + 2)
             variation.input.step = getRandomInt(element.input.step - 2, element.input.step + 2)
@@ -285,6 +285,7 @@ function getResult(routes, user) {
 
     let result = network.run(e)
     r.output = [result]
+    console.log(i+1,result)
     results.push(r)
   }
   results.sort(function (a, b) { return b.output[0] - a.output[0] });

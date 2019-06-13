@@ -44,10 +44,21 @@ export default {
       $(".route-slider").slick({
         arrows: false,
         centerMode: true,
-        centerPadding: "40px",
-        slidesToShow: 1,
+        centerPadding: "0px",
+        slidesToShow: 1.5,
         dots: true,
-        infinite: false
+        infinite: false,
+        responsive: [
+          {
+            breakpoint: 600,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 1
+            }
+          }
+        ]
       });
     },
     getAI: function() {
@@ -65,19 +76,15 @@ export default {
         });
     },
     selectRoute(data, index) {
-      // Train AI (Dit moet eigenlijk op de reserveer route knop)
-      socket.emit("TRAIN", {
-        user: this.user,
-        route: this.routes,
-        index: index
-      });
-
-      this.$router.push({ name: "PlannedRoute", params: { route: data } });
+      localStorage.setItem("plannedRoute", JSON.stringify(data));
+      localStorage.setItem("index", JSON.stringify(index));
+      localStorage.setItem("routeData", JSON.stringify(this.routes));
+      console.log(this.routes)
+      this.$router.push({ name: "PlannedRoute" });
     }
   },
   mounted: function() {
     this.getAI();
-    console.log(this.route);
   }
 };
 </script>
