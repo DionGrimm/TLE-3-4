@@ -77,10 +77,9 @@ export default {
     },
     selectRoute(routes, index) {
       //Train AI
-      let trainingData = this.routes.options;
       socket.emit("TRAIN", {
         user: this.user,
-        trainingData: trainingData,
+        route: this.routes,
         index: index
       });
 
@@ -96,7 +95,8 @@ export default {
   },
   mounted: function() {
     // console.log(this.$route.params.index )
-    //socket.emit("RESET", {user: this.user})
+    if (this.$route.params.index == 0)
+      socket.emit("RESET", { user: this.user });
     if (
       this.$route.params.index == 0 ||
       this.$route.params.index == 1 ||

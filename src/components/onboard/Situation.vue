@@ -43,7 +43,7 @@
             },
             setScene: function(){
                
-                this.description = 'Het is maandagochtend en overwegend zonnig. Je wilt om 08:00 uur op je werk zijn. Welke optie kies je?'
+                this.description = 'Het is ' + this.time + ' en ' + this.temp + ' graden. Je wilt optijd op je werk zijn. Welke optie kies je?'
             },
             closeSituation: function(){
                 this.visible = false;

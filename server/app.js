@@ -20,7 +20,7 @@ let data = []
 
 let routesForClient = [
   {
-    title: "School",
+    title: "setup1",
     from: "Kruisplein 1",
     to: "Wijnhaven 61",
     departure: "15:00",
@@ -30,14 +30,14 @@ let routesForClient = [
     options:
       [
         { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "15:00", eta: "15:23", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
-        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [0, 3, 1], departure: "15:00", eta: "15:18", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
-        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [0, 4], departure: "15:00", eta: "15:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [0, 3, 4], departure: "15:00", eta: "15:40", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [0, 4], departure: "15:00", eta: "15:25", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "15:00", eta: "15:28", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "15:00", eta: "15:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "15:00", eta: "15:27", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "15:00", eta: "15:30", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
       ]
   },
   {
-    title: "School",
+    title: "setup2",
     from: "Kruisplein 1",
     to: "Wijnhaven 61",
     departure: "8:30",
@@ -47,14 +47,14 @@ let routesForClient = [
     options:
       [
         { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "8:30", eta: "8:53", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
-        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [0, 3, 1], departure: "8:30", eta: "8:48", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
-        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [0, 4], departure: "8:30", eta: "8:55", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [0, 3, 4], departure: "8:30", eta: "9:10", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [0, 4], departure: "8:30", eta: "8:55", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "8:30", eta: "8:58", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "8:30", eta: "8:55", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "8:30", eta: "8:57", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "8:30", eta: "9:00", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
       ]
   },
   {
-    title: "School",
+    title: "setup3",
     from: "Kruisplein 1",
     to: "Wijnhaven 61",
     departure: "9:00",
@@ -64,27 +64,27 @@ let routesForClient = [
     options:
       [
         { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:00", eta: "9:23", locations: ["Kruisplein 1", [{ location: "Rochussenstraat 8 Rotterdam" }], "Wijnhaven 61"] },
-        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [0, 3, 1], departure: "9:00", eta: "9:18", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
-        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [0, 4], departure: "9:00", eta: "9:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [0, 3, 4], departure: "9:00", eta: "9:40", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [0, 4], departure: "9:00", eta: "9:25", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "9:00", eta: "9:28", locations: ["Kruisplein 1", [{ location: "Aert van Nesstraat 25A," }, { location: "Coolsingel 124" }], "Wijnhaven 61"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:00", eta: "9:25", locations: ["Kruisplein 1", [{ location: "Kruiskade 1" }], "Wijnhaven 61"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "9:00", eta: "9:27", locations: ["Kruisplein 1", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Wijnhaven 61"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "9:00", eta: "9:30", locations: ["Kruisplein 1", [{ location: "Coolsingel 40" }], "Wijnhaven 61"] },
       ]
   },
   {
     title: "Huis - Kantoor",
     from: "Europalaan 3",
     to: "Parklaan 14",
-    departure: "9:50",
+    departure: "9:30",
     // Weather: 0=sunny, 1=windy, 2=rain
     // Order: 0=foot, 1=car, 2=step, 3=bike, 4=scooter
     context: { weather: 0, temp: 20 },
     options:
       [
-        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:50", eta: "10:13", locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"] },
-        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [0, 3, 1], departure: "9:50", eta: "10:08", locations: ["Europalaan 3", [{ location: "Aert van Nesstraat 25A" }, { location: "Coolsingel 124" }], "Parklaan 14"] },
-        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [0, 4], departure: "9:50", eta: "10:15", locations: ["Europalaan 3", [{ location: "Kruiskade 1" }], "Parklaan 14"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [0, 3, 4], departure: "9:50", eta: "10:30", locations: ["Europalaan 3", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Parklaan 14"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [0, 4], departure: "9:50", eta: "10:15", locations: ["Europalaan 3", [{ location: "Coolsingel 40" }], "Parklaan 14"] },
+        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:30", eta: "9:53", locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "9:30", eta: "9:58", locations: ["Europalaan 3", [{ location: "Aert van Nesstraat 25A" }, { location: "Coolsingel 124" }], "Parklaan 14"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:30", eta: "9:55", locations: ["Europalaan 3", [{ location: "Kruiskade 1" }], "Parklaan 14"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "9:30", eta: "9:57", locations: ["Europalaan 3", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Parklaan 14"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "9:30", eta: "10:00", locations: ["Europalaan 3", [{ location: "Coolsingel 40" }], "Parklaan 14"] },
       ]
   },
   {
@@ -98,10 +98,10 @@ let routesForClient = [
     options:
       [
         { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "18:00", eta: "18:23", locations: ["Parklaan 14", [{ location: "Rochussenstraat 8 Rotterdam" }], "Europalaan 3"] },
-        { input: { foot: 3, car: 10, step: 0, bike: 5, scooter: 0 }, order: [0, 3, 1], departure: "18:00", eta: "18:18", locations: ["Parklaan 14", [{ location: "Coolsingel 124" }, { location: "Aert van Nesstraat 25A" }], "Europalaan 3"] },
-        { input: { foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, order: [0, 4], departure: "18:00", eta: "18:25", locations: ["Parklaan 14", [{ location: "Kruiskade 1" }], "Europalaan 3"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 25, scooter: 10 }, order: [0, 3, 4], departure: "18:00", eta: "18:40", locations: ["Parklaan 14", [{ location: "Hoogstraat 196" }, { location: "Haagseveer 7" }], "Europalaan 3"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 20 }, order: [0, 4], departure: "18:00", eta: "18:25", locations: ["Parklaan 14", [{ location: "Coolsingel 40" }], "Europalaan 3"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "18:00", eta: "18:28", locations: ["Parklaan 14", [{ location: "Coolsingel 124" }, { location: "Aert van Nesstraat 25A" }], "Europalaan 3"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "18:00", eta: "18:25", locations: ["Parklaan 14", [{ location: "Kruiskade 1" }], "Europalaan 3"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "18:00", eta: "18:27", locations: ["Parklaan 14", [{ location: "Hoogstraat 196" }, { location: "Haagseveer 7" }], "Europalaan 3"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "18:00", eta: "18:30", locations: ["Parklaan 14", [{ location: "Coolsingel 40" }], "Europalaan 3"] },
       ]
   },
 ]
@@ -114,10 +114,10 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  console.log('an user connected')
+  //console.log('an user connected')
 
   socket.on('disconnect', function () {
-    console.log('user disconnected')
+    //console.log('user disconnected')
   })
 
   // Check is req.username exist and give back the corresponding data
@@ -178,18 +178,51 @@ io.on('connection', function (socket) {
     for (let i = 0; i < users.length; i++) {
       const d = data[i]
       if (d.username == _data.user) {
-        let goodOption = _data.trainingData[_data.index]
-        _data.trainingData.splice(_data.index, 1)
-        let badOptions = _data.trainingData
-
-        for (let i = 0; i < badOptions; i++) {
-          const e = badOptions[i];
-          d.data.push({ input: e.input, output: [0] })
+        let options = _data.route.options
+        for (let index = 0; index < options.length; index++) {
+          const element = options[index];
+          element.input.weather = _data.route.context.weather
+          element.input.temp = _data.route.context.temp
         }
-        d.data.push({ input: goodOption.input, output: [1] })
+
+        let goodOption = options[_data.index]
+        _data.route.options.splice(_data.index, 1)
+        let badOptions = _data.route.options
+        //console.log(_data.trainingData, goodOption)
+        for (let i = 0; i < badOptions.length + 1; i++) {
+          let element
+          if (i == badOptions.length) element = { input: goodOption.input, output: [1] };
+          else element = { input: badOptions[i].input, output: [0] };
+          for (let index = 0; index < 5; index++) {
+            let variation = { input: {}, output: [] }
+
+            variation.input.weather = element.input.weather
+            variation.input.temp = getRandomInt(element.input.temp - 2, element.input.temp + 2)
+            variation.input.foot = getRandomInt(element.input.foot - 2, element.input.foot + 2)
+            variation.input.car = getRandomInt(element.input.car - 2, element.input.car + 2)
+            variation.input.step = getRandomInt(element.input.step - 2, element.input.step + 2)
+            variation.input.bike = getRandomInt(element.input.bike - 2, element.input.bike + 2)
+            variation.input.scooter = getRandomInt(element.input.scooter - 2, element.input.scooter + 2)
+            variation.output = element.output
+
+            d.data.push(variation)
+          }
+          d.data.push(element)
+        }
         let network = d.network
         network.train(d.data)
-        console.log("AI updated")
+        console.log("AI has been updated")
+
+        // let filename = "data/" + data + ".json"
+        // let content = JSON.stringify(d.data);
+
+        // console.log("-------AI Dummy data generator-------");
+
+        // fs.appendFile(filename, content, function (err) {
+        //   if (err) throw err;
+
+        //   console.log("Data generated, file saved to: " + filename);
+        // });
         return
       }
     }
@@ -200,6 +233,8 @@ io.on('connection', function (socket) {
       const d = data[i]
       if (d.username == _data.user) {
         d.data = []
+        //console.log(d.data)
+        console.log("Data reset complete")
       }
     }
   })
@@ -256,6 +291,12 @@ function getResult(routes, user) {
   route.options = results
 
   return route
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 

@@ -50,12 +50,12 @@ let persona =
           state: false
         }
       ],
-      time1: "08:45",
-      time2: "18:00",
+      time1: "09:30",
+      time2: "10:00",
       title: "Huis - Kantoor",
       from: "Europalaan 3",
       to: "Parklaan 14",
-      route: 0
+      route: 3
     },
     {
       repeat: [
@@ -95,26 +95,16 @@ let persona =
           state: false
         }
       ],
-      title: "School",
-      from: "Kruisplein 1",
-      to: "Wijnhaven 61",
-      time1: "03:33",
-      time2: "23:03",
-      route: 1
+      title: "Kantoor - Huis",
+      from: "Parklaan 14",
+      to: "Europalaan 3",
+      time1: "18:00",
+      time2: "18:30",
+      route: 4
     },
   ],
-
-  // niceWeather:"bike",
-  // firstChoice:"scooter",
-  // age:27,
-  // workDays:[1,2,3,4], //1 = monday etc.
 }
-//Script die op basis van voorbeeld context zegt wat voor route de persoon neemt
 let loopTimes = 10
-// let weather = "sunny"
-// let temp = 22
-// let maxFoot = 20, maxCar = 15, maxStep = 0, maxBike = 30, maxScooter = 30
-// let firstChoice = 4
 
 let dummyData = [
   { input: { weather: 0, temp: 22, foot: 15, car: 0, step: 0, bike: 0, scooter: 10 }, output: [1] },
@@ -138,25 +128,25 @@ function getRandomInt(min, max) {
 
 let data = []
 
-for (let index = 0; index < dummyData.length; index++) {
-  const element = dummyData[index]
+// for (let index = 0; index < dummyData.length; index++) {
+//   const element = dummyData[index]
 
-  for (let index = 0; index < loopTimes; index++) {
-    let variation = { input: {}, output: [] }
+//   for (let index = 0; index < loopTimes; index++) {
+//     let variation = { input: {}, output: [] }
 
-    variation.input.weather = element.input.weather
-    variation.input.temp = getRandomInt(element.input.temp - 2, element.input.temp + 2)
-    variation.input.foot = getRandomInt(element.input.foot - 2, element.input.foot + 2)
-    variation.input.car = getRandomInt(element.input.car - 2, element.input.car + 2)
-    variation.input.step = getRandomInt(element.input.step - 2, element.input.step + 2)
-    variation.input.bike = getRandomInt(element.input.bike - 2, element.input.bike + 2)
-    variation.input.scooter = getRandomInt(element.input.scooter - 2, element.input.scooter + 2)
-    variation.output = element.output
+//     variation.input.weather = element.input.weather
+//     variation.input.temp = getRandomInt(element.input.temp - 2, element.input.temp + 2)
+//     variation.input.foot = getRandomInt(element.input.foot - 2, element.input.foot + 2)
+//     variation.input.car = getRandomInt(element.input.car - 2, element.input.car + 2)
+//     variation.input.step = getRandomInt(element.input.step - 2, element.input.step + 2)
+//     variation.input.bike = getRandomInt(element.input.bike - 2, element.input.bike + 2)
+//     variation.input.scooter = getRandomInt(element.input.scooter - 2, element.input.scooter + 2)
+//     variation.output = element.output
 
-    data.push(variation)
-  }
-  data.push(element)
-}
+//     data.push(variation)
+//   }
+//   data.push(element)
+// }
 
 persona.data = data
 

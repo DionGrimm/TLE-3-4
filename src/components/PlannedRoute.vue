@@ -7,9 +7,13 @@
         <div class="title">
           <p>{{steps[0].from}} &rarr; {{steps[steps.length-1].to}}</p>
         </div>
-        <div class="routeStep" v-for="(step, index) in steps" v-bind:key="index"
-            v-bind:routeData="step"
-            v-on:click="selectRoute(step)">
+        <div
+          class="routeStep"
+          v-for="(step, index) in steps"
+          v-bind:key="index"
+          v-bind:routeData="step"
+          v-on:click="selectRoute(step)"
+        >
           <img :src="getImgUrl(step.transport)" class="transport">
           <div class="info">
             <p class="adress">{{step.from}} &rarr; {{step.to}}</p>
@@ -42,7 +46,7 @@ export default {
       //     locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"],
       // },
 
-      steps: [],
+      steps: []
       // step1: {
       //     transport: 0,
       //     from: "Parklaan 11",
@@ -51,7 +55,7 @@ export default {
       //     end: "07:30"
       // },
 
-    //   step: localStorage.setItem('steps'),
+      //   step: localStorage.setItem('steps'),
     };
   },
   methods: {
@@ -120,7 +124,9 @@ export default {
             addressOne = this.route.locations[0];
             addressTwo = this.route.locations[1][0].location;
           } else if (i == this.route.order.length - 1) {
-            addressOne = this.route.locations[1][this.route.locations[1].length-1].location;
+            addressOne = this.route.locations[1][
+              this.route.locations[1].length - 1
+            ].location;
             addressTwo = this.route.locations[2];
           }
         }
@@ -134,9 +140,15 @@ export default {
         });
       }
     },
-    selectRoute: function(){
-        this.$router.push({ name: 'RouteStep', params: {step: this.step }})
-    },
+    selectRoute: function() {
+      // Train AI
+      socket.emit("TRAIN", {
+        user: this.user,
+        route: this.routes,
+        index: index
+      });
+      this.$router.push({ name: "RouteStep", params: { step: this.step } });
+    }
   },
   mounted() {
     //Get user data on load

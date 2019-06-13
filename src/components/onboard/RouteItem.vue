@@ -1,7 +1,7 @@
 <template>
     <div class="route">
         <div class="sm-card">
-            <p class="adress">{{routeData.locations[0]}} &rarr;  {{ routeData.locations[2] }}</p>
+            <p class="adress">{{routeData.locations[0]}} &rarr;  {{ routeData.locations[routeData.locations.length - 1] }}</p>
             <span class="info">
                 <div class="icons">
                     <img v-for="icon in routeData.order" v-bind:key="icon" :src="getImgUrl(icon)">
