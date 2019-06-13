@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 const fs = require('fs');
 const http = require('http').Server(app);
-// const https = require('https').Server({
+// const http = require('http').Server({
 //   "key": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/privkey.pem'),
 //   "cert": fs.readFileSync('/etc/letsencrypt/live/leaseplanner.ga/fullchain.pem'),
 // },app);
@@ -72,7 +72,7 @@ let routesForClient = [
   },
   {
     title: "Huis - Kantoor",
-    from: "Europalaan 3",
+    from: "Rotterdam Centraal",
     to: "Parklaan 14",
     departure: "9:30",
     // Weather: 0=sunny, 1=windy, 2=rain
@@ -80,28 +80,28 @@ let routesForClient = [
     context: { weather: 0, temp: 20 },
     options:
       [
-        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:30", eta: "9:53", locations: ["Europalaan 3", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"] },
-        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "9:30", eta: "9:58", locations: ["Europalaan 3", [{ location: "Aert van Nesstraat 25A" }, { location: "Coolsingel 124" }], "Parklaan 14"] },
-        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:30", eta: "9:55", locations: ["Europalaan 3", [{ location: "Kruiskade 1" }], "Parklaan 14"] },
-        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "9:30", eta: "9:57", locations: ["Europalaan 3", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Parklaan 14"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "9:30", eta: "10:00", locations: ["Europalaan 3", [{ location: "Coolsingel 40" }], "Parklaan 14"] },
+        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:30", eta: "9:53", locations: ["Rotterdam Centraal", [{ location: "Rochussenstraat 8 Rotterdam" }], "Parklaan 14"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "9:30", eta: "9:58", locations: ["Rotterdam Centraal", [{ location: "Aert van Nesstraat 25A" }, { location: "Coolsingel 124" }], "Parklaan 14"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "9:30", eta: "9:55", locations: ["Rotterdam Centraal", [{ location: "Kruiskade 1" }], "Parklaan 14"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "9:30", eta: "9:57", locations: ["Rotterdam Centraal", [{ location: "Haagseveer 7" }, { location: "Hoogstraat 196" }], "Parklaan 14"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "9:30", eta: "10:00", locations: ["Rotterdam Centraal", [{ location: "Coolsingel 40" }], "Parklaan 14"] },
       ]
   },
   {
     title: "Kantoor - Huis",
     from: "Parklaan 14",
-    to: "Europalaan 3",
+    to: "Rotterdam Centraal",
     departure: "18:00",
     // Weather: 0=sunny, 1=windy, 2=rain
     // Order: 0=foot, 1=car, 2=step, 3=bike, 4=scooter
     context: { weather: 1, temp: 16 },
     options:
       [
-        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "18:00", eta: "18:23", locations: ["Parklaan 14", [{ location: "Rochussenstraat 8 Rotterdam" }], "Europalaan 3"] },
-        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "18:00", eta: "18:28", locations: ["Parklaan 14", [{ location: "Coolsingel 124" }, { location: "Aert van Nesstraat 25A" }], "Europalaan 3"] },
-        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "18:00", eta: "18:25", locations: ["Parklaan 14", [{ location: "Kruiskade 1" }], "Europalaan 3"] },
-        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "18:00", eta: "18:27", locations: ["Parklaan 14", [{ location: "Hoogstraat 196" }, { location: "Haagseveer 7" }], "Europalaan 3"] },
-        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "18:00", eta: "18:30", locations: ["Parklaan 14", [{ location: "Coolsingel 40" }], "Europalaan 3"] },
+        { input: { foot: 3, car: 20, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "18:00", eta: "18:23", locations: ["Parklaan 14", [{ location: "Rochussenstraat 8 Rotterdam" }], "Rotterdam Centraal"] },
+        { input: { foot: 3, car: 0, step: 0, bike: 10, scooter: 15 }, order: [0, 3, 4], departure: "18:00", eta: "18:28", locations: ["Parklaan 14", [{ location: "Coolsingel 124" }, { location: "Aert van Nesstraat 25A" }], "Rotterdam Centraal"] },
+        { input: { foot: 10, car: 15, step: 0, bike: 0, scooter: 0 }, order: [0, 1], departure: "18:00", eta: "18:25", locations: ["Parklaan 14", [{ location: "Kruiskade 1" }], "Rotterdam Centraal"] },
+        { input: { foot: 2, car: 5, step: 20, bike: 0, scooter: 0 }, order: [0, 1, 2], departure: "18:00", eta: "18:27", locations: ["Parklaan 14", [{ location: "Hoogstraat 196" }, { location: "Haagseveer 7" }], "Rotterdam Centraal"] },
+        { input: { foot: 5, car: 0, step: 0, bike: 0, scooter: 25 }, order: [0, 4], departure: "18:00", eta: "18:30", locations: ["Parklaan 14", [{ location: "Coolsingel 40" }], "Rotterdam Centraal"] },
       ]
   },
 ]
